@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+    posts: CollectionEntry<'blog'>[];
+    showArchiveLink?: boolean;
+    heading?: string;
+}
+
+const { posts, showArchiveLink = false, heading = 'Notes from the work' } = Astro.props;
+
+function formatDate(date: Date) {
+    return date.toLocaleDateString('en-GB', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+    });
+}
+---
+
+<section id="writing" class="reveal">
+    <div class="wrap">
+        <p class="eyebrow-num">04 / writing</p>
+        <h2>{heading}</h2>
+        {
+            posts.map((post) => (
+                <div class="post">
+                    <a href={`/writing/${post.id}`}>{post.data.title}</a>
+                    <time datetime={post.data.pubDate.toISOString()}>
+                        {formatDate(post.data.pubDate)}
+                    </time>
+                </div>
+            ))
+        }
+        {
+            showArchiveLink && (
+                <a class="writing-more" href="/writing">
+                    All notes →
+                </a>
+            )
+        }
+    </div>
+</section>

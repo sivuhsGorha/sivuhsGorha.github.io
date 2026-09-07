@@ -1,0 +1,39 @@
+---
+import { site } from '../data/site';
+import StatusPanel from './StatusPanel.astro';
+import LineWaves from './reactbits/LineWaves.jsx';
+---
+
+<header class="hero reveal" style="position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none;">
+        <LineWaves
+            client:only="react"
+            speed={0.3}
+            innerLineCount={32}
+            outerLineCount={36}
+            warpIntensity={1.0}
+            rotation={-45}
+            edgeFadeWidth={0.0}
+            colorCycleSpeed={1.0}
+            brightness={0.25}
+            color1="#00e5ff"
+            color2="#8a2be2"
+            color3="#ff00ff"
+            enableMouseInteraction={true}
+            mouseInfluence={2.0}
+        />
+    </div>
+    <div class="wrap hero-grid" style="position: relative; z-index: 1;">
+        <div>
+            <p class="eyebrow-num">01 / introduction</p>
+            <p class="role">{site.role}</p>
+            <h1>{site.tagline}</h1>
+            <p class="desc">{site.description}</p>
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="#projects">See the work</a>
+                <a class="btn btn-ghost" href={site.resumePath} download>Download CV</a>
+            </div>
+        </div>
+        <StatusPanel />
+    </div>
+</header>

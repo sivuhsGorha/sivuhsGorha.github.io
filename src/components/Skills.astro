@@ -1,0 +1,150 @@
+---
+import AccordionGallery from './reactbits/AccordionGallery.jsx';
+import TechStackGrid from './TechStackGrid.jsx';
+
+const skillItems = [
+  {
+    label: 'Languages',
+    shardColor: '#e3a857',
+    accentColor: '#fbbf24',
+    flow: 'stream' as const,
+    skills: ['Java', 'PHP', 'JavaScript', 'C', 'HTML5', 'CSS3']
+  },
+  {
+    label: 'Frontend',
+    shardColor: '#a855f7',
+    accentColor: '#e3a857',
+    flow: 'ribbon' as const,
+    skills: ['React', 'Vue.js', 'Astro', 'Responsive UI']
+  },
+  {
+    label: 'Backend & Cloud',
+    shardColor: '#d97706',
+    accentColor: '#f59e0b',
+    flow: 'vortex' as const,
+    skills: ['Node.js', 'Docker', 'Kubernetes', 'Nginx', 'AWS (EC2 & ALB)']
+  },
+  {
+    label: 'Databases',
+    shardColor: '#c084fc',
+    accentColor: '#e3a857',
+    flow: 'stream' as const,
+    skills: ['MySQL', 'Microsoft SQL Server', 'Data Modeling']
+  },
+  {
+    label: 'Mobile',
+    shardColor: '#10b981',
+    accentColor: '#e3a857',
+    flow: 'vortex' as const,
+    skills: ['Android app development', 'Native architecture']
+  },
+  {
+    label: 'Cybersecurity',
+    shardColor: '#e11d48',
+    accentColor: '#fbbf24',
+    flow: 'ribbon' as const,
+    skills: ['CompTIA A+ (2024)', 'CompTIA Security+', 'Ethical Hacking']
+  },
+  {
+    label: 'Networking',
+    shardColor: '#9333ea',
+    accentColor: '#f59e0b',
+    flow: 'stream' as const,
+    skills: ['Fiber installation', 'Network configuration', 'LAN & cabling']
+  },
+  {
+    label: 'Process & AI',
+    shardColor: '#896ABD',
+    accentColor: '#e3a857',
+    flow: 'vortex' as const,
+    skills: ['Agile / Scrum', 'Software testing', 'Prompt engineering', 'AI workflows']
+  }
+];
+---
+
+<section id="skills" class="reveal">
+    <div class="wrap">
+        <p class="eyebrow-num">03 / skills & tech stack</p>
+        <h2>What I work with</h2>
+        <p class="skills-intro">
+            A comprehensive overview of languages, frameworks, cloud infrastructure, security credentials, and engineering methodologies. Badges use official brand colors and verified industry standards.
+        </p>
+
+        <!-- Visual Accordion Gallery with AeroShards in each Card -->
+        <div class="gallery-wrapper">
+            <AccordionGallery
+                client:only="react"
+                items={skillItems}
+                defaultIndex={0}
+                expandRatio={0.46}
+                trigger="hover"
+                height={420}
+                gap={6}
+                radius={4}
+                accentColor="#e3a857"
+                overlayColor="transparent"
+                textColor="#ffffff"
+                showLabels={true}
+                duration={0.45}
+                tilt={4}
+                parallax={0.3}
+            />
+        </div>
+
+        <!-- Interactive Tech Stack Matrix with Official Badges & Filtering -->
+        <div class="tech-stack-section">
+            <div class="tech-stack-header">
+                <div>
+                    <p class="eyebrow-num" style="margin-bottom: 4px;">tech stack matrix</p>
+                    <h3 class="tech-stack-heading">Interactive Stack & Verified Badges</h3>
+                </div>
+                <p class="tech-stack-sub">
+                    Filter by domain to explore tools, certifications, and architectural capabilities.
+                </p>
+            </div>
+
+            <TechStackGrid client:load />
+        </div>
+    </div>
+</section>
+
+<style>
+    .skills-intro {
+        color: var(--steel, #a9bcdc);
+        font-size: 18.5px;
+        max-width: 65ch;
+        margin-top: -16px;
+        margin-bottom: 32px;
+        line-height: 1.6;
+    }
+
+    .gallery-wrapper {
+        margin-bottom: 56px;
+    }
+
+    .tech-stack-section {
+        border-top: 1px solid var(--line, #33465c);
+        padding-top: 48px;
+    }
+
+    .tech-stack-header {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 24px;
+    }
+
+    .tech-stack-heading {
+        font-family: 'Fraunces', serif;
+        font-size: 32px;
+        font-weight: 500;
+        color: var(--paper, #ffffff);
+    }
+
+    .tech-stack-sub {
+        color: var(--steel, #a9bcdc);
+        font-size: 16.5px;
+        margin: 0;
+        max-width: 60ch;
+    }
+</style>

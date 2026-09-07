@@ -1,0 +1,137 @@
+<section id="education" class="reveal">
+    <div class="wrap">
+        <p class="eyebrow-num">05 / education</p>
+        <h2>Education</h2>
+        
+        <div class="education-item">
+            <div class="education-header">
+                <h3>Diploma — Systems Development (HDIPSD2)</h3>
+                <span class="education-year">2023 – 2026</span>
+            </div>
+            <p class="education-institution">Boston City Campus, Durban, KZN</p>
+            <p class="education-achievement">Overall average: 76% — Pass with Distinction</p>
+            
+            <div class="education-details">
+                <div class="education-detail">
+                    <span class="education-label">Top Results:</span>
+                    <span>Systems Analysis & Design (90%), Praxis (92%), Security+ (88%), Software Testing (86%), Java & MySQL (86%)</span>
+                </div>
+                <div class="education-detail">
+                    <span class="education-label">Programming:</span>
+                    <span>Java, PHP, JavaScript, C, HTML, Android Development</span>
+                </div>
+                <div class="education-detail">
+                    <span class="education-label">Databases:</span>
+                    <span>MySQL, Database Design, Implementation and Management</span>
+                </div>
+                <div class="education-detail">
+                    <span class="education-label">Security:</span>
+                    <span>CompTIA A+ (2024), CompTIA Security+, Ethical Hacker Pro</span>
+                </div>
+                <div class="education-detail">
+                    <span class="education-label">Business:</span>
+                    <span>Business Analysis, Business Process Management, Business Information Systems, Business Management, Business Ethics</span>
+                </div>
+                <div class="education-detail">
+                    <span class="education-label">Project & Professional:</span>
+                    <span>Software Project Management, Software Testing, Professional Skills</span>
+                </div>
+                <p class="education-note">Diploma confirmed by Office of the Registrar — April 2026</p>
+            </div>
+        </div>
+
+        <div class="education-item">
+            <div class="education-header">
+                <h3>National Senior Certificate</h3>
+                <span class="education-year">2019</span>
+            </div>
+            <p class="education-institution">Nombika High School, Ndwedwe, KZN</p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .education-item {
+        padding: 28px 0;
+        border-top: 1px solid var(--line);
+    }
+
+    .education-item:first-of-type {
+        border-top: none;
+    }
+
+    .education-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 8px;
+        gap: 16px;
+    }
+
+    .education-header h3 {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .education-year {
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--amber-dim);
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .education-institution {
+        color: var(--steel);
+        margin-bottom: 8px;
+    }
+
+    .education-achievement {
+        color: var(--ok);
+        font-weight: 500;
+        margin-bottom: 16px;
+    }
+
+    .education-details {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .education-detail {
+        display: flex;
+        gap: 12px;
+        color: var(--steel);
+    }
+
+    .education-label {
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--amber-dim);
+        font-size: 12px;
+        flex-shrink: 0;
+        min-width: 160px;
+    }
+
+    .education-note {
+        margin-top: 12px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        color: var(--steel);
+        font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+        .education-header {
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .education-detail {
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .education-label {
+            min-width: auto;
+        }
+    }
+</style>

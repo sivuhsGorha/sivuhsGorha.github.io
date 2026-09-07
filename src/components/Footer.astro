@@ -1,0 +1,24 @@
+---
+import { site } from '../data/site';
+---
+
+<footer class="site-footer reveal" id="contact">
+    <div class="wrap">
+        <div class="contact-grid">
+            <div>
+                <h2>Let's connect.</h2>
+                <p>
+                    Currently working as a Junior Systems Developer at Future ProTechY. Open to new opportunities and collaborations in systems development.
+                </p>
+            </div>
+            <div class="contact-links">
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+                <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a>
+                <a href={site.githubUrl}>{site.githubLabel}</a>
+                <a href={site.linkedinUrl}>{site.linkedinLabel}</a>
+                <a href={site.resumePath} download>Download CV</a>
+            </div>
+        </div>
+        <p class="foot-note">Built by {site.name} — Junior Systems Developer, Systems Development Graduate.</p>
+    </div>
+</footer>

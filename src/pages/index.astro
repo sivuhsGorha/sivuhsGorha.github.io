@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Skills from '../components/Skills.astro';
+import Projects from '../components/Projects.astro';
+import Education from '../components/Education.astro';
+import Experience from '../components/Experience.astro';
+import WritingList from '../components/WritingList.astro';
+import Footer from '../components/Footer.astro';
+import { getPublishedPosts } from '../lib/posts';
+
+const posts = await getPublishedPosts();
+const latest = posts.slice(0, 3);
+---
+
+<Base current="home">
+    <Hero />
+    <About />
+    <Skills />
+    <Projects />
+    <Education />
+    <Experience />
+    <WritingList posts={latest} showArchiveLink={posts.length > 3} />
+    <Footer />
+</Base>

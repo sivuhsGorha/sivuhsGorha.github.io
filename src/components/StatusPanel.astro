@@ -1,0 +1,41 @@
+---
+import { site } from '../data/site';
+---
+
+<div class="panel">
+    <div class="panel-head"><span class="dot"></span> session.status</div>
+    <div class="panel-body">
+        <div class="panel-row"><span>role</span><span>{site.roleId}</span></div>
+        <div class="panel-row"><span>language</span><span>{site.language}</span></div>
+        <div class="panel-row"><span>focus</span><span>{site.focus}</span></div>
+        <div class="panel-row">
+            <span>status</span><span class="ok">{site.availability}</span>
+        </div>
+        <div class="panel-row"><span>uptime</span><span id="uptime">00:00:00</span></div>
+    </div>
+</div>
+
+<script>
+    const start = Date.now();
+    const el = document.getElementById('uptime');
+    function pad(n: number) {
+        return n.toString().padStart(2, '0');
+    }
+    function tick() {
+        if (!el) return;
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduced) {
+            el.textContent = '00:00:00';
+            return;
+        }
+        const diff = Math.floor((Date.now() - start) / 1000);
+        const h = Math.floor(diff / 3600);
+        const m = Math.floor((diff % 3600) / 60);
+        const s = diff % 60;
+        el.textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
+    }
+    tick();
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        setInterval(tick, 1000);
+    }
+</script>

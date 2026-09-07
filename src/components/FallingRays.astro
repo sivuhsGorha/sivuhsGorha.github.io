@@ -1,0 +1,106 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className = '' }: Props = Astro.props;
+---
+
+<canvas
+	id="falling-rays"
+	class={`falling-rays ${className}`}
+	aria-hidden="true"
+/>
+
+<script>
+	(() => {
+		const canvas = document.getElementById('falling-rays');
+		if (!canvas) return;
+
+		const ctx = canvas.getContext('2d');
+		if (!ctx) return;
+
+		const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (reduced) {
+			canvas.style.display = 'none';
+			return;
+		}
+
+		let width = 0;
+		let height = 0;
+		let raf = 0;
+
+		const rays = Array.from({ length: 5 }, () => ({
+			x: Math.random(),
+			speed: 0.00015 + Math.random() * 0.00025,
+			width: 0.04 + Math.random() * 0.1,
+			phase: Math.random() * Math.PI * 2,
+		}));
+
+		const resize = () => {
+			const parent = canvas.parentElement;
+			if (!parent) return;
+			const rect = parent.getBoundingClientRect();
+			const dpr = Math.min(window.devicePixelRatio || 1, 2);
+			width = rect.width;
+			height = rect.height;
+			canvas.width = width * dpr;
+			canvas.height = height * dpr;
+			canvas.style.width = `${width}px`;
+			canvas.style.height = `${height}px`;
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+		};
+
+		const draw = (t: number) => {
+			ctx.clearRect(0, 0, width, height);
+
+			rays.forEach((ray) => {
+				const xBase = ray.x * width;
+				const rayWidth = ray.width * width;
+				const yShift = Math.sin(t * ray.speed + ray.phase) * height * 0.18;
+
+				const gradient = ctx.createLinearGradient(0, -height * 0.2, 0, height * 1.2);
+				gradient.addColorStop(0, 'rgba(226, 176, 95, 0)');
+				gradient.addColorStop(0.5, 'rgba(226, 176, 95, 0.16)');
+				gradient.addColorStop(1, 'rgba(226, 176, 95, 0)');
+
+				ctx.beginPath();
+				ctx.moveTo(xBase - rayWidth * 0.5, -height * 0.2);
+				ctx.lineTo(xBase + rayWidth * 0.5, -height * 0.2);
+				ctx.lineTo(xBase + rayWidth * 0.5 + yShift, height * 1.2);
+				ctx.lineTo(xBase - rayWidth * 0.5 + yShift, height * 1.2);
+				ctx.closePath();
+				ctx.fillStyle = gradient;
+				ctx.fill();
+			});
+
+			raf = requestAnimationFrame(draw);
+		};
+
+		const start = () => {
+			resize();
+			if (raf) cancelAnimationFrame(raf);
+			raf = requestAnimationFrame(draw);
+		};
+
+		start();
+		window.addEventListener('resize', resize);
+	})();
+</script>
+
+<style>
+	.falling-rays {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 0;
+		mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
+		-webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
+	}
+	.falling-rays + * {
+		position: relative;
+		z-index: 1;
+	}
+</style>

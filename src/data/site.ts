@@ -1,0 +1,27 @@
+export const site = {
+    name: 'Sibongakonke Simamane',
+    mark: 'SBK.dev',
+    title: 'Sibongakonke Simamane — Junior Systems Developer',
+    metaDescription:
+        'Junior Systems Developer with expertise across Java, PHP, JavaScript, React, Node.js, Docker, AWS, and MySQL. Focusing on full-stack development, cloud infrastructure, and cybersecurity.',
+    role: 'JUNIOR SYSTEMS DEVELOPER • SYSTEMS DEVELOPMENT GRADUATE',
+    roleId: 'junior_systems_dev',
+    language: 'java / js / php',
+    focus: 'full-stack / cloud / cybersecurity',
+    focusLabel: 'Full-stack Development, Cloud & Cybersecurity',
+    tagline: 'Building secure, scalable systems from robust backends to modern cloud architectures.',
+    description:
+        'Driven and technically versatile Systems Development graduate with a Diploma (HDIPSD2) from Boston City Campus (76% Pass with Distinction). Experienced across full-stack engineering — Java, PHP, JavaScript, React, Node.js, Docker, Kubernetes, AWS, and MySQL — paired with strong foundations in cybersecurity (CompTIA A+ & Security+), networking, and business analysis.',
+    city: 'Durban / Umhlanga',
+    currently: 'Junior Systems Developer at Future ProTechY',
+    stack: 'Java · PHP · JavaScript · React · Node.js · Docker · AWS · MySQL · Astro',
+    availability: 'employed, open to opportunities',
+    email: 'simangalisoblessed@gmail.com',
+    phone: '074 357 2309',
+    githubUrl: 'https://github.com/sivuhsGorha',
+    githubLabel: 'github.com/sivuhsGorha',
+    linkedinUrl: 'https://www.linkedin.com/in/sibongakonke-simamane-371ba7236',
+    linkedinLabel: 'linkedin.com/in/sibongakonke-simamane-371ba7236',
+    resumePath: '/Sibongakonke_Simamane_CV.pdf',
+    origin: 'https://sbk-dev.pages.dev',
+} as const;

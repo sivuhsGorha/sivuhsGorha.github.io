@@ -1,0 +1,54 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Footer from '../../components/Footer.astro';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+    const posts = await getCollection('blog', ({ data }) => {
+        if (import.meta.env.PROD && data.draft) {
+            return false;
+        }
+        return true;
+    });
+
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+function formatDate(date: Date) {
+    return date.toLocaleDateString('en-GB', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+    });
+}
+---
+
+<Base
+    current="writing"
+    title={`${post.data.title} — ${site.mark}`}
+    description={post.data.description}
+>
+    <article class="article">
+        <div class="wrap">
+            <a class="article-back" href="/#writing">← Back to writing</a>
+            <header>
+                <p class="eyebrow-num">04 / writing</p>
+                <h1>{post.data.title}</h1>
+                <time datetime={post.data.pubDate.toISOString()}>
+                    {formatDate(post.data.pubDate)}
+                </time>
+            </header>
+            <div class="prose">
+                <Content />
+            </div>
+        </div>
+    </article>
+    <Footer />
+</Base>

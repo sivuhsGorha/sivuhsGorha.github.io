@@ -1,0 +1,258 @@
+---
+interface Props {
+	width?: number | string;
+	height?: number | string;
+	cardDistance?: number;
+	verticalDistance?: number;
+	delay?: number;
+	pauseOnHover?: boolean;
+	skewAmount?: number;
+	easing?: 'linear' | 'elastic';
+	class?: string;
+}
+
+const {
+	width = 500,
+	height = 400,
+	cardDistance = 60,
+	verticalDistance = 70,
+	delay = 5000,
+	pauseOnHover = false,
+	skewAmount = 6,
+	easing = 'elastic',
+	class: className = '',
+}: Props = Astro.props;
+---
+
+<div
+	id="card-swap-container"
+	class={`card-swap-container ${className}`}
+	data-width={typeof width === 'number' ? width : width}
+	data-height={typeof height === 'number' ? height : height}
+	data-card-distance={cardDistance}
+	data-vertical-distance={verticalDistance}
+	data-delay={delay}
+	data-pause-on-hover={pauseOnHover}
+	data-skew-amount={skewAmount}
+	data-easing={easing}
+>
+	<slot />
+</div>
+
+<style>
+	.card-swap-container {
+		position: relative;
+		perspective: 900px;
+		overflow: visible;
+	}
+
+	.card {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		border-radius: 3px;
+		border: 1px solid var(--line);
+		background: var(--ink-soft);
+		transform-style: preserve-3d;
+		will-change: transform;
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		overflow: hidden;
+	}
+
+	.card h3 {
+		font-family: 'Fraunces', serif;
+		font-size: 18px;
+		margin: 0 0 8px 0;
+		color: var(--paper);
+	}
+
+	.card p {
+		color: var(--steel);
+		font-size: 14px;
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		.card-swap-container {
+			transform: scale(0.75);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.card-swap-container {
+			transform: scale(0.55);
+		}
+	}
+</style>
+
+<script>
+	(() => {
+		import gsap from 'gsap';
+
+		const container = document.getElementById('card-swap-container');
+		if (!container) return;
+
+		// Read configuration from data attributes
+		const width = container.dataset.width;
+		const height = container.dataset.height;
+		const cardDistance = Number(container.dataset.cardDistance) || 60;
+		const verticalDistance = Number(container.dataset.verticalDistance) || 70;
+		const delay = Number(container.dataset.delay) || 5000;
+		const pauseOnHover = container.dataset.pauseOnHover === 'true';
+		const skewAmount = Number(container.dataset.skewAmount) || 6;
+		const easing = container.dataset.easing || 'elastic';
+
+		// Get all card elements
+		const cards = Array.from(container.querySelectorAll('.card'));
+		if (cards.length < 2) return;
+
+		// Set card dimensions
+		cards.forEach(card => {
+			card.style.width = width;
+			card.style.height = height;
+		});
+
+		// Configuration based on easing type
+		const config =
+			easing === 'elastic'
+				? {
+						ease: 'elastic.out(0.6,0.9)',
+						durDrop: 2,
+						durMove: 2,
+						durReturn: 2,
+						promoteOverlap: 0.9,
+						returnDelay: 0.05
+					}
+				: {
+						ease: 'power1.inOut',
+						durDrop: 0.8,
+						durMove: 0.8,
+						durReturn: 0.8,
+						promoteOverlap: 0.45,
+						returnDelay: 0.2
+					};
+
+		// Create slot positions
+		const makeSlot = (i, distX, distY, total) => ({
+			x: i * distX,
+			y: -i * distY,
+			z: -i * distX * 1.5,
+			zIndex: total - i
+		});
+
+		// Place card in its slot
+		const placeNow = (el, slot, skew) =>
+			gsap.set(el, {
+				x: slot.x,
+				y: slot.y,
+				z: slot.z,
+				xPercent: -50,
+				yPercent: -50,
+				skewY: skew,
+				transformOrigin: 'center center',
+				zIndex: slot.zIndex,
+				force3D: true
+			});
+
+		// Initialize card positions
+		const order = Array.from({ length: cards.length }, (_, i) => i);
+		cards.forEach((card, i) => placeNow(card, makeSlot(i, cardDistance, verticalDistance, cards.length), skewAmount));
+
+		let tlRef = null;
+		let intervalRef = null;
+
+		// Swap animation
+		const swap = () => {
+			if (order.length < 2) return;
+
+			const [front, ...rest] = order;
+			const elFront = cards[front];
+			const tl = gsap.timeline();
+			tlRef = tl;
+
+			// Drop front card
+			tl.to(elFront, {
+				y: '+=500',
+				duration: config.durDrop,
+				ease: config.ease
+			});
+
+			// Promote remaining cards
+			tl.addLabel('promote', `-=${config.durDrop * config.promoteOverlap}`);
+			rest.forEach((idx, i) => {
+				const el = cards[idx];
+				const slot = makeSlot(i, cardDistance, verticalDistance, cards.length);
+				tl.set(el, { zIndex: slot.zIndex }, 'promote');
+				tl.to(
+					el,
+					{
+						x: slot.x,
+						y: slot.y,
+						z: slot.z,
+						duration: config.durMove,
+						ease: config.ease
+					},
+					`promote+=${i * 0.15}`
+				);
+			});
+
+			// Return front card to back
+			const backSlot = makeSlot(cards.length - 1, cardDistance, verticalDistance, cards.length);
+			tl.addLabel('return', `promote+=${config.durMove * config.returnDelay}`);
+			tl.call(
+				() => {
+					gsap.set(elFront, { zIndex: backSlot.zIndex });
+				},
+				undefined,
+				'return'
+			);
+			tl.to(
+				elFront,
+				{
+					x: backSlot.x,
+					y: backSlot.y,
+					z: backSlot.z,
+					duration: config.durReturn,
+					ease: config.ease
+				},
+				'return'
+			);
+
+			// Update order
+			tl.call(() => {
+				order.splice(0, order.length, ...rest, front);
+			});
+		};
+
+		// Start animation
+		swap();
+		intervalRef = window.setInterval(swap, delay);
+
+		// Pause on hover
+		if (pauseOnHover) {
+			const pause = () => {
+				tlRef?.pause();
+				clearInterval(intervalRef);
+			};
+			const resume = () => {
+				tlRef?.play();
+				intervalRef = window.setInterval(swap, delay);
+			};
+			container.addEventListener('mouseenter', pause);
+			container.addEventListener('mouseleave', resume);
+		}
+
+		// Cleanup
+		const cleanup = () => {
+			clearInterval(intervalRef);
+			if (pauseOnHover) {
+				container.removeEventListener('mouseenter', pause);
+				container.removeEventListener('mouseleave', resume);
+			}
+		};
+
+		// Store cleanup function for potential use
+		container._cardSwapCleanup = cleanup;
+	})();
+</script>
