@@ -25,7 +25,7 @@ import ColorBends from './reactbits/ColorBends.jsx';
                         noise={0.15}
                         parallax={0.5}
                         iterations={1}
-                        intensity={1.5}
+                        intensity={0.9}
                         bandWidth={6}
                         transparent={true}
                     />
@@ -61,7 +61,7 @@ import ColorBends from './reactbits/ColorBends.jsx';
                         noise={0.15}
                         parallax={0.5}
                         iterations={1}
-                        intensity={1.5}
+                        intensity={0.9}
                         bandWidth={6}
                         transparent={true}
                     />
@@ -99,7 +99,7 @@ import ColorBends from './reactbits/ColorBends.jsx';
                         noise={0.15}
                         parallax={0.5}
                         iterations={1}
-                        intensity={1.5}
+                        intensity={0.9}
                         bandWidth={6}
                         transparent={true}
                     />
@@ -193,21 +193,25 @@ import ColorBends from './reactbits/ColorBends.jsx';
         font-weight: 600;
         margin-bottom: 0.25rem;
         color: var(--color-text);
+        text-shadow: 0 2px 4px rgba(0,0,0,0.8), 0 0 12px rgba(0,0,0,0.6);
     }
 
     .cert-details p {
         font-size: 0.9rem;
         color: var(--color-text-muted);
         margin-bottom: 0.5rem;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.5);
     }
 
     .cert-date {
         font-family: var(--font-mono);
         font-size: 0.75rem;
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(10, 5, 20, 0.4);
         padding: 0.2rem 0.6rem;
         border-radius: 4px;
         color: var(--color-text-muted);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+        border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .cert-date.distinction {
