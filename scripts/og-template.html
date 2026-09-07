@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OG Image</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            width: 1200px; height: 630px;
+            background: radial-gradient(circle at center, #1a0a2e 0%, #0d0415 100%);
+            color: #f8f8f2; font-family: 'IBM Plex Sans', sans-serif;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+        .glow { position: absolute; width: 800px; height: 800px; background: radial-gradient(circle, rgba(227, 168, 87, 0.15) 0%, rgba(26, 10, 46, 0) 70%); top: -100px; right: -200px; border-radius: 50%; }
+        .glow-2 { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, rgba(13, 4, 21, 0) 70%); bottom: -150px; left: -150px; border-radius: 50%; }
+        .container {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; z-index: 10; padding: 60px;
+            border: 1px solid rgba(227, 168, 87, 0.2); border-radius: 24px;
+            background: rgba(26, 10, 46, 0.6); backdrop-filter: blur(12px); width: 1000px;
+        }
+        .logo { width: 120px; height: 120px; margin-bottom: 30px; }
+        h1 { font-family: 'Fraunces', serif; font-size: 84px; font-weight: 600; margin-bottom: 20px; background: linear-gradient(135deg, #f8f8f2 0%, #c0b3d1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { font-size: 32px; color: #e3a857; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px; }
+        .tech-stack { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+        .badge { background: rgba(227, 168, 87, 0.1); border: 1px solid rgba(227, 168, 87, 0.3); color: #e3a857; padding: 8px 16px; border-radius: 30px; font-size: 20px; font-weight: 500; }
+        .url { position: absolute; bottom: 40px; font-size: 24px; color: rgba(248, 248, 242, 0.5); font-weight: 500; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+    <div class="glow"></div>
+    <div class="glow-2"></div>
+    <div class="container">
+        <img src="file:///C:/sbk-dev/public/logo.svg" alt="Logo" class="logo" />
+        <h1>Sibongakonke Simamane</h1>
+        <h2>Junior Systems Developer</h2>
+        <div class="tech-stack">
+            <span class="badge">Java</span>
+            <span class="badge">PHP</span>
+            <span class="badge">React</span>
+            <span class="badge">Node.js</span>
+            <span class="badge">AWS</span>
+            <span class="badge">MySQL</span>
+        </div>
+    </div>
+    <div class="url">sbk-dev.pages.dev</div>
+</body>
+</html>

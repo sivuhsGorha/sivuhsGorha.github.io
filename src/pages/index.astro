@@ -3,10 +3,12 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import Skills from '../components/Skills.astro';
+import Certifications from '../components/Certifications.astro';
 import Projects from '../components/Projects.astro';
 import Education from '../components/Education.astro';
 import Experience from '../components/Experience.astro';
 import WritingList from '../components/WritingList.astro';
+import ContactForm from '../components/ContactForm.astro';
 import Footer from '../components/Footer.astro';
 import { getPublishedPosts } from '../lib/posts';
 
@@ -18,9 +20,12 @@ const latest = posts.slice(0, 3);
     <Hero />
     <About />
     <Skills />
+    <Certifications />
     <Projects />
     <Education />
     <Experience />
     <WritingList posts={latest} showArchiveLink={posts.length > 3} />
+    <ContactForm />
     <Footer />
 </Base>
+

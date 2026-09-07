@@ -1,0 +1,156 @@
+---
+---
+
+<section id="certifications" class="certifications reveal">
+    <div class="section-header">
+        <h2><span class="highlight">Cert</span>ifications</h2>
+        <p>Verified credentials & formal education.</p>
+    </div>
+
+    <div class="cert-grid">
+        <!-- CompTIA Security+ -->
+        <div class="cert-card">
+            <div class="cert-icon sec-plus">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                    <path d="M12 8v4"/>
+                    <path d="M12 16h.01"/>
+                </svg>
+            </div>
+            <div class="cert-details">
+                <h3>CompTIA Security+</h3>
+                <p>Cybersecurity Fundamentals</p>
+                <span class="cert-date">Valid Credential</span>
+            </div>
+        </div>
+
+        <!-- CompTIA A+ -->
+        <div class="cert-card">
+            <div class="cert-icon a-plus">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="3" rx="2"/>
+                    <path d="M9 10v4"/>
+                    <path d="M15 10v4"/>
+                    <path d="M9 14h6"/>
+                    <path d="M12 7v3"/>
+                </svg>
+            </div>
+            <div class="cert-details">
+                <h3>CompTIA A+</h3>
+                <p>IT Operations & Infrastructure</p>
+                <span class="cert-date">Issued 2024</span>
+            </div>
+        </div>
+
+        <!-- Boston City Campus -->
+        <div class="cert-card featured">
+            <div class="cert-icon diploma">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+            </div>
+            <div class="cert-details">
+                <h3>Diploma in Systems Development</h3>
+                <p>Boston City Campus (HDIPSD2)</p>
+                <span class="cert-date distinction">76% Distinction Pass</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .certifications {
+        margin: 8rem 0;
+    }
+
+    .section-header {
+        margin-bottom: 3rem;
+    }
+
+    .cert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .cert-card {
+        background: rgba(26, 10, 46, 0.4);
+        border: 1px solid rgba(227, 168, 87, 0.1);
+        border-radius: 16px;
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(8px);
+    }
+
+    .cert-card:hover {
+        border-color: rgba(227, 168, 87, 0.3);
+        transform: translateY(-2px);
+        background: rgba(26, 10, 46, 0.6);
+    }
+
+    .cert-card.featured {
+        border-color: rgba(227, 168, 87, 0.4);
+        background: linear-gradient(135deg, rgba(26, 10, 46, 0.8) 0%, rgba(227, 168, 87, 0.05) 100%);
+    }
+
+    .cert-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(15, 23, 42, 0.5);
+        color: var(--color-primary);
+        flex-shrink: 0;
+    }
+
+    .cert-icon.sec-plus {
+        color: #ef4444; /* Red accent for Security */
+        background: rgba(239, 68, 68, 0.1);
+    }
+
+    .cert-icon.a-plus {
+        color: #3b82f6; /* Blue accent for A+ */
+        background: rgba(59, 130, 246, 0.1);
+    }
+
+    .cert-icon.diploma {
+        color: var(--color-primary);
+        background: rgba(227, 168, 87, 0.15);
+    }
+
+    .cert-details h3 {
+        font-family: var(--font-heading);
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        color: var(--color-text);
+    }
+
+    .cert-details p {
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+        margin-bottom: 0.5rem;
+    }
+
+    .cert-date {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        color: var(--color-text-muted);
+    }
+
+    .cert-date.distinction {
+        background: rgba(227, 168, 87, 0.15);
+        color: var(--color-primary);
+        font-weight: 600;
+        border: 1px solid rgba(227, 168, 87, 0.3);
+    }
+</style>
