@@ -172,14 +172,14 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-@media (max-width: 520px) {
+@media (max-width: 768px) {
   .accordion-gallery {
     flex-direction: column;
     perspective: none;
-    height: auto !important;
+    height: 880px !important;
   }
   .ag-panel {
-    min-height: 84px;
+    min-height: 64px;
     transform: none !important;
   }
   .accordion-gallery .ag-panel__media {

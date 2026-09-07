@@ -150,7 +150,7 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
                     console.log(response);
                     // Formspree returns errors in an array sometimes
                     if (Object.hasOwn(json, 'errors')) {
-                        result.innerHTML = json["errors"].map(error => error["message"]).join(", ");
+                        result.innerHTML = json["errors"].map((error: { message: string }) => error["message"]).join(", ");
                     } else {
                         result.innerHTML = "Oops! There was a problem submitting your form";
                     }
