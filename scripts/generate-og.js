@@ -16,3 +16,4 @@ const fs = require('fs');
   console.log(`Generated ${outPath}`);
   await browser.close();
 })();
+

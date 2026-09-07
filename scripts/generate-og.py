@@ -30,3 +30,4 @@ except Exception as e:
 # save
 img.save(r"c:\sbk-dev\public\og.png")
 print("Saved og.png")
+
