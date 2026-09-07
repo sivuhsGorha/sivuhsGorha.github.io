@@ -1,7 +1,6 @@
 ---
-// ContactForm.astro using Web3Forms
-// The user needs to supply their own Access Key from https://web3forms.com/
-const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+// ContactForm.astro using Formspree
+const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
 ---
 
 <section id="contact" class="contact-section reveal">
@@ -11,16 +10,7 @@ const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
     </div>
 
     <div class="form-container">
-        <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
-            
-            <!-- Replace with your Access Key -->
-            <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-            
-            <!-- Spam Protection -->
-            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-            
-            <!-- Custom Subject -->
-            <input type="hidden" name="subject" value="New Contact Message from SBK.dev">
+        <form action={FORMSPREE_URL} method="POST" id="contact-form">
             
             <div class="input-group">
                 <label for="name">Name</label>
@@ -139,9 +129,10 @@ const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
             const json = JSON.stringify(object);
 
             result.innerHTML = "Sending...";
+            result.style.display = "block";
             result.style.color = "var(--color-text-muted)";
 
-            fetch('https://api.web3forms.com/submit', {
+            fetch(form.action, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -151,13 +142,18 @@ const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
             })
             .then(async (response) => {
                 let json = await response.json();
-                if (response.status == 200) {
+                if (response.status === 200 || response.ok) {
                     result.innerHTML = "Message sent successfully!";
                     result.style.color = "#10b981"; // success green
                     form.reset();
                 } else {
                     console.log(response);
-                    result.innerHTML = json.message;
+                    // Formspree returns errors in an array sometimes
+                    if (Object.hasOwn(json, 'errors')) {
+                        result.innerHTML = json["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        result.innerHTML = "Oops! There was a problem submitting your form";
+                    }
                     result.style.color = "#ef4444"; // error red
                 }
             })
