@@ -1,0 +1,108 @@
+---
+import Base from '../layouts/Base.astro';
+import Dither from '../components/reactbits/Dither.jsx';
+
+const waveColor = [0.89, 0.658, 0.341]; // var(--amber)
+const backgroundColor = [0.058, 0.105, 0.176]; // var(--ink)
+---
+
+<Base current="error" title="404 - Not Found">
+    <div class="error-page">
+        <div class="dither-bg">
+            <Dither 
+                client:only="react"
+                waveColor={waveColor}
+                backgroundColor={backgroundColor}
+                colorNum={5}
+                waveSpeed={0.03}
+                waveAmplitude={0.4}
+                waveFrequency={2.5}
+                mouseRadius={1.5}
+            />
+        </div>
+        
+        <div class="error-content">
+            <h1>404</h1>
+            <h2>Page Not Found</h2>
+            <p>The page you are looking for has drifted into the void.</p>
+            <a href="/" class="home-btn">Return to Orbit</a>
+        </div>
+    </div>
+</Base>
+
+<style>
+    .error-page {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .dither-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: auto;
+    }
+
+    .error-content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        background: rgba(15, 27, 45, 0.6);
+        padding: 4rem 3rem;
+        border-radius: 24px;
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(227, 168, 87, 0.2);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: clamp(6rem, 15vw, 10rem);
+        line-height: 1;
+        margin: 0;
+        font-family: var(--font-heading);
+        color: var(--amber);
+        text-shadow: 0 4px 30px rgba(227, 168, 87, 0.3);
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+        color: var(--paper);
+    }
+
+    p {
+        margin-bottom: 2.5rem;
+        color: var(--steel);
+        font-size: 1.1rem;
+    }
+
+    .home-btn {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background: transparent;
+        color: var(--amber);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        border: 2px solid var(--amber);
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+    }
+
+    .home-btn:hover {
+        background: var(--amber);
+        color: var(--ink);
+        box-shadow: 0 0 20px rgba(227, 168, 87, 0.4);
+        transform: translateY(-2px);
+    }
+</style>
