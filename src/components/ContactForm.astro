@@ -5,52 +5,54 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
 ---
 
 <section id="contact" class="contact-section reveal">
-    <div class="section-header">
-        <h2><span class="highlight">Get</span> In Touch</h2>
-        <p>Currently open for new opportunities and interesting projects.</p>
-    </div>
-
-    <div class="form-container" style="position: relative; overflow: hidden;">
-        <!-- ColorBends Background -->
-        <div style="position: absolute; inset: 0; z-index: 0; pointer-events: auto;">
-            <ColorBends 
-                client:only="react"
-                colors={["#e3a857", "#896ABD", "#1a0a2e"]}
-                rotation={90}
-                speed={0.2}
-                scale={1}
-                frequency={1}
-                warpStrength={1}
-                mouseInfluence={1}
-                noise={0.15}
-                parallax={0.5}
-                iterations={1}
-                intensity={1.5}
-                bandWidth={6}
-                transparent={true}
-            />
+    <div class="wrap" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+        <div class="section-header">
+            <h2><span class="highlight">Get</span> In Touch</h2>
+            <p>Currently open for new opportunities and interesting projects.</p>
         </div>
 
-        <form action={FORMSPREE_URL} method="POST" id="contact-form" style="position: relative; z-index: 1; width: 100%;">
-            
-            <div class="input-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" required placeholder="Elton Roberts" />
+        <div class="form-container" style="position: relative; overflow: hidden;">
+            <!-- ColorBends Background -->
+            <div style="position: absolute; inset: 0; z-index: 0; pointer-events: auto;">
+                <ColorBends 
+                    client:only="react"
+                    colors={["#e3a857", "#896ABD", "#1a0a2e"]}
+                    rotation={90}
+                    speed={0.2}
+                    scale={1}
+                    frequency={1}
+                    warpStrength={1}
+                    mouseInfluence={1}
+                    noise={0.15}
+                    parallax={0.5}
+                    iterations={1}
+                    intensity={1.5}
+                    bandWidth={6}
+                    transparent={true}
+                />
             </div>
 
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" required placeholder="elton@example.com" />
-            </div>
+            <form action={FORMSPREE_URL} method="POST" id="contact-form" style="position: relative; z-index: 1; width: 100%;">
+                
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" required placeholder="Elton Roberts" />
+                </div>
 
-            <div class="input-group">
-                <label for="message">Message</label>
-                <textarea name="message" id="message" rows="5" required placeholder="How can I help you?"></textarea>
-            </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required placeholder="elton@example.com" />
+                </div>
 
-            <button type="submit" class="submit-btn">Send Message</button>
-            <p id="form-result" class="form-result"></p>
-        </form>
+                <div class="input-group">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" rows="5" required placeholder="How can I help you?"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message</button>
+                <p id="form-result" class="form-result"></p>
+            </form>
+        </div>
     </div>
 </section>
 
