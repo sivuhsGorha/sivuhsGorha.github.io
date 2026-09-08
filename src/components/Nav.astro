@@ -1,6 +1,6 @@
 ---
 import { site } from '../data/site';
-import Scanner from './reactbits/Scanner.jsx';
+import DarkVeil from './reactbits/DarkVeil.jsx';
 
 interface Props {
     current?: 'home' | 'writing';
@@ -11,35 +11,15 @@ const homePrefix = current === 'home' ? '' : '/';
 ---
 
 <nav>
-    <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none;">
-        <Scanner
+    <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.7;">
+        <DarkVeil
             client:only="react"
-            color1="#0f1b2d"
-            color2="#8a2be2"
-            color3="#00e5ff"
+            hueShift={280}
+            noiseIntensity={0.03}
+            scanlineIntensity={0.1}
             speed={0.4}
-            sweepSpeed={0.18}
-            sweepWidth={2.0}
-            sweepFalloff={8}
-            scale={1.2}
-            frequency={1.5}
-            ripple={0.15}
-            bandDensity={14}
-            lineSharpness={6}
-            glow={0.18}
-            scanDirection="horizontal"
-            colorSpread={0.6}
-            brightness={0.9}
-            contrast={1.2}
-            softness={1.6}
-            vignette={0.5}
-            scanline={false}
-            grain={true}
-            grainIntensity={0.03}
-            opacity={0.85}
-            mouseInteraction={true}
-            mouseRadius={0.6}
-            mouseStrength={0.4}
+            warpAmount={0.2}
+            resolutionScale={0.75}
         />
     </div>
     <div class="wrap" style="position: relative; z-index: 1;">
