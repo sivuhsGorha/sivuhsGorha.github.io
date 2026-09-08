@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 export default function CyberGlobe() {
     const canvasRef = useRef(null);
@@ -13,7 +13,7 @@ export default function CyberGlobe() {
         // Configuration
         const numPoints = 250;
         const connectionDistance = 0.32;
-        const globeSizePercent = 0.42;
+        const globeSizePercent = 0.55;
 
         let width = 0;
         let height = 0;
