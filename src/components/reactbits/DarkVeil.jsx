@@ -76,7 +76,7 @@ void main(){
     col.rgb+=(rand(gl_FragCoord.xy+uTime)-0.5)*uNoise;
     
     float lum = dot(col.rgb, vec3(0.299, 0.587, 0.114));
-    vec3 result = mix(uBaseColor, uVeilColor, clamp(lum * 0.7, 0.0, 1.0));
+    vec3 result = mix(uBaseColor, uVeilColor, clamp(lum * 0.35, 0.0, 1.0));
 
     if(uLightMode>0.5){
       float energy=max(result.r,max(result.g,result.b));
