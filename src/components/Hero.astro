@@ -8,21 +8,22 @@ import LineWaves from './reactbits/LineWaves.jsx';
     <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none;">
         <LineWaves
             client:only="react"
-            speed={0.3}
+            speed={0.25}
             innerLineCount={32}
             outerLineCount={36}
-            warpIntensity={1.0}
+            warpIntensity={0.8}
             rotation={-45}
             edgeFadeWidth={0.0}
             colorCycleSpeed={1.0}
-            brightness={0.25}
+            brightness={0.12}
             color1="#00e5ff"
             color2="#8a2be2"
             color3="#ff00ff"
             enableMouseInteraction={true}
-            mouseInfluence={2.0}
+            mouseInfluence={1.5}
         />
     </div>
+    <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(circle at 30% 40%, rgba(15, 27, 45, 0.94) 0%, rgba(15, 27, 45, 0.75) 60%, rgba(15, 27, 45, 0.35) 100%);"></div>
     <div class="wrap hero-grid" style="position: relative; z-index: 1;">
         <div>
             <p class="eyebrow-num">01 / introduction</p>
