@@ -86,7 +86,7 @@ nav {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(138, 43, 226, 0.3);
-    min-height: 84px;
+    min-height: 64px;
     display: flex;
     align-items: center;
 }
@@ -95,8 +95,8 @@ nav .wrap {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 26px;
-    padding-bottom: 26px;
+    padding-top: 14px;
+    padding-bottom: 14px;
     gap: 16px;
     flex-wrap: wrap;
     width: 100%;
