@@ -76,9 +76,11 @@ a {
 
 /* ---------- NAV ---------- */
 nav {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 20;
+    left: 0;
+    width: 100%;
+    z-index: 50;
     backdrop-filter: blur(4px);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -789,4 +791,8 @@ section h2 {
 @keyframes dotPulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.4; }
+}
+
+main {
+    padding-top: 84px;
 }
