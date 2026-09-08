@@ -8,9 +8,6 @@
     --amber: #e3a857;
     --amber-dim: #b98640;
     --ok: #7fa88c;
-    --font-heading: 'Bricolage Grotesque', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
 }
 
 * {
@@ -26,7 +23,7 @@ body {
     margin: 0;
     background: transparent;
     color: var(--paper);
-    font-family: var(--font-body);
+    font-family: 'IBM Plex Sans', sans-serif;
     line-height: 1.65;
     font-size: 18.5px;
 }
@@ -39,8 +36,8 @@ body {
 h1,
 h2,
 h3 {
-    font-family: var(--font-heading);
-    font-weight: 700;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
     margin: 0;
     color: var(--paper);
 }

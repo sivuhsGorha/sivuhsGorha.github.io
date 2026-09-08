@@ -126,7 +126,7 @@
 
 .ag-panel__text {
   color: var(--ag-text);
-  font-family: var(--font-heading);
+  font-family: 'Fraunces', serif;
   font-weight: 500;
   font-size: clamp(1.25rem, 1.8vw, 1.65rem);
   letter-spacing: -0.01em;
