@@ -14,12 +14,13 @@ const homePrefix = current === 'home' ? '' : '/';
     <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none;">
         <DarkVeil
             client:only="react"
-            hueShift={275}
-            noiseIntensity={0.03}
-            scanlineIntensity={0.1}
+            baseColor={[0.058, 0.105, 0.176]}
+            veilColor={[0.23, 0.03, 0.39]}
+            noiseIntensity={0.02}
+            scanlineIntensity={0.05}
             speed={0.4}
             scanlineFrequency={0.05}
-            warpAmount={0.25}
+            warpAmount={0.2}
             resolutionScale={1}
         />
     </div>

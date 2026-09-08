@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { Renderer, Program, Mesh, Triangle, Vec2 } from 'ogl';
+import { Renderer, Program, Mesh, Triangle, Vec2, Vec3 } from 'ogl';
 import './DarkVeil.css';
 
 const vertex = `
@@ -19,6 +19,8 @@ uniform float uScan;
 uniform float uScanFreq;
 uniform float uWarp;
 uniform float uLightMode;
+uniform vec3 uBaseColor;
+uniform vec3 uVeilColor;
 #define iTime uTime
 #define iResolution uResolution
 
@@ -72,7 +74,10 @@ void main(){
     float scanline_val=sin(gl_FragCoord.y*uScanFreq)*0.5+0.5;
     col.rgb*=1.-(scanline_val*scanline_val)*uScan;
     col.rgb+=(rand(gl_FragCoord.xy+uTime)-0.5)*uNoise;
-    vec3 result=clamp(col.rgb,0.0,1.0);
+    
+    float lum = dot(col.rgb, vec3(0.299, 0.587, 0.114));
+    vec3 result = mix(uBaseColor, uVeilColor, clamp(lum * 0.7, 0.0, 1.0));
+
     if(uLightMode>0.5){
       float energy=max(result.r,max(result.g,result.b));
       vec3 hue=result/max(energy,0.001);
@@ -92,7 +97,9 @@ export default function DarkVeil({
                                    scanlineFrequency = 0,
                                    warpAmount = 0,
                                    resolutionScale = 1,
-                                   lightMode = false
+                                   lightMode = false,
+                                   baseColor = [0.058, 0.105, 0.176], // #0f1b2d site background
+                                   veilColor = [0.25, 0.10, 0.45]     // deep purple ambient veil
                                  }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -118,7 +125,9 @@ export default function DarkVeil({
         uScan: { value: scanlineIntensity },
         uScanFreq: { value: scanlineFrequency },
         uWarp: { value: warpAmount },
-        uLightMode: { value: lightMode ? 1 : 0 }
+        uLightMode: { value: lightMode ? 1 : 0 },
+        uBaseColor: { value: new Vec3(...baseColor) },
+        uVeilColor: { value: new Vec3(...veilColor) }
       }
     });
 
@@ -148,6 +157,8 @@ export default function DarkVeil({
       program.uniforms.uScanFreq.value = scanlineFrequency;
       program.uniforms.uWarp.value = warpAmount;
       program.uniforms.uLightMode.value = lightMode ? 1 : 0;
+      program.uniforms.uBaseColor.value.set(...baseColor);
+      program.uniforms.uVeilColor.value.set(...veilColor);
       renderer.render({ scene: mesh });
       frame = requestAnimationFrame(loop);
     };
@@ -158,8 +169,7 @@ export default function DarkVeil({
       cancelAnimationFrame(frame);
       window.removeEventListener('resize', resize);
     };
-  }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale, lightMode]);
+  }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale, lightMode, baseColor, veilColor]);
 
   return <canvas ref={ref} className="darkveil-canvas" />;
 }
-
