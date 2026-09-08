@@ -98,7 +98,7 @@ export default function DarkVeil({
                                    warpAmount = 0,
                                    resolutionScale = 1,
                                    lightMode = false,
-                                   baseColor = [0.058, 0.105, 0.176], // #0f1b2d site background
+                                   baseColor = [0.102, 0.039, 0.18], // #1a0a2e site silk background
                                    veilColor = [0.25, 0.10, 0.45]     // deep purple ambient veil
                                  }) {
   const ref = useRef(null);
