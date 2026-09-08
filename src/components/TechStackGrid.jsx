@@ -179,7 +179,7 @@ export default function TechStackGrid() {
                 }
 
                 .tech-category-title {
-                    font-family: 'Fraunces', serif;
+                    font-family: var(--font-heading);
                     font-size: 23px;
                     font-weight: 500;
                     color: var(--paper, #ffffff);
