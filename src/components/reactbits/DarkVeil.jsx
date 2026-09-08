@@ -125,9 +125,12 @@ export default function DarkVeil({
     const mesh = new Mesh(gl, { geometry, program });
 
     const resize = () => {
-      const w = parent.clientWidth,
-        h = parent.clientHeight;
-      renderer.setSize(w * resolutionScale, h * resolutionScale);
+      if (!parent) return;
+      const rawW = parent.clientWidth || window.innerWidth;
+      const rawH = parent.clientHeight || 80;
+      const w = Math.max(1, Math.floor(rawW * resolutionScale));
+      const h = Math.max(1, Math.floor(rawH * resolutionScale));
+      renderer.setSize(w, h);
       program.uniforms.uResolution.value.set(w, h);
     };
 
@@ -159,3 +162,4 @@ export default function DarkVeil({
 
   return <canvas ref={ref} className="darkveil-canvas" />;
 }
+
