@@ -1,6 +1,7 @@
 ---
 import { site } from '../data/site';
 import LineWaves from './reactbits/LineWaves.jsx';
+import CyberGlobe from './reactbits/CyberGlobe.jsx';
 ---
 
 <header class="hero reveal" style="position: relative; overflow: hidden;">
@@ -32,6 +33,9 @@ import LineWaves from './reactbits/LineWaves.jsx';
                 <a class="btn btn-primary" href="#projects">See the work</a>
                 <a class="btn btn-ghost" href={site.resumePath} download data-event="cv-download">Download CV</a>
             </div>
+        </div>
+        <div class="hero-graphic" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+            <CyberGlobe client:only="react" />
         </div>
     </div>
 </header>
