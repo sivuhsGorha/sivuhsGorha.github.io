@@ -229,14 +229,13 @@ header.hero {
 }
 
 .hero p.desc {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Playfair Display', serif;
     color: #ffffff;
-    font-size: 22.5px;
-    font-weight: 400;
-    letter-spacing: 0.01em;
+    font-size: 23px;
+    font-weight: 500;
     max-width: 48ch;
     margin-bottom: 32px;
-    line-height: 1.6;
+    line-height: 1.65;
     text-shadow: 0 2px 12px rgba(15, 27, 45, 0.95), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
