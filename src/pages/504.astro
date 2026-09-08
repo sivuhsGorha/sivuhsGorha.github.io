@@ -6,7 +6,7 @@ const waveColor = [0.89, 0.658, 0.341]; // var(--amber)
 const backgroundColor = [0.058, 0.105, 0.176]; // var(--ink)
 ---
 
-<Base current="error" title="500 - Server Error">
+<Base current="error" title="504 - Gateway Timeout">
     <div class="error-page">
         <div class="dither-bg">
             <Dither 
@@ -22,9 +22,9 @@ const backgroundColor = [0.058, 0.105, 0.176]; // var(--ink)
         </div>
         
         <div class="error-content">
-            <h1>500</h1>
-            <h2>Internal Server Error</h2>
-            <p>Something went wrong on our end. Please try again later.</p>
+            <h1>504</h1>
+            <h2>Gateway Timeout</h2>
+            <p>The upstream systems failed to send a transmission in time.</p>
             <a href="/" class="home-btn">Return to Orbit</a>
         </div>
     </div>
@@ -106,4 +106,3 @@ const backgroundColor = [0.058, 0.105, 0.176]; // var(--ink)
         transform: translateY(-2px);
     }
 </style>
-

@@ -306,3 +306,4 @@ export default function Dither({
     </Canvas>
   );
 }
+
