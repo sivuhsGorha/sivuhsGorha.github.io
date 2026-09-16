@@ -53,6 +53,22 @@ const ogImage = new URL('/og.png', canonical);
             rel="stylesheet"
         />
         <meta name="generator" content={Astro.generator} />
+        <script type="application/ld+json" set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": site.name,
+            "jobTitle": "Junior Systems Developer",
+            "url": canonical.href,
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Durban",
+                "addressCountry": "South Africa"
+            },
+            "sameAs": [
+                site.githubUrl,
+                site.linkedinUrl
+            ]
+        })} />
     </head>
     <body>
         <div style="position: fixed; inset: 0; z-index: -1; pointer-events: none;">
