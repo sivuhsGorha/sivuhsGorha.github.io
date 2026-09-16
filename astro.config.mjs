@@ -4,7 +4,13 @@ import sitemap from '@astrojs/sitemap';
 
 import react from '@astrojs/react';
 
+import tailwindcss from '@tailwindcss/vite';
+
 export default defineConfig({
-    site: 'https://sbk-dev.pages.dev',
-    integrations: [sitemap(), react()],
+  site: 'https://sibongakonke-simamane.dev',
+  integrations: [sitemap(), react()],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

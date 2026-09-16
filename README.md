@@ -32,4 +32,4 @@ Node 22+ (see `.node-version`).
 
 Preview URLs are created for pull requests. Production tracks `main`. A custom domain can be added later in the Pages project.
 
-The `site` URL in [`astro.config.mjs`](astro.config.mjs) is set to `https://sbk-dev.pages.dev`. Change it to your Pages URL or custom domain so canonicals, Open Graph, sitemap, and RSS stay accurate.
+The `site` URL in [`astro.config.mjs`](astro.config.mjs) is set to `https://sibongakonke-simamane.dev`. Change it to your Pages URL or custom domain so canonicals, Open Graph, sitemap, and RSS stay accurate.

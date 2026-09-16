@@ -23,5 +23,5 @@ export const site = {
     linkedinUrl: 'https://www.linkedin.com/in/sibongakonke-simamane-371ba7236',
     linkedinLabel: 'linkedin.com/in/sibongakonke-simamane-371ba7236',
     resumePath: '/Sibongakonke_Simamane_CV.pdf',
-    origin: 'https://sbk-dev.pages.dev',
+    origin: 'https://sibongakonke-simamane.dev',
 } as const;
