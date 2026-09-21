@@ -13,12 +13,12 @@
 
 :root[data-theme="bright"] {
     /* Bright Mode */
-    --ink: #fdfdfd;
-    --ink-soft: #e2e8f0;
-    --paper: #050a14;
-    --paper-dim: #1e293b;
-    --steel: #334155;
-    --line: #cbd5e1;
+    --ink: #0a0a12;
+    --ink-soft: #1a1a2e;
+    --paper: #f0f0f5;
+    --paper-dim: #e0e0e8;
+    --steel: #4a4a5a;
+    --line: #6a6a7a;
     --amber: #f59e0b;
     --amber-dim: #d97706;
     --ok: #10b981;
@@ -50,6 +50,16 @@ body {
 
 [data-theme="bright"] .bg-canvas-wrapper {
     opacity: 1;
+}
+
+[data-theme="bright"] body {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="bright"] h1,
+[data-theme="bright"] h2,
+[data-theme="bright"] h3 {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 2px rgba(0, 0, 0, 0.7);
 }
 
 ::selection {
