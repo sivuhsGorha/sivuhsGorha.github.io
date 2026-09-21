@@ -14,14 +14,14 @@
 :root[data-theme="bright"] {
     /* Bright Mode */
     --ink: #fdfdfd;
-    --ink-soft: #f0f4f8;
-    --paper: #0f1b2d;
-    --paper-dim: #16263c;
-    --steel: #506480;
-    --line: #d1d9e2;
-    --amber: #d97706;
-    --amber-dim: #b45309;
-    --ok: #527c62;
+    --ink-soft: #e2e8f0;
+    --paper: #050a14;
+    --paper-dim: #1e293b;
+    --steel: #334155;
+    --line: #cbd5e1;
+    --amber: #f59e0b;
+    --amber-dim: #d97706;
+    --ok: #10b981;
 }
 
 * {
@@ -49,7 +49,7 @@ body {
 }
 
 [data-theme="bright"] .bg-canvas-wrapper {
-    opacity: 0.25;
+    opacity: 1;
 }
 
 ::selection {
@@ -260,7 +260,8 @@ header.hero {
     text-shadow: 0 2px 12px rgba(15, 27, 45, 0.95), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 [data-theme="bright"] .hero p.desc {
-    text-shadow: none;
+    text-shadow: 0 1px 15px rgba(255, 255, 255, 0.9), 0 0 4px rgba(255, 255, 255, 1);
+    font-weight: 600;
 }
 
 .hero-actions {
