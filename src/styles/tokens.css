@@ -44,6 +44,14 @@ body {
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+.bg-canvas-wrapper {
+    transition: opacity 0.6s ease;
+}
+
+[data-theme="bright"] .bg-canvas-wrapper {
+    opacity: 0.25;
+}
+
 ::selection {
     background: var(--amber);
     color: var(--ink);
