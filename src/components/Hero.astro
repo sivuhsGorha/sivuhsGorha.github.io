@@ -1,7 +1,6 @@
 ---
 import { site } from '../data/site';
 import LineWaves from './reactbits/LineWaves.jsx';
-import StatusPanel from './StatusPanel.astro';
 ---
 
 <header class="hero reveal" style="position: relative; overflow: hidden;">
@@ -23,9 +22,8 @@ import StatusPanel from './StatusPanel.astro';
             mouseInfluence={2.0}
         />
     </div>
-    <div class="wrap hero-grid" style="position: relative; z-index: 1;">
-        <div>
-
+    <div class="wrap hero-wrap" style="position: relative; z-index: 1;">
+        <div class="hero-content">
             <p class="role">{site.role}</p>
             <h1>{site.tagline}</h1>
             <p class="desc">{site.description}</p>
@@ -42,17 +40,12 @@ import StatusPanel from './StatusPanel.astro';
                 <a class="cv-link" href={site.resumePath} download data-event="cv-download">Download CV (PDF) ↓</a>
             </div>
         </div>
-        <div class="hero-panel-col">
-            <StatusPanel />
-        </div>
     </div>
 </header>
 
 <style>
-
-    .hero-panel-col {
-        display: flex;
-        justify-content: flex-end;
+    .hero-content {
+        max-width: 860px;
     }
     .hero-actions {
         display: flex;
@@ -106,11 +99,5 @@ import StatusPanel from './StatusPanel.astro';
     }
     .cv-link:hover {
         color: var(--amber);
-    }
-    @media (max-width: 900px) {
-        .hero-panel-col {
-            margin-top: 24px;
-            justify-content: flex-start;
-        }
     }
 </style>
