@@ -310,14 +310,7 @@ header.hero {
     letter-spacing: 0.03em;
 }
 
-.dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #10b981;
-    box-shadow: 0 0 8px #10b981;
-    animation: dotPulse 2.4s ease-in-out infinite;
-}
+
 
 .panel-body {
     padding: 20px 18px;
