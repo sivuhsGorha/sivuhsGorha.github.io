@@ -44,8 +44,10 @@ const ogImage = new URL('/og.png', canonical);
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImage.href} />
-        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" type="image/png" sizes="48x48" href="/icon-48.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/icon-96.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -63,6 +65,7 @@ const ogImage = new URL('/og.png', canonical);
             "name": site.name,
             "jobTitle": "Full-Stack Systems Developer & AWS Cloud Consultant",
             "url": canonical.href,
+            "image": new URL('/logo.png', canonical).href,
             "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Durban",
