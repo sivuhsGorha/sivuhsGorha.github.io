@@ -41,13 +41,6 @@ body {
     font-family: 'IBM Plex Sans', sans-serif;
     line-height: 1.65;
     font-size: 18.5px;
-body {
-    margin: 0;
-    background: transparent;
-    color: var(--paper);
-    font-family: 'IBM Plex Sans', sans-serif;
-    line-height: 1.65;
-    font-size: 18.5px;
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
