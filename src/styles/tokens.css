@@ -14,14 +14,14 @@
 :root[data-theme="bright"] {
     /* Bright Mode */
     --ink: #fdfdfd;
-    --ink-soft: #e0e7ff;
-    --paper: #1e1b4b;
-    --paper-dim: #312e81;
-    --steel: #4338ca;
-    --line: #c7d2fe;
-    --amber: #ea580c;
-    --amber-dim: #c2410c;
-    --ok: #059669;
+    --ink-soft: #e2e8f0;
+    --paper: #050a14;
+    --paper-dim: #1e293b;
+    --steel: #334155;
+    --line: #cbd5e1;
+    --amber: #f59e0b;
+    --amber-dim: #d97706;
+    --ok: #10b981;
 }
 
 * {
@@ -266,8 +266,7 @@ header.hero {
     text-shadow: 0 2px 12px rgba(15, 27, 45, 0.95), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 [data-theme="bright"] .hero p.desc {
-    text-shadow: 0 1px 15px rgba(255, 255, 255, 0.9), 0 0 4px rgba(255, 255, 255, 1);
-    font-weight: 600;
+    text-shadow: none;
 }
 
 .hero-actions {
