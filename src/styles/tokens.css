@@ -14,14 +14,14 @@
 :root[data-theme="bright"] {
     /* Bright Mode */
     --ink: #fdfdfd;
-    --ink-soft: #e2e8f0;
-    --paper: #050a14;
-    --paper-dim: #1e293b;
-    --steel: #334155;
-    --line: #cbd5e1;
-    --amber: #f59e0b;
-    --amber-dim: #d97706;
-    --ok: #10b981;
+    --ink-soft: #e0e7ff;
+    --paper: #1e1b4b;
+    --paper-dim: #312e81;
+    --steel: #4338ca;
+    --line: #c7d2fe;
+    --amber: #ea580c;
+    --amber-dim: #c2410c;
+    --ok: #059669;
 }
 
 * {
@@ -41,16 +41,14 @@ body {
     font-family: 'IBM Plex Sans', sans-serif;
     line-height: 1.65;
     font-size: 18.5px;
-    transition: background-color 0.4s ease, color 0.4s ease, text-shadow 0.4s ease;
-}
-
-[data-theme="bright"] body {
-    text-shadow: 
-        -1px -1px 0 rgba(255, 255, 255, 0.6),
-         1px -1px 0 rgba(255, 255, 255, 0.6),
-        -1px  1px 0 rgba(255, 255, 255, 0.6),
-         1px  1px 0 rgba(255, 255, 255, 0.6),
-         0 0 6px rgba(255, 255, 255, 0.8);
+body {
+    margin: 0;
+    background: transparent;
+    color: var(--paper);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 18.5px;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .bg-canvas-wrapper {
@@ -295,10 +293,6 @@ header.hero {
     transition:
         border-color 0.15s ease,
         background 0.15s ease;
-}
-
-[data-theme="bright"] .btn {
-    text-shadow: none;
 }
 
 .btn-primary {
