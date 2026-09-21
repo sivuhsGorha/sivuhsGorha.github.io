@@ -505,8 +505,9 @@ section h2 {
 .stack span {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12.5px;
-    color: var(--steel);
-    border: 1px solid var(--line);
+    color: var(--amber);
+    background: rgba(227, 168, 87, 0.07);
+    border: 1px solid rgba(227, 168, 87, 0.22);
     padding: 4px 9px;
     border-radius: 3px;
 }
