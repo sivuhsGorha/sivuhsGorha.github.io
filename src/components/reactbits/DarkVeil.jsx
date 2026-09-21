@@ -99,7 +99,9 @@ export default function DarkVeil({
                                    resolutionScale = 1,
                                    lightMode = false,
                                    baseColor = [0.102, 0.039, 0.18], // #1a0a2e site silk background
-                                   veilColor = [0.25, 0.10, 0.45]     // deep purple ambient veil
+                                   veilColor = [0.25, 0.10, 0.45],     // deep purple ambient veil
+                                   lightBaseColor = [0.98, 0.98, 0.98],
+                                   lightVeilColor = [0.90, 0.92, 0.96]
                                  }) {
   const ref = useRef(null);
   const [isLight, setIsLight] = useState(lightMode);
@@ -138,8 +140,8 @@ export default function DarkVeil({
         uScanFreq: { value: scanlineFrequency },
         uWarp: { value: warpAmount },
         uLightMode: { value: isLight ? 1 : 0 },
-        uBaseColor: { value: new Vec3(...baseColor) },
-        uVeilColor: { value: new Vec3(...veilColor) }
+        uBaseColor: { value: new Vec3(...(isLight ? lightBaseColor : baseColor)) },
+        uVeilColor: { value: new Vec3(...(isLight ? lightVeilColor : veilColor)) }
       }
     });
 
@@ -169,8 +171,8 @@ export default function DarkVeil({
       program.uniforms.uScanFreq.value = scanlineFrequency;
       program.uniforms.uWarp.value = warpAmount;
       program.uniforms.uLightMode.value = isLight ? 1 : 0;
-      program.uniforms.uBaseColor.value.set(...baseColor);
-      program.uniforms.uVeilColor.value.set(...veilColor);
+      program.uniforms.uBaseColor.value.set(...(isLight ? lightBaseColor : baseColor));
+      program.uniforms.uVeilColor.value.set(...(isLight ? lightVeilColor : veilColor));
       renderer.render({ scene: mesh });
       frame = requestAnimationFrame(loop);
     };
@@ -181,7 +183,7 @@ export default function DarkVeil({
       cancelAnimationFrame(frame);
       window.removeEventListener('resize', resize);
     };
-  }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale, isLight, baseColor, veilColor]);
+  }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale, isLight, baseColor, veilColor, lightBaseColor, lightVeilColor]);
 
   return <canvas ref={ref} className="darkveil-canvas" />;
 }

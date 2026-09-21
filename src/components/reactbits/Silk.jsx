@@ -104,7 +104,7 @@ const SilkPlane = forwardRef(function SilkPlane({ uniforms }, ref) {
 });
 SilkPlane.displayName = 'SilkPlane';
 
-const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, rotation = 0, lightMode = false }) => {
+const Silk = ({ speed = 5, scale = 1, color = '#7B7481', lightColor = '#fdfdfd', noiseIntensity = 1.5, rotation = 0, lightMode = false }) => {
   const meshRef = useRef();
   const [isLight, setIsLight] = useState(lightMode);
 
@@ -123,7 +123,7 @@ const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, r
       uSpeed: { value: speed },
       uScale: { value: scale },
       uNoiseIntensity: { value: noiseIntensity },
-      uColor: { value: new Color(...hexToNormalizedRGB(color)) },
+      uColor: { value: new Color(...hexToNormalizedRGB(isLight ? lightColor : color)) },
       uRotation: { value: rotation },
       uLightMode: { value: isLight ? 1 : 0 },
       uTime: { value: 0 }
@@ -136,10 +136,10 @@ const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, r
     uniforms.uSpeed.value = speed;
     uniforms.uScale.value = scale;
     uniforms.uNoiseIntensity.value = noiseIntensity;
-    uniforms.uColor.value.setRGB(...hexToNormalizedRGB(color));
+    uniforms.uColor.value.setRGB(...hexToNormalizedRGB(isLight ? lightColor : color));
     uniforms.uRotation.value = rotation;
     uniforms.uLightMode.value = isLight ? 1 : 0;
-  }, [speed, scale, noiseIntensity, color, rotation, isLight, uniforms]);
+  }, [speed, scale, noiseIntensity, color, lightColor, rotation, isLight, uniforms]);
 
   return (
     <Canvas dpr={[1, 2]} frameloop="always">
