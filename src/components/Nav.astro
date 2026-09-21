@@ -39,6 +39,7 @@ const homePrefix = current === 'home' ? '' : '/';
         </button>
         <ul class="nav-links" id="nav-links">
             <li><a href={`${homePrefix}#about`}>About</a></li>
+            <li><a href={`${homePrefix}#services`}>Services</a></li>
             <li><a href={`${homePrefix}#skills`}>Skills</a></li>
             <li><a href={`${homePrefix}#projects`}>Projects</a></li>
             <li>
@@ -47,9 +48,56 @@ const homePrefix = current === 'home' ? '' : '/';
                 >
             </li>
             <li><a href={`${homePrefix}#contact`}>Contact</a></li>
+            <li class="nav-cta-item">
+                <a href={`${homePrefix}#contact`} class="nav-cta-btn">
+                    <span class="pulse-dot"></span>
+                    <span>Hire Me</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
+
+<style>
+    .nav-cta-item {
+        display: flex;
+        align-items: center;
+    }
+    .nav-cta-btn {
+        display: inline-flex !important;
+        align-items: center;
+        gap: 8px;
+        background: rgba(227, 168, 87, 0.12);
+        border: 1px solid rgba(227, 168, 87, 0.4);
+        padding: 5px 14px;
+        border-radius: 999px;
+        color: var(--amber) !important;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13.5px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+    .nav-cta-btn:hover {
+        background: rgba(227, 168, 87, 0.25);
+        border-color: var(--amber);
+        transform: translateY(-1px);
+        box-shadow: 0 0 14px rgba(227, 168, 87, 0.25);
+    }
+    .pulse-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #10b981;
+        box-shadow: 0 0 8px #10b981;
+        display: inline-block;
+        animation: navDotPulse 2s infinite ease-in-out;
+    }
+    @keyframes navDotPulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.85); }
+    }
+</style>
 
 <script>
     const toggle = document.querySelector('.nav-toggle');

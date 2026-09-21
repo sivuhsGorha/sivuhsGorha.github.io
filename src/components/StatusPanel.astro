@@ -2,18 +2,104 @@
 import { site } from '../data/site';
 ---
 
-<div class="panel">
-    <div class="panel-head"><span class="dot"></span> session.status</div>
-    <div class="panel-body">
-        <div class="panel-row"><span>role</span><span>{site.roleId}</span></div>
-        <div class="panel-row"><span>language</span><span>{site.language}</span></div>
-        <div class="panel-row"><span>focus</span><span>{site.focus}</span></div>
-        <div class="panel-row">
-            <span>status</span><span class="ok">{site.availability}</span>
+<div class="panel freelance-status-panel">
+    <div class="panel-head">
+        <div class="head-left">
+            <span class="dot"></span>
+            <span>telemetry.status</span>
         </div>
-        <div class="panel-row"><span>uptime</span><span id="uptime">00:00:00</span></div>
+        <span class="panel-pill">AVAILABLE</span>
+    </div>
+    <div class="panel-body">
+        <div class="panel-row">
+            <span>availability</span>
+            <span class="ok">● Open for Projects</span>
+        </div>
+        <div class="panel-row">
+            <span>specialty</span>
+            <span class="highlight-val">Full-Stack & AWS Cloud</span>
+        </div>
+        <div class="panel-row">
+            <span>active_cloud</span>
+            <span class="aws-val">AWS (VPC, EC2, CI/CD)</span>
+        </div>
+        <div class="panel-row">
+            <span>response_time</span>
+            <span>{site.responseTime}</span>
+        </div>
+        <div class="panel-row">
+            <span>location</span>
+            <span>{site.locationPill}</span>
+        </div>
+        <div class="panel-row">
+            <span>session_uptime</span>
+            <span id="uptime">00:00:00</span>
+        </div>
+    </div>
+    <div class="panel-foot">
+        <a href="#contact" class="panel-action-btn">
+            <span>Start a project inquiry</span>
+            <span class="action-arrow">→</span>
+        </a>
     </div>
 </div>
+
+<style>
+    .freelance-status-panel {
+        border-color: rgba(227, 168, 87, 0.3);
+        background: rgba(14, 10, 24, 0.75);
+    }
+    .head-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .panel-pill {
+        margin-left: auto;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #10b981;
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        padding: 2px 8px;
+        border-radius: 999px;
+    }
+    .highlight-val {
+        color: var(--paper, #fff);
+        font-weight: 600;
+    }
+    .aws-val {
+        color: #ff9900 !important;
+        font-weight: 500;
+    }
+    .panel-foot {
+        border-top: 1px solid rgba(227, 168, 87, 0.14);
+        padding: 12px 18px;
+        background: rgba(227, 168, 87, 0.04);
+    }
+    .panel-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--amber);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+    .panel-action-btn:hover {
+        color: #fff;
+        transform: translateX(2px);
+    }
+    .action-arrow {
+        transition: transform 0.2s ease;
+    }
+    .panel-action-btn:hover .action-arrow {
+        transform: translateX(4px);
+    }
+</style>
 
 <script>
     const start = Date.now();

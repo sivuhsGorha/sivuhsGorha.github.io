@@ -193,12 +193,14 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#FF9900',
                 textColor: 'white',
                 logo: 'amazonaws',
-                note: 'Cloud compute & networking'
+                note: 'Production VPC, EC2, CI/CD & Cloud Deploys'
             }
         ],
         bullets: [
-            'AWS EC2 (Elastic Compute Cloud instances)',
-            'AWS ALB (Application Load Balancers & traffic routing)'
+            'AWS VPC (Virtual Private Clouds, subnets, route tables & security isolation)',
+            'AWS EC2 (Production compute instances, auto-scaling & system administration)',
+            'AWS CI/CD Pipelines & Automated Production Deployments',
+            'AWS ALB & Route 53 (Application Load Balancers & traffic routing)'
         ]
     },
     {

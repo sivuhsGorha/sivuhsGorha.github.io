@@ -1,0 +1,392 @@
+---
+// Services.astro — Freelance & Consulting Offerings
+const services = [
+    {
+        num: '01',
+        category: 'Frontend & Full-Stack',
+        title: 'Bespoke Web Applications & Client Portals',
+        description:
+            'From dynamic customer portals to interactive dashboards, I build responsive, high-performance web applications tailored to your business goals. Clean architecture, lightning-fast loading speeds, and intuitive user experiences.',
+        deliverables: [
+            'Component-driven architectures in React & Astro',
+            'Mobile-first responsive UX and bespoke branding',
+            'Dynamic customer portals & admin interfaces',
+            'SEO optimization & web performance tuning'
+        ],
+        tech: ['React', 'Astro', 'PHP', 'JavaScript / TypeScript', 'HTML5/CSS3']
+    },
+    {
+        num: '02',
+        category: 'Backend & Data Engineering',
+        title: 'Scalable APIs & Database Architecture',
+        description:
+            'Rock-solid backend services, secure RESTful APIs, and normalized database schemas designed for maximum uptime, high transactional throughput, and bulletproof data integrity.',
+        deliverables: [
+            'Secure REST API design & integration',
+            'Relational schema design (MySQL & Microsoft SQL Server)',
+            'Input sanitization, authentication & authorization',
+            'Business logic processing & data export workflows'
+        ],
+        tech: ['Java', 'PHP', 'Node.js', 'MySQL', 'Microsoft SQL Server']
+    },
+    {
+        num: '03',
+        category: 'AWS Cloud & Infrastructure',
+        featured: true,
+        title: 'AWS Cloud Architecture, VPCs & CI/CD Pipelines',
+        description:
+            'Production cloud infrastructure engineered directly on AWS. I architect isolated VPC networks, configure and scale EC2 server instances, set up load balancing (ALB), and implement automated CI/CD deployment pipelines to keep your applications running reliably.',
+        deliverables: [
+            'Custom VPC network design, subnets & security groups',
+            'EC2 compute instance provisioning & system configuration',
+            'Automated CI/CD build & zero-downtime deployment pipelines',
+            'Application Load Balancers (ALB), SSL/TLS & domain routing'
+        ],
+        tech: ['AWS (VPC, EC2, ALB, Route 53)', 'CI/CD Pipelines', 'Docker', 'Nginx', 'Linux']
+    },
+    {
+        num: '04',
+        category: 'Security & Systems Maintenance',
+        title: 'Security Hardening, Code Audits & Retainers',
+        description:
+            'Grounded in CompTIA Security+ standards and enterprise systems practice, I evaluate existing applications for security vulnerabilities, resolve critical production bugs, tune performance, and provide dependable contract support.',
+        deliverables: [
+            'CompTIA Security+ aligned vulnerability assessments',
+            'Legacy code refactoring & performance bottleneck fixes',
+            'Server hardening, reverse proxy & firewall configurations',
+            'Ongoing monthly technical retainer & maintenance support'
+        ],
+        tech: ['CompTIA Security+', 'CompTIA A+', 'System Diagnostics', 'Git']
+    }
+];
+
+const perks = [
+    {
+        title: 'Direct Engineer Communication',
+        desc: 'Work directly with the developer building your software. No account managers, misunderstandings, or unnecessary agency markup.'
+    },
+    {
+        title: 'Production AWS Experience',
+        desc: 'Cloud setups backed by real-world production experience deploying VPCs, EC2 instances, and automated pipelines.'
+    },
+    {
+        title: 'Security-First Rigor',
+        desc: 'Certified CompTIA foundations ensuring your applications, databases, and network configurations are hardened from day one.'
+    },
+    {
+        title: 'Transparent Milestones',
+        desc: 'Clear scopes, predictable deliverables, and consistent communication throughout your project lifecycle.'
+    }
+];
+---
+
+<section id="services" class="reveal services-section">
+    <div class="wrap">
+        <p class="eyebrow-num">03 / freelance & consulting services</p>
+        <div class="services-header">
+            <div>
+                <h2>Services & Solutions</h2>
+                <p class="services-sub">
+                    Whether you need an end-to-end web application, custom database backend, or production AWS cloud deployment, I deliver secure, scalable software engineered for real business outcomes.
+                </p>
+            </div>
+            <a href="#contact" class="btn btn-primary header-cta">Discuss Your Project →</a>
+        </div>
+
+        <!-- Services Cards Grid -->
+        <div class="services-grid">
+            {services.map((svc) => (
+                <div class={`service-card ${svc.featured ? 'service-featured' : ''}`}>
+                    <div class="card-top">
+                        <span class="card-num">{svc.num}</span>
+                        <span class="card-badge">{svc.category}</span>
+                        {svc.featured && <span class="featured-pill">★ IN ACTIVE PRODUCTION</span>}
+                    </div>
+
+                    <h3 class="card-title">{svc.title}</h3>
+                    <p class="card-desc">{svc.description}</p>
+
+                    <div class="card-deliverables">
+                        <p class="deliv-heading">Key Deliverables:</p>
+                        <ul>
+                            {svc.deliverables.map((item) => (
+                                <li>
+                                    <span class="bullet">→</span>
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="card-tech">
+                            {svc.tech.map((t) => (
+                                <span class="tech-chip">{t}</span>
+                            ))}
+                        </div>
+                        <a href="#contact" class="card-link">
+                            Inquire about this service <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+        <!-- Why Work With Me Strip -->
+        <div class="perks-strip">
+            <div class="perks-header">
+                <p class="eyebrow-num" style="margin-bottom: 4px;">client collaboration standards</p>
+                <h3 class="perks-title">Why Partner With SBK.dev</h3>
+            </div>
+            <div class="perks-grid">
+                {perks.map((perk) => (
+                    <div class="perk-item">
+                        <div class="perk-icon">✓</div>
+                        <div>
+                            <h4>{perk.title}</h4>
+                            <p>{perk.desc}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .services-section {
+        position: relative;
+    }
+    .services-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 32px;
+        margin-bottom: 48px;
+        flex-wrap: wrap;
+    }
+    .services-sub {
+        color: var(--steel, #a9bcdc);
+        font-size: 19px;
+        max-width: 62ch;
+        margin-top: -16px;
+        line-height: 1.6;
+    }
+    .header-cta {
+        align-self: center;
+        white-space: nowrap;
+    }
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+        margin-bottom: 56px;
+    }
+    .service-card {
+        background: rgba(14, 10, 24, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(227, 168, 87, 0.16);
+        border-radius: 8px;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        position: relative;
+    }
+    .service-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(227, 168, 87, 0.5);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 24px rgba(227, 168, 87, 0.12);
+    }
+    .service-featured {
+        border-color: rgba(227, 168, 87, 0.35);
+        background: linear-gradient(145deg, rgba(26, 12, 44, 0.75) 0%, rgba(14, 10, 24, 0.65) 100%);
+    }
+    .card-top {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+    }
+    .card-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        color: var(--amber);
+        font-weight: 600;
+    }
+    .card-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        color: var(--steel);
+        background: rgba(255, 255, 255, 0.06);
+        padding: 3px 10px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .featured-pill {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        color: #ff9900;
+        background: rgba(255, 153, 0, 0.12);
+        border: 1px solid rgba(255, 153, 0, 0.35);
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+    }
+    .card-title {
+        font-size: 24px;
+        line-height: 1.25;
+        margin-bottom: 14px;
+        color: var(--paper, #fff);
+    }
+    .card-desc {
+        color: var(--steel, #a9bcdc);
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 24px;
+    }
+    .card-deliverables {
+        margin-bottom: 24px;
+        flex-grow: 1;
+    }
+    .deliv-heading {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--amber);
+        margin-bottom: 10px;
+    }
+    .card-deliverables ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .card-deliverables li {
+        display: flex;
+        gap: 8px;
+        color: rgba(220, 228, 240, 0.88);
+        font-size: 14.5px;
+        line-height: 1.45;
+    }
+    .bullet {
+        color: var(--amber);
+        font-family: 'JetBrains Mono', monospace;
+    }
+    .card-footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .card-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .tech-chip {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        background: rgba(227, 168, 87, 0.08);
+        color: var(--steel);
+        border: 1px solid rgba(227, 168, 87, 0.16);
+        padding: 3px 8px;
+        border-radius: 3px;
+    }
+    .card-link {
+        color: var(--amber);
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 14.5px;
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: gap 0.2s ease, color 0.2s ease;
+    }
+    .card-link:hover {
+        color: #fff;
+        gap: 10px;
+    }
+    .card-link span {
+        transition: transform 0.2s ease;
+    }
+    .card-link:hover span {
+        transform: translateX(3px);
+    }
+    .perks-strip {
+        background: rgba(18, 12, 30, 0.7);
+        border: 1px solid rgba(227, 168, 87, 0.2);
+        border-radius: 8px;
+        padding: 36px 32px;
+    }
+    .perks-header {
+        margin-bottom: 24px;
+    }
+    .perks-title {
+        font-family: 'Fraunces', serif;
+        font-size: 26px;
+        color: var(--paper, #fff);
+        margin: 0;
+    }
+    .perks-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+    .perk-item {
+        display: flex;
+        gap: 14px;
+    }
+    .perk-icon {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 15px;
+        color: var(--amber);
+        background: rgba(227, 168, 87, 0.12);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    .perk-item h4 {
+        margin: 0 0 6px 0;
+        font-size: 16px;
+        color: var(--paper);
+        font-weight: 600;
+    }
+    .perk-item p {
+        margin: 0;
+        font-size: 13.5px;
+        color: var(--steel);
+        line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+        .perks-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+    }
+    @media (max-width: 600px) {
+        .perks-grid {
+            grid-template-columns: 1fr;
+        }
+        .service-card {
+            padding: 24px;
+        }
+    }
+</style>

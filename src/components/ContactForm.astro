@@ -7,8 +7,9 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
 <section id="contact" class="contact-section reveal">
     <div class="wrap" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
         <div class="section-header">
-            <h2><span class="highlight">Get</span> In Touch</h2>
-            <p>Currently open for new opportunities and interesting projects.</p>
+            <p class="eyebrow-num" style="margin-bottom: 8px;">09 / project inquiry</p>
+            <h2><span class="highlight">Start</span> A Project</h2>
+            <p>Have a project in mind, need AWS cloud infrastructure, or looking for contract engineering? Let's discuss your requirements and timeline.</p>
         </div>
 
         <div class="form-container" style="position: relative; overflow: hidden;">
@@ -34,22 +35,55 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
 
             <form action={FORMSPREE_URL} method="POST" id="contact-form" style="position: relative; z-index: 1; width: 100%;">
                 
-                <div class="input-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" required placeholder="Elton Roberts" />
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" name="name" id="name" required placeholder="Alex Morgan" />
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Work Email</label>
+                        <input type="email" name="email" id="email" required placeholder="alex@company.com" />
+                    </div>
+                </div>
+
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="service">Service / Inquiry Type</label>
+                        <select name="service" id="service" required>
+                            <option value="" disabled selected>Select a service...</option>
+                            <option value="AWS Cloud Architecture & CI/CD Pipelines">AWS Cloud Architecture & CI/CD Pipelines</option>
+                            <option value="Full-Stack Web Application / Portal">Full-Stack Web Application / Portal</option>
+                            <option value="Custom Backend & Database System">Custom Backend & Database System</option>
+                            <option value="Code Audit, Security & Performance">Code Audit, Security & Performance</option>
+                            <option value="Contract Engineering / Other">Contract Engineering / Other</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="timeline">Estimated Timeline</label>
+                        <select name="timeline" id="timeline">
+                            <option value="ASAP (< 1 month)">ASAP (Under 1 month)</option>
+                            <option value="1 - 3 months" selected>1 - 3 months</option>
+                            <option value="Flexible / Exploratory">Flexible / Exploratory</option>
+                            <option value="Ongoing Contract Retainer">Ongoing Contract Retainer</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" required placeholder="elton@example.com" />
+                    <label for="message">Project Scope & Details</label>
+                    <textarea name="message" id="message" rows="5" required placeholder="Tell me about your project, existing systems, or what you are looking to build..."></textarea>
                 </div>
 
-                <div class="input-group">
-                    <label for="message">Message</label>
-                    <textarea name="message" id="message" rows="5" required placeholder="How can I help you?"></textarea>
+                <button type="submit" class="submit-btn">Send Project Inquiry →</button>
+                <div class="form-assurances">
+                    <span>⚡ Response within 24 hours</span>
+                    <span>•</span>
+                    <span>🔒 Confidential & Direct</span>
+                    <span>•</span>
+                    <span>💬 Free Discovery Call</span>
                 </div>
-
-                <button type="submit" class="submit-btn">Send Message</button>
                 <p id="form-result" class="form-result"></p>
             </form>
         </div>
@@ -58,7 +92,7 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
 
 <style>
     .contact-section {
-        margin: 8rem 0;
+        margin: 6rem 0;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -66,21 +100,35 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
 
     .section-header {
         text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .section-header p {
+        color: var(--steel, #a9bcdc);
+        max-width: 55ch;
+        margin: 0 auto;
+        font-size: 17px;
     }
 
     .form-container {
         width: 100%;
-        max-width: 600px;
-        background: rgba(26, 10, 46, 0.4);
-        border: 1px solid rgba(227, 168, 87, 0.1);
+        max-width: 680px;
+        background: rgba(26, 10, 46, 0.45);
+        border: 1px solid rgba(227, 168, 87, 0.22);
         border-radius: 16px;
         padding: 2.5rem;
-        backdrop-filter: blur(12px);
+        backdrop-filter: blur(14px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .input-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
     }
 
     .input-group {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
@@ -88,34 +136,44 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
 
     label {
         font-family: var(--font-mono);
-        font-size: 0.85rem;
-        color: var(--color-text-muted);
+        font-size: 0.82rem;
+        color: var(--color-text-muted, #a9bcdc);
         text-transform: uppercase;
         letter-spacing: 0.05em;
     }
 
-    input, textarea {
+    input, select, textarea {
         width: 100%;
-        background: rgba(15, 23, 42, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(15, 23, 42, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 8px;
-        padding: 1rem;
-        color: var(--color-text);
+        padding: 0.9rem 1rem;
+        color: var(--color-text, #ffffff);
         font-family: var(--font-sans);
-        font-size: 1rem;
-        transition: border-color 0.3s ease;
+        font-size: 0.95rem;
+        transition: border-color 0.25s ease, background 0.25s ease;
     }
 
-    input:focus, textarea:focus {
+    select {
+        cursor: pointer;
+    }
+
+    select option {
+        background: #0f172a;
+        color: #ffffff;
+    }
+
+    input:focus, select:focus, textarea:focus {
         outline: none;
-        border-color: var(--color-primary);
-        background: rgba(15, 23, 42, 0.8);
+        border-color: var(--color-primary, #e3a857);
+        background: rgba(15, 23, 42, 0.95);
+        box-shadow: 0 0 12px rgba(227, 168, 87, 0.25);
     }
 
     .submit-btn {
         width: 100%;
-        background: var(--color-primary);
-        color: var(--color-bg);
+        background: var(--color-primary, #e3a857);
+        color: var(--color-bg, #0f1b2d);
         border: none;
         border-radius: 8px;
         padding: 1rem;
@@ -123,13 +181,26 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
         font-size: 1.1rem;
         font-weight: 600;
         cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        margin-top: 1rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        margin-top: 0.75rem;
     }
 
     .submit-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(227, 168, 87, 0.3);
+        background: #eab86c;
+        box-shadow: 0 6px 16px rgba(227, 168, 87, 0.35);
+    }
+
+    .form-assurances {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        margin-top: 1.25rem;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        color: var(--steel, #a9bcdc);
+        flex-wrap: wrap;
     }
 
     .form-result {
@@ -137,6 +208,16 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
         text-align: center;
         font-family: var(--font-mono);
         font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+        .input-grid {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+        .form-container {
+            padding: 1.75rem 1.25rem;
+        }
     }
 </style>
 

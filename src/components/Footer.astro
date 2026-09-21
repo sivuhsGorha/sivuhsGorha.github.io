@@ -2,23 +2,23 @@
 import { site } from '../data/site';
 ---
 
-<footer class="site-footer reveal" id="contact">
+<footer class="site-footer reveal" id="footer">
     <div class="wrap">
         <div class="contact-grid">
             <div>
-                <h2>Let's connect.</h2>
+                <h2>Let's build together.</h2>
                 <p>
-                    Currently working as a Junior Systems Developer at Future ProTechY. Open to new opportunities and collaborations in systems development.
+                    Available for select freelance projects, AWS cloud architecture, and technical contract engagements. Let's engineer something resilient and scalable.
                 </p>
             </div>
             <div class="contact-links">
                 <a href={`mailto:${site.email}`}>{site.email}</a>
                 <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a>
-                <a href={site.githubUrl}>{site.githubLabel}</a>
-                <a href={site.linkedinUrl}>{site.linkedinLabel}</a>
-                <a href={site.resumePath} download>Download CV</a>
+                <a href={site.githubUrl} target="_blank" rel="noopener noreferrer">{site.githubLabel}</a>
+                <a href={site.linkedinUrl} target="_blank" rel="noopener noreferrer">{site.linkedinLabel}</a>
+                <a href={site.resumePath} download data-event="cv-download">Download CV (PDF)</a>
             </div>
         </div>
-        <p class="foot-note">Built by {site.name} — Junior Systems Developer, Systems Development Graduate.</p>
+        <p class="foot-note">Built by {site.name} — Full-Stack Systems Developer & AWS Cloud Consultant.</p>
     </div>
 </footer>

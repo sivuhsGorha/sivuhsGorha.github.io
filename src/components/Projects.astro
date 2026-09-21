@@ -2,35 +2,255 @@
 import { projects } from '../data/projects';
 ---
 
-<section id="projects" class="reveal">
+<section id="projects" class="reveal projects-section">
     <div class="wrap">
-        <p class="eyebrow-num">04 / projects</p>
-        <h2>Selected work</h2>
-        {
-            projects.map((project) => (
-                <div class="project">
-                    <div class="pid">{project.id}</div>
-                    <div>
-                        <h3>{project.title}</h3>
-                        <p>{project.summary}</p>
-                        <div class="stack">
-                            {project.stack.map((item) => (
-                                <span>{item}</span>
-                            ))}
+        <p class="eyebrow-num">05 / selected work & client projects</p>
+        <div class="projects-header">
+            <h2>Selected Work</h2>
+            <p class="projects-sub">
+                Real-world client deliverables and production systems engineered for reliability, security, and measurable business value.
+            </p>
+        </div>
+
+        <div class="projects-list">
+            {
+                projects.map((project) => (
+                    <div class="project-card">
+                        <div class="project-sidebar">
+                            <span class="pid">{project.id}</span>
+                            {project.badge && <span class="client-badge">{project.badge}</span>}
                         </div>
-                        <div class="project-links">
-                            <a class="project-link" href={project.repoUrl}>
-                                View repository →
-                            </a>
-                            {project.liveUrl && (
-                                <a class="project-link" href={project.liveUrl}>
-                                    Live site →
-                                </a>
+                        <div class="project-content">
+                            <div class="project-title-row">
+                                <h3>{project.title}</h3>
+                                {project.client && <span class="client-name">Client: {project.client}</span>}
+                            </div>
+                            <p class="project-summary">{project.summary}</p>
+                            
+                            {project.deliverables && project.deliverables.length > 0 && (
+                                <div class="project-deliverables">
+                                    <p class="deliv-label">Delivered Scope:</p>
+                                    <ul>
+                                        {project.deliverables.map((item) => (
+                                            <li>
+                                                <span class="bullet">✓</span>
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             )}
+
+                            <div class="stack">
+                                {project.stack.map((item) => (
+                                    <span>{item}</span>
+                                ))}
+                            </div>
+                            <div class="project-links">
+                                {project.liveUrl && (
+                                    <a class="btn-live" href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                                        Visit Live Website ↗
+                                    </a>
+                                )}
+                                <a class="btn-repo" href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                                    View GitHub Profile →
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))
-        }
+                ))
+            }
+        </div>
+
+        <!-- Project Inquiry Callout -->
+        <div class="project-cta-banner">
+            <div class="banner-content">
+                <h3>Have a project in mind or need AWS cloud infrastructure?</h3>
+                <p>
+                    I am actively taking on select freelance contracts, web application builds, and AWS cloud migrations. Let's discuss your timeline and technical requirements.
+                </p>
+            </div>
+            <a href="#contact" class="btn btn-primary banner-btn">Start a Project Inquiry →</a>
+        </div>
     </div>
 </section>
+
+<style>
+    .projects-header {
+        margin-bottom: 32px;
+    }
+    .projects-sub {
+        color: var(--steel, #a9bcdc);
+        font-size: 18.5px;
+        max-width: 65ch;
+        margin-top: -16px;
+        line-height: 1.6;
+    }
+    .projects-list {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        margin-bottom: 56px;
+    }
+    .project-card {
+        background: rgba(14, 10, 24, 0.55);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(227, 168, 87, 0.18);
+        border-radius: 8px;
+        padding: 32px;
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 32px;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .project-card:hover {
+        border-color: rgba(227, 168, 87, 0.45);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    }
+    .project-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .pid {
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--amber);
+        font-size: 16px;
+        font-weight: 600;
+    }
+    .client-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        font-weight: 600;
+        color: #10b981;
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.25);
+        padding: 4px 8px;
+        border-radius: 4px;
+        display: inline-block;
+        line-height: 1.3;
+    }
+    .project-title-row {
+        margin-bottom: 12px;
+    }
+    .project-title-row h3 {
+        font-size: 26px;
+        color: var(--paper, #fff);
+        margin-bottom: 4px;
+    }
+    .client-name {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        color: var(--amber);
+    }
+    .project-summary {
+        color: var(--steel, #a9bcdc);
+        font-size: 16px;
+        line-height: 1.65;
+        margin-bottom: 20px;
+    }
+    .project-deliverables {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 6px;
+        padding: 16px 20px;
+        margin-bottom: 20px;
+    }
+    .deliv-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        color: var(--amber);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 8px;
+    }
+    .project-deliverables ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px 16px;
+    }
+    .project-deliverables li {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        color: rgba(220, 228, 240, 0.9);
+        font-size: 13.5px;
+    }
+    .bullet {
+        color: #10b981;
+        font-weight: bold;
+    }
+    .project-links {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+    .btn-live {
+        background: var(--amber);
+        color: var(--ink);
+        padding: 8px 16px;
+        border-radius: 3px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.15s ease;
+    }
+    .btn-live:hover {
+        background: #eab86c;
+    }
+    .btn-repo {
+        color: var(--steel);
+        font-size: 14px;
+        text-decoration: none;
+        transition: color 0.15s ease;
+    }
+    .btn-repo:hover {
+        color: #fff;
+    }
+    .project-cta-banner {
+        background: linear-gradient(135deg, rgba(26, 12, 44, 0.8) 0%, rgba(14, 10, 24, 0.8) 100%);
+        border: 1px solid rgba(227, 168, 87, 0.3);
+        border-radius: 8px;
+        padding: 32px 36px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 32px;
+        flex-wrap: wrap;
+    }
+    .banner-content h3 {
+        font-size: 22px;
+        color: var(--paper, #fff);
+        margin-bottom: 8px;
+    }
+    .banner-content p {
+        color: var(--steel, #a9bcdc);
+        font-size: 15.5px;
+        margin: 0;
+        max-width: 60ch;
+        line-height: 1.55;
+    }
+    .banner-btn {
+        white-space: nowrap;
+    }
+
+    @media (max-width: 800px) {
+        .project-card {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .project-deliverables ul {
+            grid-template-columns: 1fr;
+        }
+        .project-cta-banner {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+</style>

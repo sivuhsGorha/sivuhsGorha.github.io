@@ -1,6 +1,7 @@
 ---
 import { site } from '../data/site';
 import LineWaves from './reactbits/LineWaves.jsx';
+import StatusPanel from './StatusPanel.astro';
 ---
 
 <header class="hero reveal" style="position: relative; overflow: hidden;">
@@ -24,14 +25,95 @@ import LineWaves from './reactbits/LineWaves.jsx';
     </div>
     <div class="wrap hero-grid" style="position: relative; z-index: 1;">
         <div>
-            <p class="eyebrow-num">01 / introduction</p>
+            <div class="hero-availability">
+                <span class="pulse-indicator"></span>
+                <span>Available for Freelance Projects & AWS Cloud Contracts</span>
+            </div>
             <p class="role">{site.role}</p>
             <h1>{site.tagline}</h1>
             <p class="desc">{site.description}</p>
             <div class="hero-actions">
-                <a class="btn btn-primary" href="#projects">See the work</a>
-                <a class="btn btn-ghost" href={site.resumePath} download data-event="cv-download">Download CV</a>
+                <a class="btn btn-primary" href="#contact">Start a Project</a>
+                <a class="btn btn-outline" href="#services">View Services</a>
+                <a class="btn btn-ghost" href="#projects">See the work</a>
+                <a class="cv-link" href={site.resumePath} download data-event="cv-download">Download CV (PDF) ↓</a>
             </div>
+        </div>
+        <div class="hero-panel-col">
+            <StatusPanel />
         </div>
     </div>
 </header>
+
+<style>
+    .hero-availability {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(16, 185, 129, 0.08);
+        border: 1px solid rgba(16, 185, 129, 0.28);
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        color: #34d399;
+        margin-bottom: 22px;
+        letter-spacing: 0.02em;
+    }
+    .pulse-indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #10b981;
+        box-shadow: 0 0 10px #10b981;
+        animation: heroPulse 2s infinite ease-in-out;
+    }
+    @keyframes heroPulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(0.8); opacity: 0.5; }
+    }
+    .hero-panel-col {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+    }
+    .btn-outline {
+        display: inline-block;
+        padding: 13px 22px;
+        border-radius: 3px;
+        font-size: 15px;
+        text-decoration: none;
+        border: 1px solid rgba(227, 168, 87, 0.4);
+        color: var(--amber);
+        transition: all 0.2s ease;
+    }
+    .btn-outline:hover {
+        background: rgba(227, 168, 87, 0.12);
+        border-color: var(--amber);
+        color: #fff;
+    }
+    .cv-link {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13.5px;
+        color: var(--steel);
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        margin-left: 6px;
+        transition: color 0.15s ease;
+    }
+    .cv-link:hover {
+        color: var(--amber);
+    }
+    @media (max-width: 900px) {
+        .hero-panel-col {
+            margin-top: 24px;
+            justify-content: flex-start;
+        }
+    }
+</style>
