@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { forwardRef, useRef, useMemo, useLayoutEffect, useEffect } from 'react';
+import { forwardRef, useRef, useMemo, useLayoutEffect, useEffect, useState } from 'react';
 import { Color } from 'three';
 
 const hexToNormalizedRGB = hex => {
@@ -106,6 +106,17 @@ SilkPlane.displayName = 'SilkPlane';
 
 const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, rotation = 0, lightMode = false }) => {
   const meshRef = useRef();
+  const [isLight, setIsLight] = useState(lightMode);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLight(document.documentElement.getAttribute('data-theme') === 'bright');
+    };
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => observer.disconnect();
+  }, []);
 
   const uniforms = useMemo(
     () => ({
@@ -114,7 +125,7 @@ const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, r
       uNoiseIntensity: { value: noiseIntensity },
       uColor: { value: new Color(...hexToNormalizedRGB(color)) },
       uRotation: { value: rotation },
-      uLightMode: { value: lightMode ? 1 : 0 },
+      uLightMode: { value: isLight ? 1 : 0 },
       uTime: { value: 0 }
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -127,8 +138,8 @@ const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, r
     uniforms.uNoiseIntensity.value = noiseIntensity;
     uniforms.uColor.value.setRGB(...hexToNormalizedRGB(color));
     uniforms.uRotation.value = rotation;
-    uniforms.uLightMode.value = lightMode ? 1 : 0;
-  }, [speed, scale, noiseIntensity, color, rotation, lightMode, uniforms]);
+    uniforms.uLightMode.value = isLight ? 1 : 0;
+  }, [speed, scale, noiseIntensity, color, rotation, isLight, uniforms]);
 
   return (
     <Canvas dpr={[1, 2]} frameloop="always">
