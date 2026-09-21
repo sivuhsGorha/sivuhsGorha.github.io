@@ -93,9 +93,15 @@ const ogImage = new URL('/og.png', canonical);
                 "System Modernization"
             ]
         })} />
+        <script is:inline>
+            const theme = localStorage.getItem('theme:preference');
+            if (theme === 'bright' || (!theme && !window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'bright');
+            }
+        </script>
     </head>
     <body>
-        <div style="position: fixed; inset: 0; z-index: -1; pointer-events: none;">
+        <div class="react-bg-effect" style="position: fixed; inset: 0; z-index: -1; pointer-events: none;">
             <Silk
                 client:only="react"
                 speed={5}

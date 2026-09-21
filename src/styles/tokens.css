@@ -1,4 +1,5 @@
 :root {
+    /* Dim Mode (Default) */
     --ink: #0f1b2d;
     --ink-soft: #16263c;
     --paper: #ffffff;
@@ -10,6 +11,19 @@
     --ok: #7fa88c;
 }
 
+:root[data-theme="bright"] {
+    /* Bright Mode */
+    --ink: #fdfdfd;
+    --ink-soft: #f0f4f8;
+    --paper: #0f1b2d;
+    --paper-dim: #16263c;
+    --steel: #506480;
+    --line: #d1d9e2;
+    --amber: #d97706;
+    --amber-dim: #b45309;
+    --ok: #527c62;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -17,6 +31,7 @@
 html {
     scroll-behavior: smooth;
     background: var(--ink);
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 body {
@@ -26,6 +41,16 @@ body {
     font-family: 'IBM Plex Sans', sans-serif;
     line-height: 1.65;
     font-size: 18.5px;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.react-bg-effect {
+    transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+[data-theme="bright"] .react-bg-effect {
+    opacity: 0.08 !important;
+    filter: invert(1) hue-rotate(180deg);
 }
 
 ::selection {
