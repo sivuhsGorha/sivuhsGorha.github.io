@@ -2,7 +2,7 @@
 import '../styles/tokens.css';
 import Nav from '../components/Nav.astro';
 import { site } from '../data/site';
-import Silk from '../components/reactbits/Silk.jsx';
+import DarkVeil from '../components/reactbits/DarkVeil.jsx';
 import TerminalModal from '../components/reactbits/TerminalModal.jsx';
 
 interface Props {
@@ -102,13 +102,16 @@ const ogImage = new URL('/og.png', canonical);
     </head>
     <body>
         <div class="bg-canvas-wrapper" style="position: fixed; inset: 0; z-index: -1; pointer-events: none;">
-            <Silk
+            <DarkVeil
                 client:only="react"
-                speed={5}
-                scale={1}
-                color="#1a0a2e"
-                noiseIntensity={1.5}
-                rotation={0}
+                speed={0.5}
+                hueShift={0}
+                noiseIntensity={0.03}
+                scanlineIntensity={0.15}
+                scanlineFrequency={0.6}
+                warpAmount={0.3}
+                resolutionScale={1}
+                lightMode={false}
             />
         </div>
         <TerminalModal client:only="react" />
