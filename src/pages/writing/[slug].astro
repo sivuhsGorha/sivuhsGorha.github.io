@@ -34,7 +34,25 @@ function formatDate(date: Date) {
     current="writing"
     title={`${post.data.title} — ${site.mark}`}
     description={post.data.description}
+    ogType="article"
+    publishDate={post.data.pubDate}
 >
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.data.title,
+        "description": post.data.description,
+        "datePublished": post.data.pubDate.toISOString(),
+        "author": {
+            "@type": "Person",
+            "name": site.name,
+            "url": site.origin
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": site.name
+        }
+    })} />
     <article class="article">
         <div class="wrap">
             <a class="article-back" href="/#writing">← Back to writing</a>

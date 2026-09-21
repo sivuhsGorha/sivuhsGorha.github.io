@@ -17,6 +17,7 @@ pnpm-debug.log*
 find_*.py
 extract_*.py
 GridMotion-JS-CSS.json
+scripts/scratch/
 
 # environment variables
 .env

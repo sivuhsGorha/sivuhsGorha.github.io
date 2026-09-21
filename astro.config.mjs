@@ -8,7 +8,13 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://sibongakonke-simamane.dev',
-  integrations: [sitemap(), react()],
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        !/\/(4\d\d|5\d\d|react-bits-demo)\/?$/.test(page),
+    }),
+    react(),
+  ],
 
   vite: {
     plugins: [tailwindcss()],

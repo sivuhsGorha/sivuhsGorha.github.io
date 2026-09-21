@@ -48,6 +48,12 @@ const homePrefix = current === 'home' ? '' : '/';
                 >
             </li>
             <li><a href={`${homePrefix}#contact`}>Contact</a></li>
+            <li class="nav-terminal-item">
+                <button type="button" class="nav-terminal-btn" id="nav-terminal-btn" title="Open Interactive Terminal (Press ~)">
+                    <span class="terminal-prompt">&gt;_</span>
+                    <span>Terminal</span>
+                </button>
+            </li>
             <li class="nav-cta-item">
                 <a href={`${homePrefix}#contact`} class="nav-cta-btn">
                     <span class="pulse-dot"></span>
@@ -59,6 +65,33 @@ const homePrefix = current === 'home' ? '' : '/';
 </nav>
 
 <style>
+    .nav-terminal-item {
+        display: flex;
+        align-items: center;
+    }
+    .nav-terminal-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(15, 23, 42, 0.65);
+        border: 1px solid rgba(227, 168, 87, 0.3);
+        padding: 5px 12px;
+        border-radius: 6px;
+        color: var(--steel);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .nav-terminal-btn:hover {
+        background: rgba(227, 168, 87, 0.15);
+        border-color: var(--amber);
+        color: var(--amber);
+    }
+    .terminal-prompt {
+        color: var(--amber);
+        font-weight: 700;
+    }
     .nav-cta-item {
         display: flex;
         align-items: center;
@@ -112,6 +145,13 @@ const homePrefix = current === 'home' ? '' : '/';
                 links.classList.remove('is-open');
                 toggle.setAttribute('aria-expanded', 'false');
             });
+        });
+    }
+
+    const termBtn = document.getElementById('nav-terminal-btn');
+    if (termBtn) {
+        termBtn.addEventListener('click', () => {
+            window.dispatchEvent(new CustomEvent('open-terminal'));
         });
     }
 </script>

@@ -77,8 +77,16 @@ export default function TerminalModal() {
             }
         };
 
+        const handleCustomOpen = () => {
+            setIsOpen(true);
+        };
+
         window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
+        window.addEventListener('open-terminal', handleCustomOpen);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('open-terminal', handleCustomOpen);
+        };
     }, [isOpen]);
 
     useEffect(() => {
