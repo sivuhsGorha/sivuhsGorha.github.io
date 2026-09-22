@@ -32,14 +32,20 @@ const homePrefix = current === 'home' ? '' : '/';
             <img src="/logo.png" alt="SBK Logo" class="nav-logo" width="38" height="38" />
             <span>{site.mark}</span>
         </a>
-        <button
-            class="nav-toggle"
-            type="button"
-            aria-expanded="false"
-            aria-controls="nav-links"
-        >
-            Menu
-        </button>
+        <div class="nav-header-actions">
+            <button type="button" class="nav-theme-btn" id="nav-theme-btn" title="Toggle Bright/Dim Mode" aria-label="Toggle Bright/Dim Mode">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <button
+                class="nav-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="nav-links"
+            >
+                Menu
+            </button>
+        </div>
         <ul class="nav-links" id="nav-links">
             <li><a href={`${homePrefix}#about`}>About</a></li>
             <li><a href={`${homePrefix}#services`}>Services</a></li>
@@ -51,12 +57,6 @@ const homePrefix = current === 'home' ? '' : '/';
                 >
             </li>
             <li><a href={`${homePrefix}#contact`}>Contact</a></li>
-            <li class="nav-theme-item">
-                <button type="button" class="nav-theme-btn" id="nav-theme-btn" title="Toggle Bright/Dim Mode" aria-label="Toggle Bright/Dim Mode">
-                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                </button>
-            </li>
             <li class="nav-terminal-item">
                 <button type="button" class="nav-terminal-btn" id="nav-terminal-btn" title="Open Interactive Terminal (Press ~)">
                     <span class="terminal-prompt">&gt;_</span>
@@ -73,28 +73,35 @@ const homePrefix = current === 'home' ? '' : '/';
 </nav>
 
 <style>
-    .nav-theme-item {
-        display: flex;
+    /* ── Mobile header action row (theme toggle + menu button) ── */
+    .nav-header-actions {
+        display: none;          /* hidden on desktop — shown via media query */
         align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
     }
+
+    /* Theme toggle button (lives in the header row on mobile) */
     .nav-theme-btn {
         display: flex;
         align-items: center;
         justify-content: center;
         background: transparent;
         border: 1px solid rgba(227, 168, 87, 0.3);
-        width: 30px;
-        height: 30px;
+        width: 34px;
+        height: 34px;
         border-radius: 6px;
         color: var(--steel);
         cursor: pointer;
         transition: all 0.2s ease;
+        flex-shrink: 0;
     }
     .nav-theme-btn:hover {
         background: rgba(227, 168, 87, 0.15);
         border-color: var(--amber);
         color: var(--amber);
     }
+
     .nav-terminal-item {
         display: flex;
         align-items: center;
@@ -146,6 +153,14 @@ const homePrefix = current === 'home' ? '' : '/';
         border-color: var(--amber);
         transform: translateY(-1px);
         box-shadow: 0 0 14px rgba(227, 168, 87, 0.25);
+    }
+
+    /* ── Mobile breakpoint ── */
+    @media (max-width: 760px) {
+        /* Show the header action row (theme btn + Menu btn) */
+        .nav-header-actions {
+            display: flex;
+        }
     }
 
 </style>
