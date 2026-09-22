@@ -12,16 +12,16 @@
 }
 
 :root[data-theme="bright"] {
-    /* Bright Mode */
-    --ink: #fdfdfd;
-    --ink-soft: #e2e8f0;
-    --paper: #050a14;
-    --paper-dim: #1e293b;
-    --steel: #334155;
-    --line: #cbd5e1;
-    --amber: #f59e0b;
-    --amber-dim: #d97706;
-    --ok: #10b981;
+    /* Bright Mode — dark-bg aesthetic, lighter accent palette */
+    --ink: #100828;         /* deep purple-black page bg */
+    --ink-soft: #1a0f38;
+    --paper: #f0f4ff;       /* near-white text */
+    --paper-dim: #c8d4e8;   /* dimmer body copy */
+    --steel: #b8cce4;       /* same cool steel as dim */
+    --line: rgba(227, 168, 87, 0.22);
+    --amber: #f0b429;       /* slightly warmer gold for bright */
+    --amber-dim: #d4920e;
+    --ok: #34d399;
 }
 
 * {
