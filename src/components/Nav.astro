@@ -57,6 +57,12 @@ const homePrefix = current === 'home' ? '' : '/';
                 >
             </li>
             <li><a href={`${homePrefix}#contact`}>Contact</a></li>
+            <li class="nav-theme-item">
+                <button type="button" class="nav-theme-btn" id="nav-theme-btn-desktop" title="Toggle Bright/Dim Mode" aria-label="Toggle Bright/Dim Mode">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </li>
             <li class="nav-terminal-item">
                 <button type="button" class="nav-terminal-btn" id="nav-terminal-btn" title="Open Interactive Terminal (Press ~)">
                     <span class="terminal-prompt">&gt;_</span>
@@ -161,6 +167,10 @@ const homePrefix = current === 'home' ? '' : '/';
         .nav-header-actions {
             display: flex;
         }
+        /* Hide the desktop inline theme item from the dropdown */
+        .nav-theme-item {
+            display: none;
+        }
     }
 
 </style>
@@ -188,25 +198,35 @@ const homePrefix = current === 'home' ? '' : '/';
         });
     }
 
-    const themeBtn = document.getElementById('nav-theme-btn');
-    if (themeBtn) {
-        const updateIcon = () => {
-            const isBright = document.documentElement.getAttribute('data-theme') === 'bright';
-            themeBtn.querySelector('.sun-icon').style.display = isBright ? 'none' : 'block';
-            themeBtn.querySelector('.moon-icon').style.display = isBright ? 'block' : 'none';
-        };
-        updateIcon();
-
-        themeBtn.addEventListener('click', () => {
-            const isBright = document.documentElement.getAttribute('data-theme') === 'bright';
-            if (isBright) {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.setItem('theme:preference', 'dim');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'bright');
-                localStorage.setItem('theme:preference', 'bright');
-            }
-            updateIcon();
-        });
+    // Shared theme toggle logic — syncs both mobile (#nav-theme-btn) and desktop (#nav-theme-btn-desktop)
+    function applyThemeToButton(btn: HTMLElement | null) {
+        if (!btn) return;
+        const isBright = document.documentElement.getAttribute('data-theme') === 'bright';
+        const sun = btn.querySelector('.sun-icon') as HTMLElement | null;
+        const moon = btn.querySelector('.moon-icon') as HTMLElement | null;
+        if (sun) sun.style.display = isBright ? 'none' : 'block';
+        if (moon) moon.style.display = isBright ? 'block' : 'none';
     }
+
+    function toggleTheme() {
+        const isBright = document.documentElement.getAttribute('data-theme') === 'bright';
+        if (isBright) {
+            document.documentElement.setAttribute('data-theme', 'dim');
+            localStorage.setItem('theme:preference', 'dim');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'bright');
+            localStorage.setItem('theme:preference', 'bright');
+        }
+        applyThemeToButton(document.getElementById('nav-theme-btn'));
+        applyThemeToButton(document.getElementById('nav-theme-btn-desktop'));
+    }
+
+    const mobileBtn = document.getElementById('nav-theme-btn');
+    const desktopBtn = document.getElementById('nav-theme-btn-desktop');
+
+    applyThemeToButton(mobileBtn);
+    applyThemeToButton(desktopBtn);
+
+    mobileBtn?.addEventListener('click', toggleTheme);
+    desktopBtn?.addEventListener('click', toggleTheme);
 </script>
