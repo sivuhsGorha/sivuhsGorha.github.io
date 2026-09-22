@@ -12,17 +12,33 @@
 }
 
 :root[data-theme="bright"] {
-    /* Bright Mode — dark-bg aesthetic, lighter accent palette */
-    --ink: #100828;         /* deep purple-black page bg */
-    --ink-soft: #1a0f38;
-    --paper: #f0f4ff;       /* near-white text */
-    --paper-dim: #c8d4e8;   /* dimmer body copy */
-    --steel: #b8cce4;       /* same cool steel as dim */
-    --line: rgba(227, 168, 87, 0.22);
-    --amber: #f0b429;       /* slightly warmer gold for bright */
-    --amber-dim: #d4920e;
-    --ok: #34d399;
+    /* Bright Mode */
+    --ink: #fdfdfd;
+    --ink-soft: #e2e8f0;
+    --paper: #050a14;
+    --paper-dim: #1e293b;
+    --steel: #334155;
+    --line: #cbd5e1;
+    --amber: #f59e0b;
+    --amber-dim: #d97706;
+    --ok: #10b981;
 }
+
+/* ── Bright mode: card body text stays light against dark glass backgrounds ── */
+[data-theme="bright"] .service-card,
+[data-theme="bright"] .project-card,
+[data-theme="bright"] .cert-card,
+[data-theme="bright"] .tech-category-card,
+[data-theme="bright"] .glow-card {
+    color: #e8edf5;
+}
+
+[data-theme="bright"] .card-desc,
+[data-theme="bright"] .card-deliverables,
+[data-theme="bright"] .card-deliverables li {
+    color: #c8d4e4;
+}
+
 
 * {
     box-sizing: border-box;
