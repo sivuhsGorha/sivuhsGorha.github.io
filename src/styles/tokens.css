@@ -239,6 +239,9 @@ header.hero {
     line-height: 1.05;
     margin-bottom: 18px;
     letter-spacing: -0.02em;
+    text-shadow:
+        0 0 1px rgba(227, 168, 87, 0.18),
+        0 1px 18px rgba(10, 6, 20, 0.85);
 }
 
 .hero p.role {
@@ -246,6 +249,7 @@ header.hero {
     color: var(--amber);
     font-size: 16px;
     margin-bottom: 24px;
+    text-shadow: 0 0 1px rgba(227, 168, 87, 0.25), 0 1px 10px rgba(10, 6, 20, 0.8);
 }
 
 .hero p.eyebrow-num {
