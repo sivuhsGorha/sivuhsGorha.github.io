@@ -113,12 +113,18 @@ nav {
     min-height: 64px;
     display: flex;
     align-items: center;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    transition: border-color 0.2s ease;
 }
 
 [data-theme="bright"] nav {
-    background: rgba(253, 253, 253, 0.88);
-    border-bottom: 1px solid rgba(203, 213, 225, 0.8);
+    background: linear-gradient(
+        135deg,
+        rgba(22, 8, 40, 0.82) 0%,
+        rgba(38, 20, 64, 0.78) 38%,
+        rgba(52, 44, 36, 0.75) 68%,
+        rgba(42, 32, 10, 0.78) 100%
+    );
+    border-bottom: 1px solid rgba(227, 168, 87, 0.28);
 }
 
 nav .wrap {
