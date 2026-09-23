@@ -69,27 +69,7 @@ body {
     mix-blend-mode: normal;
 }
 
-/* Bright mode: Ensure body text is readable over the moving canvas using a white glow */
-[data-theme="bright"] p,
-[data-theme="bright"] li,
-[data-theme="bright"] span,
-[data-theme="bright"] .nav-links a,
-[data-theme="bright"] .writing-more,
-[data-theme="bright"] .article-back,
-[data-theme="bright"] .project-link,
-[data-theme="bright"] .contact-links a {
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.95), 0 0 4px rgba(255, 255, 255, 0.8);
-}
 
-/* Explicitly remove the text shadow from cards so they are untouched */
-[data-theme="bright"] .service-card *,
-[data-theme="bright"] .project-card *,
-[data-theme="bright"] .cert-card *,
-[data-theme="bright"] .tech-category-card *,
-[data-theme="bright"] .glow-card *,
-[data-theme="bright"] .btn {
-    text-shadow: none;
-}
 
 ::selection {
     background: var(--amber);
