@@ -105,12 +105,16 @@ export default function DarkVeil({
                                  }) {
   const ref = useRef(null);
   const uniformsRef = useRef(null);
-  const [isLight, setIsLight] = useState(lightMode);
+  const isLightRef = useRef(
+    typeof document !== 'undefined'
+      ? document.documentElement.getAttribute('data-theme') === 'bright'
+      : lightMode
+  );
 
   useEffect(() => {
     const checkTheme = () => {
       const light = document.documentElement.getAttribute('data-theme') === 'bright';
-      setIsLight(light);
+      isLightRef.current = light;
       // Update live uniforms directly — no remount needed
       if (uniformsRef.current) {
         uniformsRef.current.uLightMode.value = light ? 1 : 0;
@@ -147,9 +151,9 @@ export default function DarkVeil({
         uScan: { value: scanlineIntensity },
         uScanFreq: { value: scanlineFrequency },
         uWarp: { value: warpAmount },
-        uLightMode: { value: isLight ? 1 : 0 },
-        uBaseColor: { value: new Vec3(...(isLight ? lightBaseColor : baseColor)) },
-        uVeilColor: { value: new Vec3(...(isLight ? lightVeilColor : veilColor)) }
+        uLightMode: { value: isLightRef.current ? 1 : 0 },
+        uBaseColor: { value: new Vec3(...(isLightRef.current ? lightBaseColor : baseColor)) },
+        uVeilColor: { value: new Vec3(...(isLightRef.current ? lightVeilColor : veilColor)) }
       }
     });
 
@@ -181,9 +185,9 @@ export default function DarkVeil({
       program.uniforms.uScan.value = scanlineIntensity;
       program.uniforms.uScanFreq.value = scanlineFrequency;
       program.uniforms.uWarp.value = warpAmount;
-      program.uniforms.uLightMode.value = isLight ? 1 : 0;
-      program.uniforms.uBaseColor.value.set(...(isLight ? lightBaseColor : baseColor));
-      program.uniforms.uVeilColor.value.set(...(isLight ? lightVeilColor : veilColor));
+      program.uniforms.uLightMode.value = isLightRef.current ? 1 : 0;
+      program.uniforms.uBaseColor.value.set(...(isLightRef.current ? lightBaseColor : baseColor));
+      program.uniforms.uVeilColor.value.set(...(isLightRef.current ? lightVeilColor : veilColor));
       renderer.render({ scene: mesh });
       frame = requestAnimationFrame(loop);
     };
