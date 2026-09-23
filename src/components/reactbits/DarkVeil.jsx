@@ -104,17 +104,25 @@ export default function DarkVeil({
                                    lightVeilColor = [0.90, 0.92, 0.96]
                                  }) {
   const ref = useRef(null);
+  const uniformsRef = useRef(null);
   const [isLight, setIsLight] = useState(lightMode);
 
   useEffect(() => {
     const checkTheme = () => {
-      setIsLight(document.documentElement.getAttribute('data-theme') === 'bright');
+      const light = document.documentElement.getAttribute('data-theme') === 'bright';
+      setIsLight(light);
+      // Update live uniforms directly — no remount needed
+      if (uniformsRef.current) {
+        uniformsRef.current.uLightMode.value = light ? 1 : 0;
+        uniformsRef.current.uBaseColor.value.set(...(light ? lightBaseColor : baseColor));
+        uniformsRef.current.uVeilColor.value.set(...(light ? lightVeilColor : veilColor));
+      }
     };
     checkTheme();
     const observer = new MutationObserver(checkTheme);
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     return () => observer.disconnect();
-  }, []);
+  }, [baseColor, veilColor, lightBaseColor, lightVeilColor]);
 
   useEffect(() => {
     const canvas = ref.current;
@@ -144,6 +152,9 @@ export default function DarkVeil({
         uVeilColor: { value: new Vec3(...(isLight ? lightVeilColor : veilColor)) }
       }
     });
+
+    // Store reference so the theme observer can update uniforms without remounting
+    uniformsRef.current = program.uniforms;
 
     const mesh = new Mesh(gl, { geometry, program });
 
@@ -183,7 +194,7 @@ export default function DarkVeil({
       cancelAnimationFrame(frame);
       window.removeEventListener('resize', resize);
     };
-  }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale, isLight, baseColor, veilColor, lightBaseColor, lightVeilColor]);
+  }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale, baseColor, veilColor, lightBaseColor, lightVeilColor]);
 
   return <canvas ref={ref} className="darkveil-canvas" />;
 }
