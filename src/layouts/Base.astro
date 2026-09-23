@@ -2,7 +2,7 @@
 import '../styles/tokens.css';
 import Nav from '../components/Nav.astro';
 import { site } from '../data/site';
-import Silk from '../components/reactbits/Silk.jsx';
+import ThemeAwareSilk from '../components/reactbits/ThemeAwareSilk.jsx';
 import TerminalModal from '../components/reactbits/TerminalModal.jsx';
 
 interface Props {
@@ -129,11 +129,10 @@ const ogImage = new URL('/logo.png', canonical);
     </head>
     <body>
         <div class="bg-canvas-wrapper" style="position: fixed; inset: 0; z-index: -1; pointer-events: none;">
-            <Silk
+            <ThemeAwareSilk
                 client:only="react"
                 speed={5}
                 scale={1}
-                color="#1a0a2e"
                 noiseIntensity={1.5}
                 rotation={0}
             />
