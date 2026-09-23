@@ -17,10 +17,10 @@
     --ink-soft: #e2e8f0;
     --paper: #050a14;
     --paper-dim: #1e293b;
-    --steel: #334155;
+    --steel: #1e293b;
     --line: #cbd5e1;
     --amber: #f59e0b;
-    --amber-dim: #d97706;
+    --amber-dim: #b45309;
     --ok: #10b981;
 }
 
@@ -80,6 +80,15 @@ h3 {
     font-weight: 500;
     margin: 0;
     color: var(--paper);
+}
+
+/* Bright mode: amber outline glow on headings */
+[data-theme="bright"] h1,
+[data-theme="bright"] h2,
+[data-theme="bright"] h3 {
+    text-shadow:
+        0 0 1px rgba(180, 83, 9, 0.55),
+        0 1px 8px rgba(245, 158, 11, 0.18);
 }
 
 a {
