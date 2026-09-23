@@ -29,7 +29,12 @@
 [data-theme="bright"] .project-card,
 [data-theme="bright"] .cert-card,
 [data-theme="bright"] .tech-category-card,
-[data-theme="bright"] .glow-card {
+[data-theme="bright"] .glow-card,
+[data-theme="bright"] .service-card *,
+[data-theme="bright"] .project-card *,
+[data-theme="bright"] .cert-card *,
+[data-theme="bright"] .tech-category-card *,
+[data-theme="bright"] .glow-card * {
     color: #e8edf5;
 }
 
