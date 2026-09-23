@@ -1,6 +1,6 @@
 ---
 import { site } from '../data/site';
-import DarkVeil from './reactbits/DarkVeil.jsx';
+import LiquidEther from './reactbits/LiquidEther.jsx';
 
 interface Props {
     current?: 'home' | 'writing';
@@ -12,19 +12,19 @@ const homePrefix = current === 'home' ? '' : '/';
 
 <nav>
     <div class="bg-canvas-wrapper" style="position: absolute; inset: 0; z-index: 0; pointer-events: none;">
-        <DarkVeil
+        <LiquidEther
             client:only="react"
-            baseColor={[0.04, 0.015, 0.07]}
-            veilColor={[0.16, 0.05, 0.28]}
-            noiseIntensity={0.02}
-            scanlineIntensity={0.03}
-            speed={0.3}
-            scanlineFrequency={0.05}
-            warpAmount={0.2}
-            resolutionScale={1}
-            lightMode={true}
-            lightBaseColor={[0.95, 0.95, 0.98]}
-            lightVeilColor={[0.85, 0.87, 0.92]}
+            colors={['#2a0a5e', '#e3a857', '#6b21d4']}
+            mouseForce={18}
+            cursorSize={120}
+            resolution={0.4}
+            autoDemo={true}
+            autoSpeed={0.35}
+            autoIntensity={2.0}
+            autoResumeDelay={2000}
+            autoRampDuration={0.8}
+            backgroundColor="#0a0418"
+            lightMode={false}
         />
     </div>
     <div class="wrap" style="position: relative; z-index: 1;">

@@ -132,32 +132,6 @@ nav {
     transition: border-color 0.2s ease;
 }
 
-[data-theme="bright"] nav {
-    background: linear-gradient(
-        135deg,
-        rgba(18, 6, 34, 0.97) 0%,
-        rgba(32, 14, 54, 0.96) 40%,
-        rgba(44, 34, 18, 0.95) 72%,
-        rgba(36, 26, 8, 0.96) 100%
-    );
-    border-bottom: 1px solid rgba(227, 168, 87, 0.35);
-}
-
-/* Nav text must be light since it sits on the dark gradient in bright mode */
-[data-theme="bright"] .nav-mark,
-[data-theme="bright"] .nav-links a,
-[data-theme="bright"] .nav-toggle,
-[data-theme="bright"] .nav-terminal-btn,
-[data-theme="bright"] .nav-theme-btn {
-    color: #d4dff0;
-}
-
-[data-theme="bright"] .nav-links a:hover,
-[data-theme="bright"] .nav-links a:focus-visible,
-[data-theme="bright"] .nav-links a[aria-current='page'],
-[data-theme="bright"] .nav-toggle:hover {
-    color: #ffffff;
-}
 
 
 nav .wrap {
