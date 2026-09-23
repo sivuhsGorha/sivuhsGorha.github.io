@@ -62,8 +62,7 @@ body {
 
 .bg-canvas-wrapper {
     transition: opacity 0.6s ease;
-    opacity: 0.15;
-    mix-blend-mode: screen;
+    opacity: 0;
 }
 
 [data-theme="bright"] .bg-canvas-wrapper {
