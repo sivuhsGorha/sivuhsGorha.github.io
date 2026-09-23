@@ -68,6 +68,15 @@ body {
     opacity: 1;
 }
 
+/* Bright mode: thin white overlay so text stays readable over the silk canvas */
+[data-theme="bright"] .bg-canvas-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.72);
+    pointer-events: none;
+}
+
 ::selection {
     background: var(--amber);
     color: var(--ink);
