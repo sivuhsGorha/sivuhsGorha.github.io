@@ -1,8 +1,8 @@
 :root,
 :root[data-theme="dim"] {
     /* Dim Mode (Default) - Vibrant, high-contrast readable text over deep purple */
-    --ink: #1a0a2e;
-    --ink-soft: #241040;
+    --ink: #120721;
+    --ink-soft: #1b0c33;
     --paper: #ffffff;
     --paper-dim: #f0f0f0;
     --steel: #f4f6fc;
@@ -214,6 +214,7 @@ body {
 
 .bg-canvas-wrapper {
     transition: opacity 0.6s ease;
+    opacity: 0.88;
 }
 
 [data-theme="bright"] .bg-canvas-wrapper {
@@ -291,7 +292,7 @@ nav {
     width: 100%;
     z-index: 1000;
     overflow: hidden;
-    background: rgba(26, 10, 46, 0.85);
+    background: rgba(18, 7, 33, 0.88);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(138, 43, 226, 0.3);

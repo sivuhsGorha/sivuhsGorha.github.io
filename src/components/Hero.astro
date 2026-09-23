@@ -1,30 +1,9 @@
 ---
 import { site } from '../data/site';
-import GradientBlinds from './reactbits/GradientBlinds.jsx';
 ---
 
-<header class="hero reveal" style="position: relative; overflow: hidden;">
-    <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none; mask-image: linear-gradient(to bottom, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);">
-        <GradientBlinds
-            client:only="react"
-            gradientColors={['#d8b4fe', '#a855f7', '#7c3aed', '#3b0764']}
-            lightGradientColors={['#ffffff', '#f1f5f9', '#cbd5e1', '#94a3b8', '#e2e8f0', '#64748b']}
-            angle={45}
-            noise={0.3}
-            blindCount={18}
-            blindMinWidth={60}
-            spotlightRadius={0.65}
-            spotlightSoftness={1}
-            spotlightOpacity={1.2}
-            mouseDampening={0.15}
-            distortAmount={0}
-            shineDirection="left"
-            mixBlendMode="lighten"
-            mixBlendModeLight="normal"
-            mirrorGradient={true}
-        />
-    </div>
-    <div class="wrap hero-wrap" style="position: relative; z-index: 1;">
+<header class="hero reveal">
+    <div class="wrap hero-wrap">
         <div class="hero-content">
             <p class="role">{site.role}</p>
             <h1>{site.tagline}</h1>
