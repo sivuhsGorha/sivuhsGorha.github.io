@@ -15,9 +15,9 @@
     /* Bright Mode */
     --ink: #fdfdfd;
     --ink-soft: #e2e8f0;
-    --paper: #020408;
-    --paper-dim: #1e293b;
-    --steel: #0f172a;
+    --paper: #ffffff;
+    --paper-dim: #e2e8f0;
+    --steel: #ccbeaa;
     --line: #cbd5e1;
     --amber: #f59e0b;
     --amber-dim: #92400e;
@@ -68,13 +68,19 @@ body {
     opacity: 1;
 }
 
-/* Bright mode: thin white overlay so text stays readable over the silk canvas */
-[data-theme="bright"] .bg-canvas-wrapper::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.72);
-    pointer-events: none;
+/* Bright mode: Dynamic text inversion over the moving canvas */
+[data-theme="bright"] h1,
+[data-theme="bright"] h2,
+[data-theme="bright"] h3,
+[data-theme="bright"] p,
+[data-theme="bright"] li,
+[data-theme="bright"] .nav-mark,
+[data-theme="bright"] .nav-links a,
+[data-theme="bright"] .writing-more,
+[data-theme="bright"] .article-back,
+[data-theme="bright"] .project-link,
+[data-theme="bright"] .contact-links a {
+    mix-blend-mode: difference;
 }
 
 ::selection {
