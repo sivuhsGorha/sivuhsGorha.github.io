@@ -62,7 +62,6 @@ body {
 
 .bg-canvas-wrapper {
     transition: opacity 0.6s ease;
-    opacity: 0;
 }
 
 [data-theme="bright"] .bg-canvas-wrapper {
