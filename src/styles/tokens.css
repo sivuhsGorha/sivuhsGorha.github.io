@@ -132,21 +132,6 @@ nav {
     transition: border-color 0.2s ease;
 }
 
-/* Dim the left (logo) section of the nav */
-nav::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to right,
-        rgba(6, 2, 14, 0.55) 0%,
-        rgba(6, 2, 14, 0.25) 22%,
-        transparent 42%
-    );
-    z-index: 1;
-    pointer-events: none;
-}
-
 
 
 nav .wrap {
