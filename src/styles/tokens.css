@@ -1,14 +1,16 @@
-:root {
-    /* Dim Mode (Default) */
+:root,
+:root[data-theme="dim"] {
+    /* Dim Mode (Default) - Vibrant, high-contrast readable text over deep purple */
     --ink: #1a0a2e;
     --ink-soft: #241040;
     --paper: #ffffff;
     --paper-dim: #f0f0f0;
-    --steel: #a9bcdc;
+    --steel: #f4f6fc;
     --line: #33465c;
     --amber: #e3a857;
     --amber-dim: #b98640;
     --ok: #7fa88c;
+    --font-heading: 'Fraunces', serif;
 }
 
 :root[data-theme="bright"] {
@@ -24,24 +26,169 @@
     --ok: #10b981;
 }
 
-/* ── Bright mode: card body text stays light against dark glass backgrounds ── */
+/* ── Bright mode: cards retain rich deep purple glass containers with clear, high-contrast readable text ── */
 [data-theme="bright"] .service-card,
 [data-theme="bright"] .project-card,
 [data-theme="bright"] .cert-card,
 [data-theme="bright"] .tech-category-card,
 [data-theme="bright"] .glow-card,
-[data-theme="bright"] .service-card *,
-[data-theme="bright"] .project-card *,
-[data-theme="bright"] .cert-card *,
-[data-theme="bright"] .tech-category-card *,
-[data-theme="bright"] .glow-card * {
-    color: #e8edf5;
+[data-theme="bright"] .project-cta-banner,
+[data-theme="bright"] .perks-strip,
+[data-theme="bright"] .form-container {
+    background: linear-gradient(135deg, rgba(26, 10, 46, 0.95) 0%, rgba(14, 10, 24, 0.97) 100%) !important;
+    backdrop-filter: blur(14px);
+    border-color: rgba(227, 168, 87, 0.35) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
 }
 
+/* Headings inside cards: crisp pure white with subtle dark gold outline */
+[data-theme="bright"] .project-card h3,
+[data-theme="bright"] .project-title-row h3,
+[data-theme="bright"] .service-card h3,
+[data-theme="bright"] .card-title,
+[data-theme="bright"] .cert-card h3,
+[data-theme="bright"] .cert-details h3,
+[data-theme="bright"] .tech-category-title,
+[data-theme="bright"] .project-cta-banner h3,
+[data-theme="bright"] .banner-content h3,
+[data-theme="bright"] .perks-title,
+[data-theme="bright"] .perk-item h4 {
+    color: #ffffff !important;
+    text-shadow: none !important;
+    -webkit-text-stroke: 0.5px rgba(185, 134, 64, 0.55);
+    paint-order: stroke fill;
+}
+
+/* Descriptions & body text under headings inside cards (high-contrast platinum silver) */
+[data-theme="bright"] .project-summary,
 [data-theme="bright"] .card-desc,
-[data-theme="bright"] .card-deliverables,
-[data-theme="bright"] .card-deliverables li {
-    color: #c8d4e4;
+[data-theme="bright"] .tech-category-desc,
+[data-theme="bright"] .badge-item-note,
+[data-theme="bright"] .tech-details-list li,
+[data-theme="bright"] .bullet-text,
+[data-theme="bright"] .banner-content p,
+[data-theme="bright"] .perk-item p,
+[data-theme="bright"] .cert-details p,
+[data-theme="bright"] .card-deliverables li,
+[data-theme="bright"] .project-deliverables li,
+[data-theme="bright"] .form-assurances,
+[data-theme="bright"] .form-assurances span,
+[data-theme="bright"] .whatsapp-direct-box span,
+[data-theme="bright"] .form-container label {
+    color: #f4f6fc !important;
+}
+
+[data-theme="bright"] .form-assurances {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(227, 168, 87, 0.35) !important;
+}
+
+[data-theme="bright"] .form-assurances .assurance-dot {
+    color: var(--amber) !important;
+}
+
+/* Retain amber accents inside cards in bright mode */
+[data-theme="bright"] .client-name,
+[data-theme="bright"] .deliv-label,
+[data-theme="bright"] .deliv-heading,
+[data-theme="bright"] .card-num,
+[data-theme="bright"] .pid,
+[data-theme="bright"] .bullet,
+[data-theme="bright"] .bullet-dash,
+[data-theme="bright"] .perk-icon {
+    color: var(--amber) !important;
+}
+
+/* Badges & Chips inside cards */
+[data-theme="bright"] .client-badge,
+[data-theme="bright"] .card-badge,
+[data-theme="bright"] .tech-badge-count {
+    color: var(--amber) !important;
+    background: rgba(227, 168, 87, 0.15) !important;
+    border-color: rgba(227, 168, 87, 0.35) !important;
+}
+
+[data-theme="bright"] .tech-chip,
+[data-theme="bright"] .stack span {
+    color: #f1f5f9 !important;
+    background: rgba(227, 168, 87, 0.12) !important;
+    border-color: rgba(227, 168, 87, 0.3) !important;
+}
+
+[data-theme="bright"] .tech-badge-item {
+    background: rgba(26, 12, 44, 0.75) !important;
+    border-color: rgba(227, 168, 87, 0.25) !important;
+}
+
+[data-theme="bright"] .tech-label {
+    color: #cbd5e1 !important;
+}
+
+/* Action buttons & links inside cards */
+[data-theme="bright"] .btn-live {
+    background: var(--amber) !important;
+    color: #1a0a2e !important;
+    font-weight: 600 !important;
+}
+
+[data-theme="bright"] .btn-live:hover {
+    background: #eab86c !important;
+}
+
+[data-theme="bright"] .btn-repo {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="bright"] .btn-repo:hover {
+    color: #ffffff !important;
+}
+
+[data-theme="bright"] .card-link {
+    color: var(--amber) !important;
+}
+
+[data-theme="bright"] .card-link:hover {
+    color: #ffffff !important;
+}
+
+/* Date tags inside certification cards */
+[data-theme="bright"] .cert-date {
+    color: #f4f6fc !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+[data-theme="bright"] .cert-date.distinction {
+    color: var(--amber) !important;
+    background: rgba(227, 168, 87, 0.18) !important;
+    border-color: rgba(227, 168, 87, 0.4) !important;
+}
+
+/* Contact form container in bright mode */
+[data-theme="bright"] .form-container {
+    background: linear-gradient(135deg, rgba(26, 10, 46, 0.95) 0%, rgba(14, 10, 24, 0.97) 100%) !important;
+    border-color: rgba(227, 168, 87, 0.35) !important;
+}
+
+[data-theme="bright"] .form-container label {
+    color: #f4f6fc !important;
+}
+
+[data-theme="bright"] .form-container input,
+[data-theme="bright"] .form-container select,
+[data-theme="bright"] .form-container textarea {
+    color: #ffffff !important;
+    background: rgba(15, 23, 42, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+[data-theme="bright"] .form-container .submit-btn {
+    background: var(--amber) !important;
+    color: #1a0a2e !important;
+}
+
+[data-theme="bright"] .whatsapp-direct-box span {
+    color: #f4f6fc !important;
 }
 
 
@@ -59,9 +206,9 @@ body {
     margin: 0;
     background: transparent;
     color: var(--paper);
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     line-height: 1.65;
-    font-size: 18.5px;
+    font-size: 20px;
     transition: color 0.2s ease;
 }
 
@@ -83,28 +230,33 @@ body {
 
 h1,
 h2,
-h3 {
-    font-family: 'Fraunces', serif;
+h3,
+h4,
+h5,
+h6,
+.card-title,
+.tech-category-title,
+.cv-sec-title,
+.cv-job-title,
+.perks-title,
+.tech-stack-heading {
+    font-family: 'Fraunces', serif !important;
     font-weight: 500;
     margin: 0;
     color: var(--paper);
+    -webkit-text-stroke: 0.5px rgba(185, 134, 64, 0.55);
+    paint-order: stroke fill;
+    text-shadow: 0 0 1px rgba(185, 134, 64, 0.3);
 }
 
-/* Bright mode: amber outline glow on headings */
-[data-theme="bright"] h1,
-[data-theme="bright"] h2,
-[data-theme="bright"] h3 {
-    text-shadow:
-        0 0 1px rgba(180, 83, 9, 0.55),
-        0 1px 8px rgba(245, 158, 11, 0.18);
-}
+
 
 a {
     color: inherit;
 }
 
 .wrap {
-    max-width: 980px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 32px;
 }
@@ -139,14 +291,21 @@ nav {
     width: 100%;
     z-index: 1000;
     overflow: hidden;
-    background: rgba(15, 6, 28, 0.88);
+    background: rgba(26, 10, 46, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(138, 43, 226, 0.3);
     min-height: 64px;
     display: flex;
     align-items: center;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+[data-theme="bright"] nav {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(203, 213, 225, 0.6);
 }
 
 
@@ -202,7 +361,7 @@ nav .wrap {
     border: 1px solid var(--line);
     border-radius: 2px;
     padding: 8px 14px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 14.5px;
     cursor: pointer;
 }
@@ -214,8 +373,9 @@ nav .wrap {
 
 .nav-links {
     display: flex;
-    gap: 30px;
-    font-size: 15px;
+    align-items: center;
+    gap: 26px;
+    font-size: 17.5px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -224,6 +384,9 @@ nav .wrap {
 .nav-links a {
     text-decoration: none;
     color: var(--steel);
+    font-size: 17.5px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
     transition: color 0.15s ease;
 }
 
@@ -242,8 +405,14 @@ nav .wrap {
         display: none;
         flex-basis: 100%;
         flex-direction: column;
-        gap: 14px;
-        padding-bottom: 8px;
+        align-items: flex-start;
+        gap: 16px;
+        font-size: 18.5px;
+        padding-bottom: 12px;
+    }
+
+    .nav-links a {
+        font-size: 18.5px;
     }
 
     .nav-links.is-open {
@@ -261,7 +430,7 @@ header.hero {
 }
 
 .hero-wrap {
-    max-width: 980px;
+    max-width: 1100px;
 }
 
 .hero h1 {
@@ -269,8 +438,10 @@ header.hero {
     line-height: 1.05;
     margin-bottom: 18px;
     letter-spacing: -0.02em;
+    -webkit-text-stroke: 0.85px rgba(185, 134, 64, 0.65);
+    paint-order: stroke fill;
     text-shadow:
-        0 0 2px rgba(227, 168, 87, 0.32),
+        0 0 2px rgba(185, 134, 64, 0.45),
         0 2px 22px rgba(10, 6, 20, 0.92);
 }
 
@@ -284,8 +455,8 @@ header.hero {
 
 .hero p.eyebrow-num {
     font-family: 'JetBrains Mono', monospace;
-    color: var(--amber-dim);
-    font-size: 14px;
+    color: var(--amber);
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
@@ -348,15 +519,67 @@ section {
 
 .eyebrow-num {
     font-family: 'JetBrains Mono', monospace;
-    color: var(--amber-dim);
-    font-size: 14px;
+    color: var(--amber);
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
-section h2 {
+section h2,
+.site-footer h2 {
     font-size: 46px;
     margin-bottom: 38px;
     letter-spacing: -0.01em;
+    -webkit-text-stroke: 0.7px rgba(185, 134, 64, 0.6);
+    paint-order: stroke fill;
+    position: relative;
+    display: inline-block;
+}
+
+.site-footer h2 {
+    font-size: 36px;
+    max-width: 14ch;
+    margin-bottom: 8px;
+}
+
+/* ── Dark gold gradient underline — spans halfway across heading, fading smoothly ── */
+section h2::after,
+.site-footer h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 52%;
+    height: 2.5px;
+    background: linear-gradient(
+        to right,
+        rgba(185, 134, 64, 0.95) 0%,
+        rgba(215, 160, 80, 0.75) 35%,
+        rgba(185, 134, 64, 0.25) 75%,
+        transparent 100%
+    );
+    border-radius: 2px;
+    transform-origin: left center;
+    transform: scaleX(0);
+    opacity: 0;
+    transition:
+        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.45s ease;
+    pointer-events: none;
+}
+
+/* Line draws in smoothly when section is in view */
+section.in-view h2::after,
+.site-footer.in-view h2::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    section h2::after,
+    .site-footer h2::after {
+        transition: none;
+    }
 }
 
 /* ---------- ABOUT ---------- */
@@ -719,13 +942,14 @@ section h2 {
     transform: translateY(14px);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
 .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
 /* Hero content positioning - ASCII Tiles provides background */
-.hero > * {
+.hero>* {
     position: relative;
     z-index: 1;
 }
@@ -735,6 +959,7 @@ section h2 {
     transition: transform 0.2s ease, border-color 0.2s ease;
     border: 1px solid var(--line);
 }
+
 .skill-block:hover {
     transform: translateY(-2px);
     border-color: var(--amber-dim);
@@ -746,6 +971,7 @@ section h2 {
 .writing-more {
     position: relative;
 }
+
 .nav-links a::after,
 .writing-more::after {
     content: '';
@@ -757,6 +983,7 @@ section h2 {
     background: var(--amber);
     transition: width 0.25s ease;
 }
+
 .nav-links a:hover::after,
 .writing-more:hover::after {
     width: 100%;
@@ -777,10 +1004,48 @@ section h2 {
     flex-shrink: 0;
     animation: dotPulse 2.4s ease-in-out infinite;
 }
+
 @keyframes dotPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
 }
 
+/* ---------- EXPERIENCE LIST & ARROW SPACING ---------- */
+.experience-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
 
+.experience-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    color: var(--steel);
+    font-size: 15.5px;
+    line-height: 1.65;
+}
 
+.exp-arrow {
+    color: var(--amber);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.exp-text {
+    flex: 1;
+}

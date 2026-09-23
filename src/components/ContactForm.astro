@@ -80,9 +80,9 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
                 <button type="submit" class="submit-btn">Send Project Inquiry →</button>
                 <div class="form-assurances">
                     <span>Response within 24 hours</span>
-                    <span>•</span>
+                    <span class="assurance-dot">•</span>
                     <span>Confidential & Direct</span>
-                    <span>•</span>
+                    <span class="assurance-dot">•</span>
                     <span>Free Discovery Call</span>
                 </div>
                 <p id="form-result" class="form-result" aria-live="polite"></p>
@@ -114,7 +114,7 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
     }
 
     .section-header p {
-        color: var(--steel, #a9bcdc);
+        color: var(--steel, #f4f6fc);
         max-width: 55ch;
         margin: 0 auto;
         font-size: 17px;
@@ -147,7 +147,7 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
     label {
         font-family: var(--font-mono);
         font-size: 0.82rem;
-        color: var(--color-text-muted, #a9bcdc);
+        color: var(--steel, #f4f6fc);
         text-transform: uppercase;
         letter-spacing: 0.05em;
     }
@@ -207,10 +207,25 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
         align-items: center;
         gap: 12px;
         margin-top: 1.25rem;
+        padding: 9px 18px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(227, 168, 87, 0.28);
+        border-radius: 9999px;
         font-family: 'JetBrains Mono', monospace;
-        font-size: 12px;
-        color: var(--steel, #a9bcdc);
+        font-size: 14px;
+        color: var(--steel, #f4f6fc);
         flex-wrap: wrap;
+    }
+
+    .form-assurances span {
+        color: var(--steel, #f4f6fc);
+    }
+
+    .form-assurances .assurance-dot {
+        color: var(--amber, #e3a857);
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 1;
     }
 
     .form-result {
@@ -232,8 +247,8 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
     }
 
     .whatsapp-direct-box span {
-        font-size: 13px;
-        color: var(--steel, #a9bcdc);
+        font-size: 17px;
+        color: var(--steel, #f4f6fc);
         font-family: var(--font-mono);
     }
 

@@ -1,25 +1,27 @@
 ---
 import { site } from '../data/site';
-import LineWaves from './reactbits/LineWaves.jsx';
+import GradientBlinds from './reactbits/GradientBlinds.jsx';
 ---
 
 <header class="hero reveal" style="position: relative; overflow: hidden;">
-    <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none;">
-        <LineWaves
+    <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none; mask-image: linear-gradient(to bottom, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);">
+        <GradientBlinds
             client:only="react"
-            speed={0.3}
-            innerLineCount={32}
-            outerLineCount={36}
-            warpIntensity={1.0}
-            rotation={-45}
-            edgeFadeWidth={0.0}
-            colorCycleSpeed={1.0}
-            brightness={0.25}
-            color1="#00e5ff"
-            color2="#8a2be2"
-            color3="#ff00ff"
-            enableMouseInteraction={true}
-            mouseInfluence={2.0}
+            gradientColors={['#d8b4fe', '#a855f7', '#7c3aed', '#3b0764']}
+            lightGradientColors={['#ffffff', '#f1f5f9', '#cbd5e1', '#94a3b8', '#e2e8f0', '#64748b']}
+            angle={45}
+            noise={0.3}
+            blindCount={18}
+            blindMinWidth={60}
+            spotlightRadius={0.65}
+            spotlightSoftness={1}
+            spotlightOpacity={1.2}
+            mouseDampening={0.15}
+            distortAmount={0}
+            shineDirection="left"
+            mixBlendMode="lighten"
+            mixBlendModeLight="normal"
+            mirrorGradient={true}
         />
     </div>
     <div class="wrap hero-wrap" style="position: relative; z-index: 1;">
@@ -79,7 +81,7 @@ import LineWaves from './reactbits/LineWaves.jsx';
         display: inline-block;
         padding: 13px 22px;
         border-radius: 3px;
-        font-size: 15px;
+        font-size: 16px;
         text-decoration: none;
         border: 1px solid rgba(227, 168, 87, 0.4);
         color: var(--amber);
@@ -92,7 +94,7 @@ import LineWaves from './reactbits/LineWaves.jsx';
     }
     .cv-link {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 13.5px;
+        font-size: 16px;
         color: var(--steel);
         text-decoration: underline;
         text-underline-offset: 4px;

@@ -66,7 +66,7 @@ const ogImage = new URL('/logo.png', canonical);
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
             rel="stylesheet"
         />
         <meta name="generator" content={Astro.generator} />
@@ -108,10 +108,14 @@ const ogImage = new URL('/logo.png', canonical);
                 s.textContent = '*, *::before, *::after { transition: none !important; }';
                 document.head.appendChild(s);
 
-                var saved = localStorage.getItem('theme:preference');
-                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var saved = null;
+                try {
+                    saved = localStorage.getItem('theme:preference');
+                } catch (e) {}
 
-                if (saved === 'bright' || (!saved && !prefersDark)) {
+                // Default to 'dim' (the portfolio's signature deep purple theme).
+                // Never force bright mode based on OS preferences.
+                if (saved === 'bright') {
                     document.documentElement.setAttribute('data-theme', 'bright');
                 } else {
                     document.documentElement.setAttribute('data-theme', 'dim');
@@ -162,6 +166,25 @@ const ogImage = new URL('/logo.png', canonical);
             } else {
                 document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
             }
+
+            // Two-way Intersection Observer: active section heading underlines
+            // Dynamically adds/removes 'in-view' as user scrolls into and out of sections
+            const sectionObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in-view');
+                        } else {
+                            entry.target.classList.remove('in-view');
+                        }
+                    });
+                },
+                {
+                    rootMargin: '-12% 0px -30% 0px',
+                    threshold: 0
+                }
+            );
+            document.querySelectorAll('section, footer.site-footer').forEach((sec) => sectionObserver.observe(sec));
 
             // Simple Event Tracking for Custom Interactions (like CV downloads)
             document.querySelectorAll('[data-event]').forEach(el => {

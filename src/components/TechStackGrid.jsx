@@ -114,7 +114,7 @@ export default function TechStackGrid() {
                     padding: 8px 16px;
                     border-radius: 3px;
                     background: transparent;
-                    color: var(--steel, #a9bcdc);
+                    color: var(--steel, #f4f6fc);
                     border: 1px solid rgba(227, 168, 87, 0.2);
                     cursor: pointer;
                     transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
@@ -182,15 +182,16 @@ export default function TechStackGrid() {
                     font-family: 'Fraunces', serif;
                     font-size: 23px;
                     font-weight: 500;
-                    color: var(--paper, #ffffff);
+                    color: #ffffff;
                     margin: 0;
                 }
 
                 .tech-badge-count {
                     font-family: 'JetBrains Mono', monospace;
                     font-size: 12px;
-                    color: var(--amber-dim, #b98640);
-                    border: 1px solid rgba(227, 168, 87, 0.25);
+                    color: var(--amber, #e3a857);
+                    border: 1px solid rgba(227, 168, 87, 0.35);
+                    background: rgba(227, 168, 87, 0.12);
                     padding: 2px 8px;
                     border-radius: 3px;
                     text-transform: lowercase;
@@ -199,7 +200,7 @@ export default function TechStackGrid() {
 
                 .tech-category-desc {
                     font-size: 15px;
-                    color: var(--steel, #a9bcdc);
+                    color: var(--steel, #f4f6fc);
                     margin: 0;
                     line-height: 1.55;
                 }
@@ -214,16 +215,16 @@ export default function TechStackGrid() {
                     display: flex;
                     flex-direction: column;
                     gap: 4px;
-                    background: rgba(14, 10, 20, 0.7);
-                    border: 1px solid rgba(227, 168, 87, 0.16);
+                    background: rgba(26, 12, 44, 0.65);
+                    border: 1px solid rgba(227, 168, 87, 0.2);
                     border-radius: 4px;
                     padding: 10px 12px;
                     transition: border-color 0.15s ease, background 0.15s ease;
                 }
 
                 .tech-badge-item:hover {
-                    background: rgba(227, 168, 87, 0.06);
-                    border-color: rgba(227, 168, 87, 0.45);
+                    background: rgba(227, 168, 87, 0.12);
+                    border-color: rgba(227, 168, 87, 0.5);
                 }
 
                 .badge-shield-wrap {
@@ -241,7 +242,7 @@ export default function TechStackGrid() {
                 .badge-item-note {
                     font-family: 'JetBrains Mono', monospace;
                     font-size: 13px;
-                    color: var(--steel, #a9bcdc);
+                    color: var(--steel, #f4f6fc);
                     line-height: 1.45;
                     margin-top: 2px;
                 }
@@ -265,7 +266,7 @@ export default function TechStackGrid() {
                     align-items: flex-start;
                     gap: 8px;
                     font-size: 14.5px;
-                    color: var(--steel, #a9bcdc);
+                    color: var(--steel, #f4f6fc);
                     line-height: 1.5;
                 }
 
@@ -278,6 +279,7 @@ export default function TechStackGrid() {
 
                 .bullet-text {
                     flex: 1;
+                    color: var(--steel, #f4f6fc);
                 }
             `}</style>
         </div>
