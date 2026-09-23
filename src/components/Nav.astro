@@ -1,6 +1,6 @@
 ---
 import { site } from '../data/site';
-import LiquidEther from './reactbits/LiquidEther.jsx';
+import ThemeAwareLiquidEther from './reactbits/ThemeAwareLiquidEther.jsx';
 
 interface Props {
     current?: 'home' | 'writing';
@@ -12,9 +12,8 @@ const homePrefix = current === 'home' ? '' : '/';
 
 <nav>
     <div class="bg-canvas-wrapper" style="position: absolute; inset: 0; z-index: 0; pointer-events: none;">
-        <LiquidEther
+        <ThemeAwareLiquidEther
             client:only="react"
-            colors={['#2a0a5e', '#e3a857', '#6b21d4']}
             mouseForce={18}
             cursorSize={120}
             resolution={0.4}
@@ -23,8 +22,6 @@ const homePrefix = current === 'home' ? '' : '/';
             autoIntensity={2.0}
             autoResumeDelay={2000}
             autoRampDuration={0.8}
-            backgroundColor="#0a0418"
-            lightMode={false}
         />
     </div>
     <div class="wrap" style="position: relative; z-index: 1;">
