@@ -24,7 +24,7 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.origin);
-const ogImage = new URL('/logo.png', canonical);
+const ogImage = new URL('/og.png', canonical);
 ---
 
 <!doctype html>
@@ -46,10 +46,10 @@ const ogImage = new URL('/logo.png', canonical);
             <meta property="article:published_time" content={publishDate.toISOString()} />
             <meta property="article:author" content={site.name} />
         )}
-        <meta property="og:image:width" content="512" />
-        <meta property="og:image:height" content="512" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:alt" content="SBK.dev Logo" />
+        <meta property="og:image:alt" content="Sibongakonke Simamane — Full-Stack Systems Developer" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
@@ -70,36 +70,53 @@ const ogImage = new URL('/logo.png', canonical);
             rel="stylesheet"
         />
         <meta name="generator" content={Astro.generator} />
-        <script type="application/ld+json" set:html={JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": site.name,
-            "jobTitle": "Full-Stack Systems Developer",
-            "url": canonical.href,
-            "image": new URL('/logo.png', canonical).href,
-            "logo": {
-                "@type": "ImageObject",
-                "url": new URL('/logo.png', canonical).href,
-                "width": 512,
-                "height": 512
+        <script type="application/ld+json" set:html={JSON.stringify([
+            {
+                "@context": "https://schema.org",
+                "@type": ["Person", "Organization"],
+                "name": site.name,
+                "url": site.origin,
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": `${site.origin}/logo.png`,
+                    "width": 512,
+                    "height": 512
+                },
+                "image": {
+                    "@type": "ImageObject",
+                    "url": `${site.origin}/og.png`,
+                    "width": 1200,
+                    "height": 630
+                },
+                "jobTitle": "Full-Stack Systems Developer",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Durban",
+                    "addressCountry": "South Africa"
+                },
+                "sameAs": [
+                    site.githubUrl,
+                    site.linkedinUrl
+                ],
+                "knowsAbout": [
+                    "Full-Stack Web Development",
+                    "AWS Cloud Infrastructure (Learning — VPC, EC2, CI/CD)",
+                    "Relational Database Systems",
+                    "Application Security",
+                    "System Modernization"
+                ]
             },
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Durban",
-                "addressCountry": "South Africa"
-            },
-            "sameAs": [
-                site.githubUrl,
-                site.linkedinUrl
-            ],
-            "knowsAbout": [
-                "Full-Stack Web Development",
-                "AWS Cloud Infrastructure (Learning — VPC, EC2, CI/CD)",
-                "Relational Database Systems",
-                "Application Security",
-                "System Modernization"
-            ]
-        })} />
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": site.mark,
+                "url": site.origin,
+                "author": {
+                    "@type": "Person",
+                    "name": site.name
+                }
+            }
+        ])} />
         <script is:inline>
             (function() {
                 // Kill all transitions BEFORE anything is painted to avoid flash
