@@ -51,20 +51,30 @@ import { projects } from '../data/projects';
 
                             {project.architectureDiagram && (
                                 <div class="arch-diagram-box">
-                                    <p class="arch-title">System Architecture Topology</p>
-                                    <div class="arch-nodes">
+                                    <div class="arch-diagram-header">
+                                        <span class="arch-tag">Architecture Flowchart</span>
+                                        <p class="arch-title">System Architecture Topology</p>
+                                    </div>
+                                    <div class="arch-flowchart-canvas">
                                         {project.architectureDiagram.nodes.map((node, i) => (
-                                            <>
-                                                <div class={`arch-node node-${node.type}`}>
-                                                    <span>{node.label}</span>
+                                            <div class="arch-step-wrap">
+                                                <div class={`arch-node-box node-type-${node.type}`}>
+                                                    <div class="node-step-badge">0{i + 1}</div>
+                                                    <div class="node-label-text">{node.label}</div>
                                                 </div>
                                                 {i < project.architectureDiagram.nodes.length - 1 && (
-                                                    <div class="arch-arrow">→</div>
+                                                    <div class="arch-connector">
+                                                        <span class="connector-line"></span>
+                                                        <span class="connector-arrow">►</span>
+                                                    </div>
                                                 )}
-                                            </>
+                                            </div>
                                         ))}
                                     </div>
-                                    <p class="arch-flow-summary">{project.architectureDiagram.flow}</p>
+                                    <div class="arch-flow-footer">
+                                        <span class="flow-label">Data Pipeline:</span>
+                                        <span class="arch-flow-summary">{project.architectureDiagram.flow}</span>
+                                    </div>
                                 </div>
                             )}
 
@@ -213,11 +223,29 @@ import { projects } from '../data/projects';
         border-radius: 4px;
     }
     .arch-diagram-box {
-        background: rgba(8, 4, 18, 0.65);
-        border: 1px solid rgba(138, 43, 226, 0.25);
-        border-radius: 6px;
-        padding: 16px 20px;
-        margin-bottom: 20px;
+        background: radial-gradient(circle at top left, rgba(26, 10, 46, 0.75), rgba(8, 4, 18, 0.95));
+        border: 1px solid rgba(168, 85, 247, 0.35);
+        border-radius: 8px;
+        padding: 20px 24px;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+    .arch-diagram-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+    .arch-tag {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        background: rgba(227, 168, 87, 0.15);
+        color: var(--amber, #e3a857);
+        border: 1px solid rgba(227, 168, 87, 0.4);
+        padding: 3px 8px;
+        border-radius: 3px;
     }
     .arch-title {
         font-family: 'JetBrains Mono', monospace;
@@ -225,39 +253,84 @@ import { projects } from '../data/projects';
         color: #d8b4fe;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        margin-bottom: 12px;
+        margin: 0;
     }
-    .arch-nodes {
+    .arch-flowchart-canvas {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 0;
         flex-wrap: wrap;
-        margin-bottom: 10px;
+        margin-bottom: 16px;
+        padding: 16px 12px;
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 6px;
     }
-    .arch-node {
-        display: inline-flex;
+    .arch-step-wrap {
+        display: flex;
         align-items: center;
-        gap: 6px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        padding: 6px 12px;
-        border-radius: 4px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 14px;
-        color: var(--steel, #f4f6fc);
+        flex-shrink: 0;
     }
-    .node-app { border-color: rgba(227, 168, 87, 0.4); }
-    .node-db { border-color: rgba(168, 85, 247, 0.4); }
-    .node-cloud { border-color: rgba(59, 130, 246, 0.4); }
-    .node-gateway { border-color: rgba(34, 197, 94, 0.4); }
-    .arch-arrow {
-        color: rgba(227, 168, 87, 0.6);
-        font-size: 15px;
+    .arch-node-box {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        padding: 10px 14px;
+        border-radius: 6px;
+        min-width: 140px;
+        position: relative;
+    }
+    .node-step-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        color: rgba(227, 168, 87, 0.85);
+        letter-spacing: 0.05em;
+    }
+    .node-label-text {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        font-weight: 500;
+        color: #ffffff;
+        line-height: 1.35;
+    }
+    .node-type-client { border-color: rgba(59, 130, 246, 0.45); background: rgba(59, 130, 246, 0.08); }
+    .node-type-gateway { border-color: rgba(34, 197, 94, 0.45); background: rgba(34, 197, 94, 0.08); }
+    .node-type-app { border-color: rgba(227, 168, 87, 0.45); background: rgba(227, 168, 87, 0.08); }
+    .node-type-db { border-color: rgba(168, 85, 247, 0.45); background: rgba(168, 85, 247, 0.08); }
+    .node-type-cloud { border-color: rgba(14, 165, 233, 0.45); background: rgba(14, 165, 233, 0.08); }
+    .arch-connector {
+        display: flex;
+        align-items: center;
+        padding: 0 8px;
+        color: rgba(227, 168, 87, 0.7);
+    }
+    .connector-line {
+        width: 16px;
+        height: 2px;
+        background: linear-gradient(90deg, rgba(227, 168, 87, 0.3), rgba(227, 168, 87, 0.8));
+    }
+    .connector-arrow {
+        font-size: 10px;
+        margin-left: -2px;
+    }
+    .arch-flow-footer {
+        display: flex;
+        gap: 8px;
+        align-items: baseline;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+    }
+    .flow-label {
+        color: var(--amber, #e3a857);
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
     }
     .arch-flow-summary {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 14px;
-        color: rgba(244, 246, 252, 0.7);
+        color: rgba(244, 246, 252, 0.8);
         margin: 0;
     }
     .arch-deep-dive {
