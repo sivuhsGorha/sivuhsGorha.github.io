@@ -119,6 +119,14 @@ sbk-dev/
 
 ---
 
+## 📄 License & Intellectual Property
+
+Copyright (c) 2026 **Sibongakonke Simamane**. All Rights Reserved.
+
+Code inspection is permitted strictly for recruitment, evaluation, and educational viewing. Copying, cloning, redistributing, or re-using any source code, design system, layout, or personal content for personal or commercial projects without prior written permission is strictly prohibited. See [`LICENSE`](LICENSE) for full details.
+
+---
+
 ## 📬 Contact & Connectivity
 
 - **Email**: [simangalisoblessed@gmail.com](mailto:simangalisoblessed@gmail.com)
