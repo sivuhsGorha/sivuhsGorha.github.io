@@ -1,35 +1,134 @@
-# SBK.dev
+<div align="center">
 
-Personal site for Sibongakonke — junior systems developer. Built with [Astro](https://astro.build), deployed as a static site on Cloudflare Pages.
+# ⚡ SBK.dev — Personal Portfolio & Systems Engineering Showcase
 
-## Local
+**Sibongakonke Simamane** — *Full-Stack Systems Developer & Cloud Infrastructure Engineer (AWS)*  
+Based in Durban, South Africa · Diploma HDIPSD2 (Distinction) · CompTIA Security+ & A+
 
-```sh
-npm install
-npm run dev
+[🌐 Live Website](https://sibongakonke-simamane.dev) • [📄 Download CV](https://sibongakonke-simamane.dev/Sibongakonke_Simamane_CV.pdf) • [💼 LinkedIn](https://www.linkedin.com/in/sibongakonke-simamane-371ba7236) • [💬 WhatsApp](https://wa.me/27694298444)
+
+---
+
+![Astro](https://img.shields.io/badge/Astro-5.0-FF5D01?style=for-the-badge&logo=astro&logoColor=white)
+![React](https://img.shields.io/badge/React-19.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS_Cloud-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP_8-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL_3NF-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+
+</div>
+
+---
+
+## 📌 Executive Overview
+
+This repository powers **[sbk.dev](https://sibongakonke-simamane.dev)** — the personal web portfolio and technical showcase for **Sibongakonke Simamane**. 
+
+Engineered with **Astro 5** and **React 19**, the site features high-performance static rendering, dark-theme aesthetics, interactive system architecture flowcharts, responsive skill matrices, and structured technical case studies.
+
+### Core Technical Pillars:
+- **Full-Stack Systems Development**: Backend engineering in PHP 8, Java, C, and Node.js with 3NF normalized MySQL database architectures.
+- **Security & Operational Resilience**: Field-level AES-256-GCM encryption, POPIA/DSAR compliance tools, Content Security Policy (CSP) nonces, CSRF protection, and rate-limiting middleware.
+- **AWS Cloud Infrastructure (Active Learning)**: Hands-on VPC subnet zoning, EC2 instance provisioning, Nginx reverse proxy tuning, and automated zero-downtime GitHub Actions CI/CD pipelines.
+
+---
+
+## 📐 System Architecture Overview
+
+### Asante Financial Services Application Engine
+```
+[ Borrower Portal / Web Client ]
+               │
+               ▼  (Security Middleware: CSP Nonce + CSRF + RateLimiter)
+[ PHP 8 Core Engine & Auth ]
+               │
+               ▼  (PiiEncryptor: AES-256-GCM + Blind Index _hash)
+[ MySQL 3NF Database ]
 ```
 
-Dev server: `http://localhost:4321`. Production check: `npm run build && npm run preview`.
+### Production AWS Cloud Infrastructure Topology
+```
+[ User Request / Route 53 DNS ]
+               │
+               ▼  (HTTPS / Port 443 SSL Termination)
+[ AWS Application Load Balancer ]
+               │
+               ▼  (Private Subnet Routing)
+[ EC2 Instances / Docker Containers ] ◄── (GitHub Actions CI/CD Pipeline)
+```
 
-Node 22+ (see `.node-version`).
+---
 
-## Content
+## 🚀 Technical Features of the Website
 
-| File | What to edit |
-| --- | --- |
-| [`src/data/site.ts`](src/data/site.ts) | Name, city, email, GitHub, LinkedIn, availability |
-| [`src/data/projects.ts`](src/data/projects.ts) | Project titles, summaries, stacks, repo URLs |
-| [`src/content/blog/*.md`](src/content/blog) | Writing posts (frontmatter: `title`, `pubDate`, `description`, optional `draft`) |
-| [`public/resume.pdf`](public/resume.pdf) | Replace this file with your real résumé; keep the same filename so the hero button keeps working |
+- ⚡ **Ultra-Fast Static Site Generation**: Built using Astro 5 with sub-second page loads and automated XML sitemap generation.
+- 🎨 **Deep Purple & Amber Theme System**: Dynamic dark-mode palette with interactive ambient background elements.
+- 📐 **Visual System Flowcharts**: Responsive architecture diagram canvas displaying pipeline data movement across microservice layers.
+- 🔍 **Technical Deep-Dive Accordions**: Collapsible technical specs detailing schema design, security focus, and operational deliverables.
+- 📱 **100% Responsive & Accessible**: WCAG AA color contrast compliance, keyboard nav support, and structured SEO metadata.
 
-## Deploy (Cloudflare Pages)
+---
 
-1. Push this repo to GitHub (`main`).
-2. Cloudflare dashboard → **Workers & Pages** → **Create** → connect the GitHub repo.
-3. Build command: `npm run build`
-4. Output directory: `dist`
-5. Environment variable: `NODE_VERSION` = `22`
+## 🛠️ Project Structure
 
-Preview URLs are created for pull requests. Production tracks `main`. A custom domain can be added later in the Pages project.
+```
+sbk-dev/
+├── src/
+│   ├── components/       # Astro & React UI components (Hero, Nav, Projects, Skills)
+│   ├── content/blog/     # Technical markdown writing & engineering articles
+│   ├── data/             # Site configuration, project metadata & tech stack definitions
+│   ├── layouts/          # Base HTML layout, SEO meta tags & JSON-LD structured data
+│   ├── pages/            # Astro static routes (Index, Writing, CV, Error pages)
+│   └── styles/           # Design system tokens & CSS styling rules
+├── public/               # Static assets (Favicons, OpenGraph card, CV PDF)
+└── astro.config.mjs      # Astro framework setup & sitemap integration
+```
 
-The `site` URL in [`astro.config.mjs`](astro.config.mjs) is set to `https://sibongakonke-simamane.dev`. Change it to your Pages URL or custom domain so canonicals, Open Graph, sitemap, and RSS stay accurate.
+---
+
+## 💻 Local Development Setup
+
+### Prerequisites
+- Node.js `v22.x` or higher
+- npm `v10.x` or higher
+
+### Installation & Execution
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/sivuhsGorha/sivuhsGorha.github.io.git
+   cd sivuhsGorha.github.io
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start local dev server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:4321](http://localhost:4321) in your browser.
+
+4. **Verify production build:**
+   ```bash
+   npx astro build
+   ```
+
+---
+
+## 📬 Contact & Connectivity
+
+- **Email**: [simangalisoblessed@gmail.com](mailto:simangalisoblessed@gmail.com)
+- **Phone**: [+27 74 357 2309](tel:+27743572309)
+- **WhatsApp**: [+27 69 429 8444](https://wa.me/27694298444)
+- **GitHub**: [github.com/sivuhsGorha](https://github.com/sivuhsGorha)
+- **LinkedIn**: [linkedin.com/in/sibongakonke-simamane-371ba7236](https://www.linkedin.com/in/sibongakonke-simamane-371ba7236)
+
+---
+
+<div align="center">
+  <sub>Designed & Engineered by <strong>Sibongakonke Simamane</strong> · Powered by Astro & GitHub Pages</sub>
+</div>
