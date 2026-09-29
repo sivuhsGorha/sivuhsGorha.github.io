@@ -43,20 +43,4 @@ export const projects: Project[] = [
         ],
         repoUrl: 'https://github.com/sivuhsGorha',
     },
-    {
-        id: 'P.03',
-        title: 'Secure Financial Transaction & Application Processing Backend',
-        badge: 'Backend Architecture · Database Engineering',
-        client: 'FinTech Systems Architecture',
-        summary:
-            'Engineered a robust, transactional backend engine designed for processing high-integrity customer financial records, loan applications, and document submissions. Structured a 3NF normalized relational schema in MySQL with strict referential constraints, indexing for sub-second query latency, and defensive input sanitization compliant with data protection standards. Implemented RESTful API endpoints handling state transitions, idempotent updates, and secure administrative reporting.',
-        stack: ['Java', 'PHP', 'MySQL', 'RESTful APIs', 'Database Indexing', 'CompTIA Security+'],
-        deliverables: [
-            'Normalized 3NF relational schema with data validation & indexing',
-            'Idempotent API handlers preventing race conditions & double submissions',
-            'Defense-in-depth sanitization adhering to CompTIA Security+ standards',
-            'Audit logging & administrative export workflows for compliance'
-        ],
-        repoUrl: 'https://github.com/sivuhsGorha',
-    },
 ];
