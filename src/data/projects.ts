@@ -23,36 +23,39 @@ export type Project = {
 export const projects: Project[] = [
     {
         id: 'P.01',
-        title: 'Asante Financial Services Website & Application Portal',
-        badge: 'Client Project · Freelance Delivery',
+        title: 'Asante Financial Services Engine & Loan Portal',
+        badge: 'Commercial Financial Platform · Freelance Delivery',
         client: 'Asante Financial Services (PTY) LTD',
         summary:
-            'Engineered the complete business web presence and multi-step customer loan application engine for Asante Financial Services — a South African short-term personal loans provider. Designed a 3NF normalized relational schema in MySQL with indexed query paths, defensive server-side input validation, and a mobile-responsive interface optimized for borrower conversion.',
-        stack: ['PHP 8.x', 'MySQL', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Apache', 'Linux'],
+            'Engineered the complete commercial web platform and multi-step customer loan application engine for Asante Financial Services — a South African short-term personal loans provider. Built a 3NF normalized MySQL database schema featuring field-level AES-256-GCM encryption for customer PII (ID numbers, bank details, salary), blind index searching (_hash), custom RBAC back-office management, TOTP/SMS Multi-Factor Authentication, POPIA/DSAR compliance tools, WhatsApp/WinSMS notification integrations, and security middleware (CSP nonces, CSRF protection, rate limiting). Delivered the complete platform independently end-to-end: from architectural design through to production server hardening and backup automation scripts.',
+        stack: ['PHP 8.x', 'MySQL (3NF)', 'AES-256-GCM Encryption', 'JavaScript (ES6+)', 'Apache / Nginx', 'TailwindCSS', 'WhatsApp & WinSMS API', 'POPIA / DSAR'],
         metrics: [
+            'AES-256-GCM PII Encryption',
+            'POPIA & DSAR Compliance',
             'Sub-15ms Query Latency',
-            '3NF Relational Schema',
-            'Server-Side Input Sanitization',
-            '100% Mobile Responsive'
+            'RBAC & Multi-Factor Auth'
         ],
         deliverables: [
-            'Dynamic multi-step loan application & customer document upload portal',
-            '3NF normalized MySQL database schema with relational constraints & indexing',
-            'Defensive input validation pipeline protecting against SQL injection & XSS',
-            'End-to-end client consultation, production deployment & domain architecture'
+            'Dynamic multi-step borrower loan application engine with document upload MIME validation',
+            'AES-256-GCM field-level PII encryption architecture with blind indexing (_hash) for exact search',
+            'Customer portal with TOTP/SMS MFA, application tracking, auto-save drafts & DSAR export',
+            'Admin back-office dashboard with role-based access control (RBAC), session event tracking & audit logs',
+            'Automated WhatsApp API & WinSMS integration for instant customer status notifications',
+            'Operational shell utilities for automated MySQL backups, log rotation, cron setup & DB indexing'
         ],
         architectureDiagram: {
             nodes: [
-                { id: 'client', label: 'Borrower / Web Browser', type: 'client' },
-                { id: 'web', label: 'Apache Web Server / PHP 8 Core', type: 'app' },
-                { id: 'db', label: 'MySQL Relational Database (3NF Schema)', type: 'db' }
+                { id: 'client', label: 'Borrower Portal / Web Client', type: 'client' },
+                { id: 'gateway', label: 'Security Middleware (CSP Nonce, CSRF, RateLimiter)', type: 'gateway' },
+                { id: 'app', label: 'PHP 8 Engine (Auth, RBAC, PiiEncryptor)', type: 'app' },
+                { id: 'db', label: 'MySQL Relational Database (AES-256-GCM PII + 3NF)', type: 'db' }
             ],
-            flow: 'Borrower Form → Apache/PHP Handler (Defensive Validation) → MySQL Indexed Queries'
+            flow: 'Borrower Payload → Security Middleware (CSRF + CSP) → PiiEncryptor (AES-256-GCM) → 3NF MySQL Database'
         },
         architectureDeepDive: {
-            overview: 'Structured around a clean MVC-style separation of concerns: input sanitization middleware validates incoming payload fields before passing data to parameterized MySQL statements.',
-            schemaHighlights: 'Normalized tables for Borrowers, Loan Applications, and Audit Logs linked via strict foreign key constraints and composite indexes for fast retrieval.',
-            securityFocus: 'All user submissions pass through htmlspecialchars sanitization, prepared statements ($stmt->bind_param), and strict file MIME-type checking for uploads.'
+            overview: 'Designed with an enterprise-grade security posture including defensive middleware (SecurityHeaders.php, RateLimiter.php), session event logging (AuditLogger.php), and role-based permissions (RbacMiddleware.php).',
+            schemaHighlights: '3NF normalized relational schema protecting sensitive PII (id_number, bank_account_number, salary_details, residential_address) with field-level AES-256-GCM encryption and blind index searching (_hash) to enable sub-15ms queries without storing unencrypted PII.',
+            securityFocus: 'Fully compliant with South African POPIA legislation featuring Data Subject Access Request (DSAR) export utilities, automated account deletion/anonymization workflows, TOTP/SMS Multi-Factor Authentication (MfaManager.php), and automated database backup/restore scripts (backup-db.sh, restore-db.sh).'
         },
         liveUrl: 'https://asantefs.co.za',
     },
