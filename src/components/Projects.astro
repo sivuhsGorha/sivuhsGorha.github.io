@@ -59,13 +59,17 @@ import { projects } from '../data/projects';
                                         {project.architectureDiagram.nodes.map((node, i) => (
                                             <div class="arch-step-wrap">
                                                 <div class={`arch-node-box node-type-${node.type}`}>
-                                                    <div class="node-step-badge">0{i + 1}</div>
+                                                    <div class="node-step-badge">STEP 0{i + 1}</div>
                                                     <div class="node-label-text">{node.label}</div>
                                                 </div>
                                                 {i < project.architectureDiagram.nodes.length - 1 && (
                                                     <div class="arch-connector">
-                                                        <span class="connector-line"></span>
-                                                        <span class="connector-arrow">►</span>
+                                                        <span class="connector-line-h"></span>
+                                                        <span class="connector-arrow-h">►</span>
+                                                        <div class="connector-v">
+                                                            <span class="connector-line-v"></span>
+                                                            <span class="connector-arrow-v">▼</span>
+                                                        </div>
                                                     </div>
                                                 )}
                                             </div>
@@ -257,30 +261,35 @@ import { projects } from '../data/projects';
     }
     .arch-flowchart-canvas {
         display: flex;
-        align-items: center;
+        align-items: stretch;
+        justify-content: space-between;
         gap: 0;
-        flex-wrap: wrap;
         margin-bottom: 16px;
-        padding: 16px 12px;
-        background: rgba(0, 0, 0, 0.35);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 18px 16px;
+        background: rgba(0, 0, 0, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 6px;
+        overflow-x: auto;
     }
     .arch-step-wrap {
         display: flex;
         align-items: center;
-        flex-shrink: 0;
+        flex: 1;
+    }
+    .arch-step-wrap:last-child {
+        flex: 0 1 auto;
     }
     .arch-node-box {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 6px;
         background: rgba(255, 255, 255, 0.04);
         border: 1px solid rgba(255, 255, 255, 0.14);
-        padding: 10px 14px;
+        padding: 12px 14px;
         border-radius: 6px;
+        flex: 1;
         min-width: 140px;
-        position: relative;
+        box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.02);
     }
     .node-step-badge {
         font-family: 'JetBrains Mono', monospace;
@@ -303,17 +312,63 @@ import { projects } from '../data/projects';
     .arch-connector {
         display: flex;
         align-items: center;
-        padding: 0 8px;
-        color: rgba(227, 168, 87, 0.7);
+        justify-content: center;
+        padding: 0 10px;
+        color: var(--amber, #e3a857);
+        flex-shrink: 0;
     }
-    .connector-line {
-        width: 16px;
+    .connector-line-h {
+        width: 18px;
         height: 2px;
-        background: linear-gradient(90deg, rgba(227, 168, 87, 0.3), rgba(227, 168, 87, 0.8));
+        background: linear-gradient(90deg, rgba(227, 168, 87, 0.3), rgba(227, 168, 87, 0.9));
     }
-    .connector-arrow {
-        font-size: 10px;
+    .connector-arrow-h {
+        font-size: 11px;
         margin-left: -2px;
+    }
+    .connector-v {
+        display: none;
+    }
+
+    @media (max-width: 900px) {
+        .arch-flowchart-canvas {
+            flex-direction: column;
+            align-items: stretch;
+            padding: 16px;
+        }
+        .arch-step-wrap {
+            flex-direction: column;
+            width: 100%;
+            align-items: stretch;
+        }
+        .arch-step-wrap:last-child {
+            flex: 1;
+        }
+        .arch-node-box {
+            width: 100%;
+        }
+        .arch-connector {
+            padding: 8px 0;
+            flex-direction: column;
+        }
+        .connector-line-h, .connector-arrow-h {
+            display: none;
+        }
+        .connector-v {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .connector-line-v {
+            width: 2px;
+            height: 18px;
+            background: linear-gradient(180deg, rgba(227, 168, 87, 0.3), rgba(227, 168, 87, 0.9));
+        }
+        .connector-arrow-v {
+            font-size: 10px;
+            margin-top: -2px;
+            color: var(--amber, #e3a857);
+        }
     }
     .arch-flow-footer {
         display: flex;
