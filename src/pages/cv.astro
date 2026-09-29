@@ -26,13 +26,17 @@ import { site } from '../data/site';
                         <h1 class="cv-name">{site.name}</h1>
                         <p class="cv-role">{site.role}</p>
                         <div class="cv-meta-links">
-                            <span>📍 {site.city}, KZN</span>
+                            <span>📍 {site.city}</span>
                             <span>•</span>
                             <a href={`mailto:${site.email}`}>✉️ {site.email}</a>
                             <span>•</span>
                             <span>📞 {site.phone}</span>
                             <span>•</span>
                             <a href={site.origin} target="_blank">🌐 sibongakonke-simamane.dev</a>
+                            <span>•</span>
+                            <a href={site.githubUrl} target="_blank">💻 {site.githubLabel}</a>
+                            <span>•</span>
+                            <a href={site.linkedinUrl} target="_blank">🔗 LinkedIn</a>
                         </div>
                     </div>
                     <div class="cv-distinction-badge">
@@ -122,17 +126,67 @@ import { site } from '../data/site';
                     <div class="cv-exp-item">
                         <div class="cv-exp-header">
                             <div>
-                                <h3 class="cv-job-title">Junior Systems Developer</h3>
+                                <h3 class="cv-job-title">Junior Systems Developer & Cloud Engineer</h3>
                                 <div class="cv-company">Future ProTechY (PTY) LTD</div>
                             </div>
                             <span class="cv-date">May 2026 – Present</span>
                         </div>
                         <div class="cv-location">Durban, KwaZulu-Natal • Full-time</div>
                         <ul class="cv-bullets">
-                            <li>Engaged in core systems development, software coding, and backend architecture tasks within a professional technology environment.</li>
-                            <li>Applying academic and industry knowledge of Java, PHP, JavaScript, and MySQL in commercial production systems.</li>
-                            <li>Contributing to end-to-end SDLC workflows, feature implementation, code reviews, and database integrations as part of an agile team.</li>
-                            <li>Developing practical experience in cloud containerization, system security best practices, and automated testing routines.</li>
+                            <li>Actively architecting and maintaining production cloud infrastructure on <strong>Amazon Web Services (AWS)</strong> — configuring <strong>VPCs</strong>, subnets, security isolation, and <strong>EC2 compute instances</strong> hosting live production applications.</li>
+                            <li>Designing, automating, and maintaining <strong>CI/CD pipelines</strong> and automated zero-downtime deployments for production software.</li>
+                            <li>Developing robust full-stack applications and backend services using <strong>Java, PHP, JavaScript, and MySQL</strong> supporting high-volume financial services systems.</li>
+                            <li>Managing application performance, server monitoring, reverse proxies, and infrastructure security under strict operational standards.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-exp-item">
+                        <div class="cv-exp-header">
+                            <div>
+                                <h3 class="cv-job-title">Fiber Installation Technician & Administrator</h3>
+                                <div class="cv-company">Babicon (PTY) LTD</div>
+                            </div>
+                            <span class="cv-date">Mar 2026 – May 2026</span>
+                        </div>
+                        <div class="cv-location">Durban, KwaZulu-Natal • Contract / Field & Technical Operations</div>
+                        <ul class="cv-bullets">
+                            <li>Performed fiber optic network installations, termination, and routing configurations at client sites across the Durban metropolitan region.</li>
+                            <li>Handled administrative functions including project documentation, client handovers, reporting, and operational coordination.</li>
+                            <li>Worked across both technical field deployment roles and office-based administrative responsibilities.</li>
+                            <li>Gained hands-on mastery in physical network infrastructure, structured cabling, optical testing, and ISP deployment processes.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-exp-item">
+                        <div class="cv-exp-header">
+                            <div>
+                                <h3 class="cv-job-title">Part-Time Systems Technician</h3>
+                                <div class="cv-company">Inguni Shield</div>
+                            </div>
+                            <span class="cv-date">Feb 2025 – Jan 2026</span>
+                        </div>
+                        <div class="cv-location">Durban, KwaZulu-Natal • Part-time</div>
+                        <ul class="cv-bullets">
+                            <li>Performed system configurations, programming, and hardware/software installations across client environments.</li>
+                            <li>Worked across multiple programming languages including <strong>C and Java</strong> in a live technical support and systems implementation context.</li>
+                            <li>Gained exposure to static website development and responsive architectures using modern JavaScript-based tooling and frameworks (Astro).</li>
+                            <li>Supported commercial clients with proactive technical troubleshooting, diagnostic analysis, and continuous maintenance.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-exp-item">
+                        <div class="cv-exp-header">
+                            <div>
+                                <h3 class="cv-job-title">EA Group Leader — BEEI Phase V</h3>
+                                <div class="cv-company">Zubane Primary School</div>
+                            </div>
+                            <span class="cv-date">June 2025 – Nov 2025</span>
+                        </div>
+                        <div class="cv-location">Ndwedwe, KwaZulu-Natal • Leadership & Programme Management</div>
+                        <ul class="cv-bullets">
+                            <li>Led a team of Education Assistants across daily attendance, task delivery, curriculum support, and compliance reporting.</li>
+                            <li>Acted as primary liaison between government programme coordinators, school executive management, and team members.</li>
+                            <li>Spearheaded onboarding, technical guidance, workflow optimization, and performance monitoring of newly appointed assistants.</li>
                         </ul>
                     </div>
 
@@ -146,9 +200,10 @@ import { site } from '../data/site';
                         </div>
                         <div class="cv-location">Ndwedwe, KwaZulu-Natal • Government Programme</div>
                         <ul class="cv-bullets">
-                            <li>Managed data capturing, electronic records management, and statutory documentation with zero discrepancy rate.</li>
-                            <li>Maintained strict adherence to data protection standards and confidentiality compliance protocols.</li>
+                            <li>Managed data capturing, electronic records management, and statutory reporting with zero discrepancy rate.</li>
+                            <li>Handled confidential administrative information with full compliance and strict adherence to data protection standards.</li>
                             <li>Coordinated daily communication workflows between educational staff, administrative leadership, and external stakeholders.</li>
+                            <li>Provided comprehensive technical and administrative support to guarantee smooth daily operational delivery.</li>
                         </ul>
                     </div>
                 </div>
@@ -164,12 +219,45 @@ import { site } from '../data/site';
                             </div>
                             <span class="cv-date">2026</span>
                         </div>
-                        <div class="cv-location">Production Financial Platform • Stack: PHP, MySQL, JavaScript, HTML5, CSS3</div>
+                        <div class="cv-location">Production Financial Platform • Stack: PHP, MySQL, JavaScript, HTML5, CSS3, Apache</div>
                         <ul class="cv-bullets">
                             <li>Architected and delivered the full online customer portal and business website for Asante Financial Services, a regulated personal finance provider.</li>
                             <li>Engineered a dynamic, database-driven loan application engine featuring multi-step form validation, document submission, and automated backend record processing.</li>
                             <li>Implemented secure data handling, input sanitization, and security-conscious storage routines complying with South African financial sector standards.</li>
                             <li>Managed the entire project lifecycle independently from requirements discovery and database schema modeling to production deployment.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-exp-item">
+                        <div class="cv-exp-header">
+                            <div>
+                                <h3 class="cv-job-title">Production AWS Cloud Infrastructure & Automated CI/CD Pipeline</h3>
+                                <div class="cv-company">Future ProTechY / Enterprise Deployment</div>
+                            </div>
+                            <span class="cv-date">2026</span>
+                        </div>
+                        <div class="cv-location">Cloud Architecture & DevOps • Stack: AWS (VPC, EC2, ALB, Route 53), Docker, GitHub Actions, Linux, Nginx</div>
+                        <ul class="cv-bullets">
+                            <li>Architected and implemented production cloud infrastructure on AWS engineered for high availability, network isolation, and automated delivery.</li>
+                            <li>Designed isolated VPC topologies with segregated public and private subnets, internet gateways, NAT gateways, and custom security groups.</li>
+                            <li>Provisioned EC2 compute instances behind an Application Load Balancer (ALB) with SSL/TLS termination and automated health checks.</li>
+                            <li>Configured automated GitHub Actions CI/CD pipelines enabling streamlined, zero-downtime containerized deployments.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-exp-item">
+                        <div class="cv-exp-header">
+                            <div>
+                                <h3 class="cv-job-title">Secure Financial Transaction & Processing Backend</h3>
+                                <div class="cv-company">FinTech Systems Architecture</div>
+                            </div>
+                            <span class="cv-date">2026</span>
+                        </div>
+                        <div class="cv-location">Backend Architecture • Stack: Java, PHP, MySQL, RESTful APIs, CompTIA Security+ Standards</div>
+                        <ul class="cv-bullets">
+                            <li>Engineered a transactional backend engine processing high-integrity customer records, loan submissions, and verification workflows.</li>
+                            <li>Structured a 3NF normalized relational schema in MySQL with strict referential constraints and sub-second query indexing.</li>
+                            <li>Implemented idempotent RESTful API endpoints and defense-in-depth sanitization adhering to CompTIA Security+ guidelines.</li>
                         </ul>
                     </div>
                 </div>
@@ -500,6 +588,155 @@ import { site } from '../data/site';
         }
         .cv-two-col {
             grid-template-columns: 1fr;
+        }
+    }
+
+    @media print {
+        :global(body) {
+            background: #ffffff !important;
+            color: #111827 !important;
+        }
+
+        :global(nav),
+        :global(footer),
+        .cv-top-bar {
+            display: none !important;
+        }
+
+        .cv-page {
+            padding: 0 !important;
+        }
+
+        .wrap {
+            max-width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .cv-sheet {
+            background: #ffffff !important;
+            border: none !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+        }
+
+        .cv-name {
+            color: #0f172a !important;
+        }
+
+        .cv-role {
+            color: #b45309 !important;
+        }
+
+        .cv-meta-links,
+        .cv-meta-links a,
+        .cv-meta-links span {
+            color: #475569 !important;
+        }
+
+        .cv-distinction-badge {
+            background: #fffbeb !important;
+            border: 1px solid #d97706 !important;
+        }
+
+        .dist-title, .dist-code {
+            color: #64748b !important;
+        }
+
+        .dist-score {
+            color: #b45309 !important;
+        }
+
+        .cv-sec-title {
+            color: #b45309 !important;
+            border-bottom: 1.5px solid #d97706 !important;
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+
+        .cv-sec-title span {
+            color: #0f172a !important;
+        }
+
+        .cv-summary {
+            color: #334155 !important;
+        }
+
+        .cv-summary strong {
+            color: #0f172a !important;
+        }
+
+        .cv-skill-card {
+            background: #f8fafc !important;
+            border: 1px solid #cbd5e1 !important;
+            border-left: 3px solid #d97706 !important;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        .cv-skill-card h3 {
+            color: #0f172a !important;
+        }
+
+        .cv-chips span {
+            background: #e2e8f0 !important;
+            border-color: #cbd5e1 !important;
+            color: #334155 !important;
+        }
+
+        .cv-chips span.chip-accent {
+            background: #fef3c7 !important;
+            border-color: #fde68a !important;
+            color: #92400e !important;
+            font-weight: 600;
+        }
+
+        .cv-job-title {
+            color: #0f172a !important;
+        }
+
+        .cv-company {
+            color: #b45309 !important;
+        }
+
+        .cv-date,
+        .cv-location {
+            color: #64748b !important;
+        }
+
+        .cv-bullets li {
+            color: #334155 !important;
+        }
+
+        .cv-bullets li::before {
+            color: #d97706 !important;
+        }
+
+        .cv-bullets strong {
+            color: #0f172a !important;
+        }
+
+        .cv-edu-card {
+            background: #f8fafc !important;
+            border: 1px solid #cbd5e1 !important;
+            border-left: 3px solid #d97706 !important;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        .cv-scores-grid {
+            border-top: 1px solid #e2e8f0 !important;
+            color: #475569 !important;
+        }
+
+        .cv-scores-grid strong {
+            color: #b45309 !important;
+        }
+
+        .cv-exp-item {
+            page-break-inside: avoid;
+            break-inside: avoid;
         }
     }
 </style>

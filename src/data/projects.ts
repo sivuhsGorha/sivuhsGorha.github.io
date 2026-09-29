@@ -3,7 +3,7 @@ export type Project = {
     title: string;
     summary: string;
     stack: string[];
-    repoUrl: string;
+    repoUrl?: string;
     liveUrl?: string;
     badge?: string;
     client?: string;
@@ -25,7 +25,6 @@ export const projects: Project[] = [
             'Mobile-responsive layout optimized for borrower conversion',
             'End-to-end client consultation & production deployment'
         ],
-        repoUrl: 'https://github.com/sivuhsGorha',
         liveUrl: 'https://asantefs.co.za',
     },
     {

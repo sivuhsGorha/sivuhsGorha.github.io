@@ -52,9 +52,11 @@ import { projects } from '../data/projects';
                                         Visit Live Website ↗
                                     </a>
                                 )}
-                                <a class="btn-repo" href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                                    View GitHub Profile →
-                                </a>
+                                {project.repoUrl && (
+                                    <a class="btn-repo" href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                                        View GitHub Profile →
+                                    </a>
+                                )}
                             </div>
                         </div>
                     </div>

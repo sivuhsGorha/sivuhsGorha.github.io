@@ -1,67 +1,53 @@
 # SIBONGAKONKE SIMAMANE
-Junior Systems Developer | Systems Development Graduate | Business Analyst
-Durban / Umhlanga • simangalisoblessed@gmail.com • 074 357 2309
+Junior Systems Developer & Cloud Engineer | Systems Development Graduate | AWS Cloud Consultant
+Durban, South Africa • simangalisoblessed@gmail.com • 074 357 2309
+Website: https://sibongakonke-simamane.dev • GitHub: https://github.com/sivuhsGorha • LinkedIn: https://www.linkedin.com/in/sibongakonke-simamane-371ba7236
+
 PROFESSIONAL PROFILE
-Driven and technically versatile Systems Development graduate currently employed as a
-Junior Systems Developer at Future ProTechY (PTY) LTD. Holds a confirmed Diploma
-(HDIPSD2) from Boston City Campus with a 76% Pass with Distinction average, alongside
-a CompTIA A+ certification. Experienced across the full development stack — Java, PHP,
-JavaScript, HTML, Android, and MySQL — with additional expertise in cybersecurity,
-business analysis, and software testing. Seeking a role that fully leverages my technical
-qualifications in a professional, growth-oriented environment.
+Technically versatile, distinction-level Systems Development graduate currently employed as a Junior Systems Developer & Cloud Engineer at Future ProTechY (PTY) LTD. Holds a confirmed Diploma (HDIPSD2) from Boston City Campus with an overall 76% Pass with Distinction average, alongside CompTIA A+ certification and CompTIA Security+ foundations. Experienced across the full software engineering lifecycle — designing and deploying production Amazon Web Services (AWS) cloud infrastructure (VPC, EC2, ALB, CI/CD), architecting robust backend APIs (Java, PHP, Node.js, MySQL), building modern reactive frontends (JavaScript/TypeScript, React, Astro), and enforcing strict cybersecurity standards.
+
 TECHNICAL SKILLS
-• Languages: Java, PHP, JavaScript, C, HTML
-• Mobile: Android application development
-• Databases: MySQL — design, implementation, querying, and management
-• Cybersecurity: CompTIA A+ (2024), CompTIA Security+, Ethical Hacking fundamentals
-• Business Analysis: Requirements gathering, process mapping, business process
-management
-• Software Engineering: Software testing, Agile methodology, software project
-management
-• Information Systems: Principles of Business Information Systems
-• AI & Emerging Tech: Prompt engineering and AI workflow implementation
-• Computer Literacy: Advanced — HCLT101-1 and HCLT108-1
+• Languages: Java, PHP, JavaScript (ES6+), TypeScript, C, HTML5, CSS3 / Tailwind
+• Cloud & DevOps: AWS (VPC, EC2, ALB, Route 53), Docker, GitHub Actions CI/CD, Linux, Nginx, SSL/TLS
+• Databases: MySQL (3NF Relational Schema, Sub-second Indexing), MS SQL Server, Database Design & Optimization
+• Cybersecurity: CompTIA A+ (2024), CompTIA Security+, Ethical Hacking fundamentals, VPC Isolation & Security Groups
+• Frontend Frameworks: React.js, Astro, Vue.js, Responsive UI/UX Architecture, Single Page Applications
+• Software Engineering: Agile / Scrum, Software Testing (TDD/Unit), Business Process Management (BPM), Git/GitHub, AI Workflow Automation
+
 WORK EXPERIENCE
-Junior Systems Developer | Future ProTechY (PTY) LTD
+Junior Systems Developer & Cloud Engineer | Future ProTechY (PTY) LTD
 Durban, KwaZulu-Natal • May 2026 – Present
-• Engaged in systems development, coding, and programming tasks within a
-professional technology environment
-• Applying academic knowledge of Java, PHP, JavaScript, and MySQL in real-world
-development contexts
-• Contributing to software solutions and development projects as part of a technical team
-• Developing practical experience in the software development lifecycle
-Education Assistant | KZN Department of Basic Education
-Ndwedwe, KZN • June – November 2025
-• Managed data capturing, records management, and documentation within a
-government programme
-• Handled confidential information with full compliance and professional integrity
-• Coordinated communication between staff, management, and external stakeholders
-• Provided administrative support to ensure smooth daily operational delivery
-PROJECTS
+• Actively architecting, configuring, and maintaining production cloud infrastructure on Amazon Web Services (AWS) — configuring isolated VPC topologies, public/private subnets, security groups, and EC2 compute instances hosting live applications
+• Designing, automating, and maintaining CI/CD pipelines using GitHub Actions for automated zero-downtime application deployments
+• Developing robust full-stack applications and backend services using Java, PHP, JavaScript, and MySQL supporting high-volume financial services systems
+• Managing application performance, server health monitoring, reverse proxy configurations (Nginx), and infrastructure security under strict operational standards
 
----
+Fiber Installation Technician & Administrator | Babicon (PTY) LTD
+Durban, KwaZulu-Natal • Mar 2026 – May 2026
+• Performed fiber optic network installations, termination, and routing configurations at client premises across the Durban metropolitan area
+• Handled key administrative functions including project documentation, client sign-offs, reporting, and operational task coordination
+• Balanced technical field deployments with office-based records management, ensuring compliance with ISP service level standards
+• Gained direct hands-on experience in physical network infrastructure, structured cabling, optical testing, and telecommunications deployment
 
-Freelance Web Developer | Asante Financial Services (asantefs.co.za)
-Durban, KwaZulu-Natal • 2026
-• Designed and developed the full business website for Asante Financial Services — a
-South African short-term personal loans company — using PHP, MySQL, and
-HTML/CSS
-• Built a dynamic, database-driven loan application platform with secure data handling
-and online submission functionality
-• Designed a clean, professional, and responsive front-end aligned with the client brand
-and financial services standards
-• Implemented security-conscious development practices appropriate for a regulated
-financial services environment
-• Managed the full project lifecycle independently — from requirements gathering and
-design through to deployment
-• Live site: asantefs.co.za
-LEADERSHIP
+Part-Time Systems Technician | Inguni Shield
+Durban, KwaZulu-Natal • Feb 2025 – Jan 2026
+• Performed comprehensive system configurations, programming, and hardware/software installations across diverse client operating environments
+• Maintained and debugged codebase routines in C and Java within a live technical support and systems implementation setting
+• Developed and deployed static web solutions utilizing modern JavaScript tooling and component frameworks (Astro)
+• Delivered responsive technical diagnostics, hardware upgrades, and routine software maintenance for commercial clients
+
 EA Group Leader — BEEI Phase V | Zubane Primary School
-Ndwedwe, KZN • June – November 2025
-• Led a team of Education Assistants across attendance, task delivery, and compliance
-reporting
-• Acted as primary liaison between programme management and team members
-• Supported onboarding, guidance, and performance monitoring of new assistants
+Ndwedwe, KwaZulu-Natal • June 2025 – Nov 2025
+• Led a team of Education Assistants across daily attendance tracking, task delivery, curriculum support, and compliance reporting
+• Acted as primary liaison between government programme coordinators, school executive management, and team members
+• Spearheaded onboarding, technical guidance, workflow optimization, and performance monitoring of newly appointed assistants
+
+Education Assistant | KZN Department of Basic Education
+Ndwedwe, KwaZulu-Natal • June 2025 – Nov 2025
+• Managed electronic data capturing, records management, and statutory reporting with a verified 100% accuracy and zero discrepancy rate
+• Handled confidential administrative files and student information with full compliance and strict adherence to POPIA privacy guidelines
+• Coordinated daily communication workflows between educational staff, administrative leadership, and external regional stakeholders
+• Provided comprehensive technical and administrative support to guarantee smooth daily operational delivery
 EDUCATION
 Diploma — Systems Development (HDIPSD2) | Boston City Campus
 Durban, KZN • 2023 – 2026
