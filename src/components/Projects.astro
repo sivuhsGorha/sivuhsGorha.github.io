@@ -27,6 +27,14 @@ import { projects } from '../data/projects';
                             </div>
                             <p class="project-summary">{project.summary}</p>
                             
+                            {project.metrics && project.metrics.length > 0 && (
+                                <div class="project-metrics">
+                                    {project.metrics.map((metric) => (
+                                        <span class="metric-badge">{metric}</span>
+                                    ))}
+                                </div>
+                            )}
+
                             {project.deliverables && project.deliverables.length > 0 && (
                                 <div class="project-deliverables">
                                     <p class="deliv-label">Delivered Scope:</p>
@@ -39,6 +47,50 @@ import { projects } from '../data/projects';
                                         ))}
                                     </ul>
                                 </div>
+                            )}
+
+                            {project.architectureDiagram && (
+                                <div class="arch-diagram-box">
+                                    <p class="arch-title">⚡ System Architecture Topology</p>
+                                    <div class="arch-nodes">
+                                        {project.architectureDiagram.nodes.map((node, i) => (
+                                            <>
+                                                <div class={`arch-node node-${node.type}`}>
+                                                    <span class="node-icon">
+                                                        {node.type === 'client' && '📱'}
+                                                        {node.type === 'app' && '⚙️'}
+                                                        {node.type === 'db' && '🗄️'}
+                                                        {node.type === 'cloud' && '☁️'}
+                                                        {node.type === 'gateway' && '🛡️'}
+                                                    </span>
+                                                    <span>{node.label}</span>
+                                                </div>
+                                                {i < project.architectureDiagram.nodes.length - 1 && (
+                                                    <div class="arch-arrow">➔</div>
+                                                )}
+                                            </>
+                                        ))}
+                                    </div>
+                                    <p class="arch-flow-summary">{project.architectureDiagram.flow}</p>
+                                </div>
+                            )}
+
+                            {project.architectureDeepDive && (
+                                <details class="arch-deep-dive">
+                                    <summary class="deep-dive-trigger">
+                                        <span>🔍 Technical Deep-Dive & Architecture Breakdown</span>
+                                        <span class="trigger-icon">+</span>
+                                    </summary>
+                                    <div class="deep-dive-body">
+                                        <p><strong>Overview:</strong> {project.architectureDeepDive.overview}</p>
+                                        {project.architectureDeepDive.schemaHighlights && (
+                                            <p><strong>Data & Schema Architecture:</strong> {project.architectureDeepDive.schemaHighlights}</p>
+                                        )}
+                                        {project.architectureDeepDive.securityFocus && (
+                                            <p><strong>Security & Resilience:</strong> {project.architectureDeepDive.securityFocus}</p>
+                                        )}
+                                    </div>
+                                </details>
                             )}
 
                             <div class="stack">
@@ -54,7 +106,7 @@ import { projects } from '../data/projects';
                                 )}
                                 {project.repoUrl && (
                                     <a class="btn-repo" href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                                        View GitHub Profile →
+                                        View Repository on GitHub →
                                     </a>
                                 )}
                             </div>
@@ -151,6 +203,104 @@ import { projects } from '../data/projects';
         font-size: 17px;
         line-height: 1.65;
         margin-bottom: 20px;
+    }
+    .project-metrics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .metric-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        color: #e3a857;
+        background: rgba(227, 168, 87, 0.08);
+        border: 1px solid rgba(227, 168, 87, 0.25);
+        padding: 4px 10px;
+        border-radius: 4px;
+    }
+    .arch-diagram-box {
+        background: rgba(8, 4, 18, 0.65);
+        border: 1px solid rgba(138, 43, 226, 0.25);
+        border-radius: 6px;
+        padding: 16px 20px;
+        margin-bottom: 20px;
+    }
+    .arch-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        color: #d8b4fe;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 12px;
+    }
+    .arch-nodes {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+    .arch-node {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        color: var(--steel, #f4f6fc);
+    }
+    .node-app { border-color: rgba(227, 168, 87, 0.4); }
+    .node-db { border-color: rgba(168, 85, 247, 0.4); }
+    .node-cloud { border-color: rgba(59, 130, 246, 0.4); }
+    .node-gateway { border-color: rgba(34, 197, 94, 0.4); }
+    .arch-arrow {
+        color: rgba(227, 168, 87, 0.6);
+        font-size: 15px;
+    }
+    .arch-flow-summary {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        color: rgba(244, 246, 252, 0.7);
+        margin: 0;
+    }
+    .arch-deep-dive {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 6px;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+    .deep-dive-trigger {
+        padding: 12px 16px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        color: var(--steel, #f4f6fc);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        user-select: none;
+    }
+    .deep-dive-trigger:hover {
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--amber);
+    }
+    .deep-dive-body {
+        padding: 14px 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--steel, #f4f6fc);
+    }
+    .deep-dive-body p {
+        margin: 0 0 10px 0;
+    }
+    .deep-dive-body p:last-child {
+        margin-bottom: 0;
     }
     .project-deliverables {
         background: rgba(255, 255, 255, 0.02);
