@@ -33,7 +33,7 @@ export const projects: Project[] = [
         badge: 'Cloud Architecture · Systems Engineering',
         client: 'Future ProTechY / Enterprise Deployment',
         summary:
-            'Architected and implemented production-grade cloud infrastructure on Amazon Web Services (AWS) engineered for high availability, network isolation, and automated delivery. Designed isolated VPC topologies with segregated public and private subnets, internet gateways, NAT gateways, and custom route tables. Provisioned EC2 compute instances hosting mission-critical services behind an Application Load Balancer (ALB) with automated SSL/TLS termination, coupled with GitHub Actions CI/CD pipelines for automated zero-downtime deployments.',
+            'Gained hands-on AWS experience by setting up and configuring cloud infrastructure in a professional environment. Worked with VPC topologies including subnets, route tables, and security groups. Provisioned and administered EC2 compute instances running live services, and configured GitHub Actions CI/CD pipelines for automated deployments. This project represents real, practical exposure rather than expert-level mastery — and forms the foundation of actively developing cloud skills.',
         stack: ['AWS VPC', 'AWS EC2', 'Application Load Balancer', 'Route 53', 'Docker', 'CI/CD Pipelines', 'Linux', 'Nginx'],
         deliverables: [
             'Isolated VPC architecture with public/private subnet zoning & security groups',

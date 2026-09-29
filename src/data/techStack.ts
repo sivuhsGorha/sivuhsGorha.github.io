@@ -193,14 +193,14 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#FF9900',
                 textColor: 'white',
                 logo: 'amazonaws',
-                note: 'Production VPC, EC2, CI/CD & Cloud Deploys'
+                note: 'Hands-on exposure — VPC, EC2, CI/CD (actively learning)'
             }
         ],
         bullets: [
-            'AWS VPC (Virtual Private Clouds, subnets, route tables & security isolation)',
-            'AWS EC2 (Production compute instances, auto-scaling & system administration)',
-            'AWS CI/CD Pipelines & Automated Production Deployments',
-            'AWS ALB & Route 53 (Application Load Balancers & traffic routing)'
+            'AWS VPC (Virtual Private Clouds, subnets, route tables & security groups — hands-on learning)',
+            'AWS EC2 (Compute instance setup & Linux administration in a professional setting)',
+            'CI/CD Pipelines using GitHub Actions & Docker (actively building proficiency)',
+            'AWS ALB & Route 53 (exposure-level experience — open to mentorship & growth)'
         ]
     },
     {
