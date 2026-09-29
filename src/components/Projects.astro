@@ -51,22 +51,15 @@ import { projects } from '../data/projects';
 
                             {project.architectureDiagram && (
                                 <div class="arch-diagram-box">
-                                    <p class="arch-title">⚡ System Architecture Topology</p>
+                                    <p class="arch-title">System Architecture Topology</p>
                                     <div class="arch-nodes">
                                         {project.architectureDiagram.nodes.map((node, i) => (
                                             <>
                                                 <div class={`arch-node node-${node.type}`}>
-                                                    <span class="node-icon">
-                                                        {node.type === 'client' && '📱'}
-                                                        {node.type === 'app' && '⚙️'}
-                                                        {node.type === 'db' && '🗄️'}
-                                                        {node.type === 'cloud' && '☁️'}
-                                                        {node.type === 'gateway' && '🛡️'}
-                                                    </span>
                                                     <span>{node.label}</span>
                                                 </div>
                                                 {i < project.architectureDiagram.nodes.length - 1 && (
-                                                    <div class="arch-arrow">➔</div>
+                                                    <div class="arch-arrow">→</div>
                                                 )}
                                             </>
                                         ))}
@@ -78,7 +71,7 @@ import { projects } from '../data/projects';
                             {project.architectureDeepDive && (
                                 <details class="arch-deep-dive">
                                     <summary class="deep-dive-trigger">
-                                        <span>🔍 Technical Deep-Dive & Architecture Breakdown</span>
+                                        <span>Technical Deep-Dive & Architecture Breakdown</span>
                                         <span class="trigger-icon">+</span>
                                     </summary>
                                     <div class="deep-dive-body">

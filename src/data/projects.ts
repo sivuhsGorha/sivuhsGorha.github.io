@@ -30,10 +30,10 @@ export const projects: Project[] = [
             'Engineered the complete business web presence and multi-step customer loan application engine for Asante Financial Services — a South African short-term personal loans provider. Designed a 3NF normalized relational schema in MySQL with indexed query paths, defensive server-side input validation, and a mobile-responsive interface optimized for borrower conversion.',
         stack: ['PHP 8.x', 'MySQL', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Apache', 'Linux'],
         metrics: [
-            '⚡ Sub-15ms Query Latency',
-            '🔒 3NF Relational Schema',
-            '🛡️ Server-Side Input Sanitization',
-            '📱 100% Mobile Responsive'
+            'Sub-15ms Query Latency',
+            '3NF Relational Schema',
+            'Server-Side Input Sanitization',
+            '100% Mobile Responsive'
         ],
         deliverables: [
             'Dynamic multi-step loan application & customer document upload portal',
@@ -65,10 +65,10 @@ export const projects: Project[] = [
             'Hands-on practical AWS cloud infrastructure setup for high-availability application hosting. Designed isolated Virtual Private Cloud (VPC) subnets, security group rules, EC2 compute instances with Nginx reverse proxies, and automated GitHub Actions CI/CD workflows for seamless code deployment.',
         stack: ['AWS VPC', 'AWS EC2', 'Application Load Balancer', 'Route 53', 'Docker', 'GitHub Actions', 'Linux', 'Nginx'],
         metrics: [
-            '🌐 Multi-Subnet VPC Zoning',
-            '🔄 Zero-Downtime Deployments',
-            '🛡️ Strict Security Group Rules',
-            '⚡ Nginx Reverse Proxy Tuning'
+            'Multi-Subnet VPC Zoning',
+            'Zero-Downtime Deployments',
+            'Strict Security Group Rules',
+            'Nginx Reverse Proxy Tuning'
         ],
         deliverables: [
             'Isolated VPC architecture with public/private subnet zoning & NAT gateway routing',
