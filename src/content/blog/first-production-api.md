@@ -2,6 +2,7 @@
 title: "Notes on writing my first production-facing API"
 pubDate: 2026-08-18
 description: "What changed when an API stopped being a tutorial and started having callers."
+tags: ["api", "backend"]
 ---
 
 A tutorial API can return whatever JSON you like. A production-facing one has callers who cache, retry, and file tickets when a field moves.

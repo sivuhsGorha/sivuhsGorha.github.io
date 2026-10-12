@@ -1,21 +1,14 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { Post } from '../lib/posts';
+import { formatDate, readingTime } from '../lib/posts';
 
 interface Props {
-    posts: CollectionEntry<'blog'>[];
+    posts: Post[];
     showArchiveLink?: boolean;
     heading?: string;
 }
 
 const { posts, showArchiveLink = false, heading = 'Notes from the work' } = Astro.props;
-
-function formatDate(date: Date) {
-    return date.toLocaleDateString('en-GB', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-    });
-}
 ---
 
 <section id="writing" class="reveal">
@@ -24,17 +17,28 @@ function formatDate(date: Date) {
         <h2>{heading}</h2>
         {
             posts.map((post) => (
-                <div class="post">
-                    <a href={`/writing/${post.id}`}>{post.data.title}</a>
-                    <time datetime={post.data.pubDate.toISOString()}>
-                        {formatDate(post.data.pubDate)}
-                    </time>
-                </div>
+                <article class="post">
+                    <div class="post-main">
+                        <a href={`/writing/${post.id}/`}>{post.data.title}</a>
+                        <p class="post-desc">{post.data.description}</p>
+                        {post.data.tags.length > 0 && (
+                            <ul class="post-tags" aria-label="Tags">
+                                {post.data.tags.map((tag) => <li>{tag}</li>)}
+                            </ul>
+                        )}
+                    </div>
+                    <div class="post-meta">
+                        <time datetime={post.data.pubDate.toISOString()}>
+                            {formatDate(post.data.pubDate)}
+                        </time>
+                        <span>{readingTime(post)} min read</span>
+                    </div>
+                </article>
             ))
         }
         {
             showArchiveLink && (
-                <a class="writing-more" href="/writing">
+                <a class="writing-more" href="/writing/">
                     All notes →
                 </a>
             )

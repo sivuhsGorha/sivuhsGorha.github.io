@@ -11,8 +11,11 @@ const posts = await getPublishedPosts();
 <Base
     current="writing"
     title={`Writing — ${site.mark}`}
-    description="Notes on backend work, debugging, and learning systems."
+    description="Notes on backend work, APIs, debugging and learning cloud infrastructure, by Sibongakonke Simamane."
 >
     <WritingList posts={posts} heading="All notes" />
+    <div class="wrap writing-feed">
+        <a class="writing-more" href="/rss.xml">Subscribe via RSS →</a>
+    </div>
     <Footer />
 </Base>

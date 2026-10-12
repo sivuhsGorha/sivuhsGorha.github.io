@@ -2,6 +2,7 @@
 title: "Why I'm learning to read stack traces before I panic"
 pubDate: 2026-07-12
 description: "A habit for slowing down when a backend error looks louder than it is."
+tags: ["debugging", "backend"]
 ---
 
 The first line of a stack trace is rarely the cause. It is the last place the exception was allowed to travel.

@@ -2,6 +2,7 @@
 title: "What I learned debugging a race condition I didn't know I'd written"
 pubDate: 2026-09-01
 description: "A short post-mortem on a concurrent bug that looked fine in the logs."
+tags: ["debugging", "backend"]
 ---
 
 The logs said the job had finished. The database said it had finished twice.
