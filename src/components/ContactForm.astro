@@ -1,8 +1,69 @@
 ---
-// ContactForm.astro using Formspree
+// ContactForm.astro: guided, multi-step enquiry form using Formspree
 import ColorBends from './reactbits/ColorBends.jsx';
 import { site } from '../data/site';
 const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
+
+type Question = {
+    label: string;
+    kind: 'textarea' | 'text' | 'select';
+    required?: boolean;
+    options?: string[];
+    hint?: string;
+};
+
+const services: { id: string; name: string; questions: Question[] }[] = [
+    {
+        id: 'web',
+        name: 'Full-Stack Web Application / Portal',
+        questions: [
+            { label: 'What business problem should this application solve, and for whom?', kind: 'textarea', required: true, hint: 'A sentence or two is sufficient.' },
+            { label: 'How is this handled at present (for example spreadsheets, email, paper, or an existing system)?', kind: 'textarea' },
+            { label: 'Will the system handle personal or financial information?', kind: 'select', options: ['Yes', 'No', 'Not yet determined'], hint: 'This determines the security and compliance work involved.' },
+            { label: 'Is there an existing website, system or database with which it must integrate?', kind: 'textarea' },
+        ],
+    },
+    {
+        id: 'aws',
+        name: 'AWS Cloud Architecture & CI/CD Pipelines',
+        questions: [
+            { label: 'What is currently running, and where is it hosted?', kind: 'textarea', required: true, hint: 'For example: a single server with a hosting provider, or an existing AWS environment.' },
+            { label: 'What is the primary concern?', kind: 'select', options: ['Deployment speed', 'Downtime and reliability', 'Cost', 'Security', 'Starting from scratch', 'Other'] },
+            { label: 'Do you have an existing AWS account?', kind: 'select', options: ['Yes', 'No', 'Not sure'] },
+            { label: 'Are there compliance or security requirements that apply?', kind: 'textarea' },
+        ],
+    },
+    {
+        id: 'backend',
+        name: 'Custom Backend & Database System',
+        questions: [
+            { label: 'What data will the system store, and approximately how much?', kind: 'textarea', required: true, hint: 'For example: customer records and transactions, with a rough volume per month.' },
+            { label: 'What will read from or write to it (for example a website, a mobile application, reports, other systems)?', kind: 'text' },
+            { label: 'Is this a new build, or work on an existing system?', kind: 'select', options: ['New build', 'Existing system', 'Both'] },
+            { label: 'Are there existing technologies or constraints I should be aware of?', kind: 'textarea' },
+        ],
+    },
+    {
+        id: 'audit',
+        name: 'Code Audit, Security & Performance',
+        questions: [
+            { label: 'What has prompted this review?', kind: 'select', required: true, options: ['A security incident or concern', 'A compliance requirement', 'Performance problems', 'Pre-launch assurance', 'Other'] },
+            { label: 'Which technologies is the system built on?', kind: 'textarea' },
+            { label: 'What level of access can you provide?', kind: 'select', options: ['Source code', 'Running system only', 'Not yet decided'] },
+            { label: 'Which areas are of greatest concern?', kind: 'textarea' },
+        ],
+    },
+    {
+        id: 'contract',
+        name: 'Contract Engineering / Other',
+        questions: [
+            { label: 'What role or responsibilities would the engagement cover?', kind: 'textarea', required: true, hint: 'For example: backend development, cloud support, or a fixed-term project.' },
+            { label: 'What is the expected duration and weekly time commitment?', kind: 'text' },
+            { label: 'What is the size and structure of the team I would work with?', kind: 'text' },
+            { label: 'Which technologies does the team use?', kind: 'text' },
+        ],
+    },
+];
 ---
 
 <section id="contact" class="contact-section reveal">
@@ -10,13 +71,13 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
         <div class="section-header">
             <p class="eyebrow-num" style="margin-bottom: 8px;">09 / project inquiry</p>
             <h2><span class="highlight">Start</span> A Project</h2>
-            <p>Have a project in mind, need AWS cloud infrastructure, or looking for contract engineering? Let's discuss your requirements and timeline.</p>
+            <p>Please select a service and the level of detail you would like to provide. A detailed brief allows me to respond with a more accurate proposal; a brief enquiry is sufficient to begin a conversation.</p>
         </div>
 
         <div class="form-container" style="position: relative; overflow: hidden;">
             <!-- ColorBends Background -->
             <div style="position: absolute; inset: 0; z-index: 0; pointer-events: auto;">
-                <ColorBends 
+                <ColorBends
                     client:only="react"
                     colors={["#e3a857", "#896ABD", "#1a0a2e"]}
                     rotation={90}
@@ -34,56 +95,144 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
                 />
             </div>
 
-            <form action={FORMSPREE_URL} method="POST" id="contact-form" style="position: relative; z-index: 1; width: 100%;">
-                
+            <form action={FORMSPREE_URL} method="POST" id="contact-form" novalidate style="position: relative; z-index: 1; width: 100%;">
+                <div id="form-body">
+
                 <!-- Honeypot: hidden from people, bots fill it in. Formspree also discards _gotcha submissions. -->
                 <div class="hp-field" aria-hidden="true">
                     <label for="website">Leave this field empty</label>
                     <input type="text" name="_gotcha" id="website" tabindex="-1" autocomplete="off" />
                 </div>
 
-                <div class="input-grid">
-                    <div class="input-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" name="name" id="name" required placeholder="Alex Morgan" />
-                    </div>
-
-                    <div class="input-group">
-                        <label for="email">Work Email</label>
-                        <input type="email" name="email" id="email" required placeholder="alex@company.com" />
+                <div class="progress" id="progress" hidden>
+                    <p class="progress-label" id="progress-label" aria-live="polite">Step 1 of 3</p>
+                    <div class="progress-track" role="progressbar" aria-label="Form progress" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1">
+                        <div class="progress-fill" id="progress-fill"></div>
                     </div>
                 </div>
 
-                <div class="input-grid">
-                    <div class="input-group">
-                        <label for="service">Service / Inquiry Type</label>
-                        <select name="service" id="service" required>
-                            <option value="" disabled selected>Select a service...</option>
-                            <option value="AWS Cloud Architecture & CI/CD Pipelines">AWS Cloud Architecture & CI/CD Pipelines</option>
-                            <option value="Full-Stack Web Application / Portal">Full-Stack Web Application / Portal</option>
-                            <option value="Custom Backend & Database System">Custom Backend & Database System</option>
-                            <option value="Code Audit, Security & Performance">Code Audit, Security & Performance</option>
-                            <option value="Contract Engineering / Other">Contract Engineering / Other</option>
-                        </select>
+                <!-- STEP 1: about you and the service -->
+                <div class="step" data-step="1" data-title="About you and your project">
+                    <h3 class="step-title" tabindex="-1">About you and your project</h3>
+
+                    <fieldset class="mode-picker">
+                        <legend>Level of detail</legend>
+                        <label class="mode-card">
+                            <input type="radio" name="enquiry_type" value="Brief enquiry" data-label="Enquiry type" checked />
+                            <span class="mode-title">Brief enquiry</span>
+                            <span class="mode-desc">Approximately one minute. A short summary of what you require.</span>
+                        </label>
+                        <label class="mode-card">
+                            <input type="radio" name="enquiry_type" value="Detailed project brief" data-label="Enquiry type" />
+                            <span class="mode-title">Detailed project brief</span>
+                            <span class="mode-desc">Approximately five minutes, in three short steps. Questions tailored to your service.</span>
+                        </label>
+                    </fieldset>
+
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" name="name" id="name" data-label="Name" data-error="Please enter your full name." required autocomplete="name" />
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" name="email" id="email" data-label="Email" data-error="Please enter a valid email address, for example name@company.com." required autocomplete="email" />
+                        </div>
                     </div>
 
-                    <div class="input-group">
-                        <label for="timeline">Estimated Timeline</label>
-                        <select name="timeline" id="timeline">
-                            <option value="ASAP (< 1 month)">ASAP (Under 1 month)</option>
-                            <option value="1 - 3 months" selected>1 - 3 months</option>
-                            <option value="Flexible / Exploratory">Flexible / Exploratory</option>
-                            <option value="Ongoing Contract Retainer">Ongoing Contract Retainer</option>
-                        </select>
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="service">Service Required</label>
+                            <select name="service" id="service" data-label="Service" data-error="Please select the service you require." required>
+                                <option value="" disabled selected>Select a service...</option>
+                                {services.map((s) => <option value={s.name}>{s.name}</option>)}
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="timeline">Estimated Timeline</label>
+                            <select name="timeline" id="timeline" data-label="Timeline">
+                                <option value="ASAP (under 1 month)">ASAP (under 1 month)</option>
+                                <option value="1 - 3 months" selected>1 - 3 months</option>
+                                <option value="Flexible / exploratory">Flexible / exploratory</option>
+                                <option value="Ongoing contract retainer">Ongoing contract retainer</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Brief mode -->
+                    <div class="mode-group" data-mode="brief">
+                        <div class="input-group">
+                            <label for="brief-message">What would you like to achieve?</label>
+                            <textarea name="brief_message" id="brief-message" data-label="Summary" data-error="Please describe briefly what you would like to achieve." rows="4" required placeholder="A few sentences are sufficient."></textarea>
+                        </div>
                     </div>
                 </div>
 
-                <div class="input-group">
-                    <label for="message">Project Scope & Details</label>
-                    <textarea name="message" id="message" rows="5" required placeholder="Tell me about your project, existing systems, or what you are looking to build..."></textarea>
+                <!-- STEP 2: tailored questions -->
+                <div class="step" data-step="2" data-title="Your project" hidden>
+                    <h3 class="step-title" tabindex="-1">Your project</h3>
+                    {services.map((s) => (
+                        <div class="question-set" data-service={s.name} hidden>
+                            {s.questions.map((q, i) => (
+                                <div class="input-group">
+                                    <label for={`q-${s.id}-${i}`}>{q.label}{!q.required && <span class="opt"> (optional)</span>}</label>
+                                    {q.hint && <p class="hint" id={`hint-${s.id}-${i}`}>{q.hint}</p>}
+                                    {q.kind === 'textarea' && (
+                                        <textarea name={`q_${s.id}_${i}`} id={`q-${s.id}-${i}`} data-label={q.label} data-error="Please answer this question so that I can understand your requirements." rows="3" required={q.required} aria-describedby={q.hint ? `hint-${s.id}-${i}` : undefined} disabled></textarea>
+                                    )}
+                                    {q.kind === 'text' && (
+                                        <input type="text" name={`q_${s.id}_${i}`} id={`q-${s.id}-${i}`} data-label={q.label} data-error="Please answer this question so that I can understand your requirements." required={q.required} aria-describedby={q.hint ? `hint-${s.id}-${i}` : undefined} disabled />
+                                    )}
+                                    {q.kind === 'select' && (
+                                        <select name={`q_${s.id}_${i}`} id={`q-${s.id}-${i}`} data-label={q.label} data-error="Please select an option." required={q.required} aria-describedby={q.hint ? `hint-${s.id}-${i}` : undefined} disabled>
+                                            <option value="" selected>{q.required ? 'Select an option...' : 'No preference stated'}</option>
+                                            {q.options?.map((o) => <option value={o}>{o}</option>)}
+                                        </select>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    ))}
                 </div>
 
-                <button type="submit" class="submit-btn">Send Project Inquiry →</button>
+                <!-- STEP 3: shared closing questions -->
+                <div class="step" data-step="3" data-title="Final details" hidden>
+                    <h3 class="step-title" tabindex="-1">Final details</h3>
+                    <div class="common-set">
+                        <div class="input-group">
+                            <label for="q-success">What outcome would make this project a success for you?</label>
+                            <textarea name="q_success" id="q-success" data-label="Definition of success" data-error="Please describe the outcome you are working towards." rows="3" required disabled></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="q-deadline">Is there a date by which this must be completed, and what determines that date?<span class="opt"> (optional)</span></label>
+                            <input type="text" name="q_deadline" id="q-deadline" data-label="Deadline and reason" disabled />
+                        </div>
+                        <div class="input-grid">
+                            <div class="input-group">
+                                <label for="q-contact">Preferred method of contact</label>
+                                <select name="q_contact" id="q-contact" data-label="Preferred contact method" disabled>
+                                    <option value="Email" selected>Email</option>
+                                    <option value="WhatsApp">WhatsApp</option>
+                                    <option value="Telephone call">Telephone call</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="q-time">Best time to reach you<span class="opt"> (optional)</span></label>
+                                <input type="text" name="q_time" id="q-time" data-label="Best time to reach" placeholder="e.g. weekdays after 14:00 SAST" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="draft-note" id="draft-note" hidden>Your answers are saved on this device until you send them, so you can return later.</p>
+
+                <div class="form-nav">
+                    <button type="button" class="back-btn" id="btn-back" hidden>← Back</button>
+                    <button type="button" class="submit-btn" id="btn-next" hidden>Continue →</button>
+                    <button type="submit" class="submit-btn" id="btn-submit">Submit Enquiry →</button>
+                </div>
                 <div class="form-assurances">
                     <span>Response within 24 hours</span>
                     <span class="assurance-dot">•</span>
@@ -92,6 +241,20 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
                     <span>Free Discovery Call</span>
                 </div>
                 <p id="form-result" class="form-result" aria-live="polite"></p>
+
+                </div>
+
+                <!-- Shown after a successful send -->
+                <div class="success-panel" id="success" hidden tabindex="-1">
+                    <h3 id="success-title">Thank you.</h3>
+                    <p>Your enquiry has been received. Here is what happens next:</p>
+                    <ol>
+                        <li>I review your enquiry and any detail you provided.</li>
+                        <li>You receive a reply within 24 hours, by your preferred method of contact.</li>
+                        <li>Where it would help, we arrange a free discovery call to agree scope and timeline.</li>
+                    </ol>
+                    <button type="button" class="back-btn" id="btn-again">Send another enquiry</button>
+                </div>
 
                 <div class="whatsapp-direct-box">
                     <span>Prefer immediate messaging?</span>
@@ -296,6 +459,97 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
         transform: translateY(-1px);
     }
 
+    .mode-picker {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        border: none;
+        margin: 0 0 1.5rem;
+        padding: 0;
+    }
+
+    .mode-picker legend {
+        font-family: var(--font-mono);
+        font-size: 0.82rem;
+        color: var(--steel, #f4f6fc);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .mode-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 0.9rem 1rem 0.9rem 2.4rem;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        cursor: pointer;
+        text-transform: none;
+        letter-spacing: normal;
+        transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .mode-card input {
+        position: absolute;
+        left: 1rem;
+        top: 1.05rem;
+        width: auto;
+        margin: 0;
+        accent-color: var(--color-primary, #e3a857);
+    }
+
+    .mode-card:has(input:checked) {
+        border-color: var(--color-primary, #e3a857);
+        background: rgba(227, 168, 87, 0.1);
+    }
+
+    .mode-card:has(input:focus-visible) {
+        outline: 2px solid var(--color-primary, #e3a857);
+        outline-offset: 2px;
+    }
+
+    .mode-title {
+        font-family: var(--font-heading);
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--color-text, #ffffff);
+    }
+
+    .mode-desc {
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        line-height: 1.4;
+        color: var(--steel, #f4f6fc);
+        opacity: 0.85;
+    }
+
+    .mode-hint {
+        margin: 0 0 1.25rem;
+        font-size: 0.9rem;
+        color: var(--steel, #f4f6fc);
+        opacity: 0.85;
+    }
+
+    .opt {
+        text-transform: none;
+        letter-spacing: normal;
+        opacity: 0.7;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    @media (max-width: 600px) {
+        .mode-picker {
+            grid-template-columns: 1fr;
+        }
+    }
+
     @media (max-width: 600px) {
         .input-grid {
             grid-template-columns: 1fr;
@@ -305,65 +559,450 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
             padding: 1.75rem 1.25rem;
         }
     }
+
+    /* ---- Guided form: readability, steps, progress, feedback ---- */
+    .form-container {
+        background: rgba(14, 8, 28, 0.82);
+        scroll-margin-top: 96px;
+    }
+
+    #form-body,
+    .success-panel {
+        background: rgba(14, 8, 28, 0.66);
+        backdrop-filter: blur(8px);
+        border-radius: 12px;
+        padding: 1.25rem;
+    }
+
+    .step[hidden],
+    .mode-group[hidden],
+    .question-set[hidden] {
+        display: none;
+    }
+
+    .step-title {
+        display: none;
+        margin: 0 0 1.25rem;
+        font-family: var(--font-heading);
+        font-size: 1.25rem;
+        color: var(--color-text, #ffffff);
+        outline: none;
+    }
+
+    #contact-form.is-detailed .step-title {
+        display: block;
+    }
+
+    .progress {
+        margin-bottom: 1.5rem;
+    }
+
+    .progress-label {
+        margin: 0 0 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.82rem;
+        color: var(--amber, #e3a857);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .progress-track {
+        height: 4px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 2px;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        width: 33%;
+        background: var(--color-primary, #e3a857);
+        transition: width 0.3s ease;
+    }
+
+    .hint {
+        margin: -0.25rem 0 0;
+        font-size: 0.85rem;
+        color: var(--steel, #f4f6fc);
+        opacity: 0.75;
+    }
+
+    .draft-note {
+        margin: 0.25rem 0 0;
+        font-size: 0.85rem;
+        color: var(--steel, #f4f6fc);
+        opacity: 0.75;
+    }
+
+    .form-nav {
+        display: flex;
+        gap: 12px;
+        margin-top: 0.75rem;
+    }
+
+    .form-nav .submit-btn {
+        flex: 1;
+        margin-top: 0;
+    }
+
+    .form-nav [hidden] {
+        display: none;
+    }
+
+    .back-btn {
+        background: transparent;
+        color: var(--color-text, #ffffff);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        font-family: var(--font-heading);
+        font-size: 1rem;
+        cursor: pointer;
+        transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .back-btn:hover,
+    .back-btn:focus-visible {
+        border-color: var(--color-primary, #e3a857);
+        color: var(--color-primary, #e3a857);
+    }
+
+    input[aria-invalid="true"],
+    select[aria-invalid="true"],
+    textarea[aria-invalid="true"] {
+        border-color: #ef4444;
+    }
+
+    .field-error {
+        margin: 0;
+        font-size: 0.85rem;
+        color: #fca5a5;
+    }
+
+    .success-panel {
+        padding: 0.5rem 0;
+        outline: none;
+    }
+
+    .success-panel[hidden] {
+        display: none;
+    }
+
+    .success-panel h3 {
+        margin: 0 0 0.75rem;
+        font-family: var(--font-heading);
+        font-size: 1.5rem;
+        color: var(--color-text, #ffffff);
+    }
+
+    .success-panel p,
+    .success-panel li {
+        color: var(--steel, #f4f6fc);
+        line-height: 1.6;
+    }
+
+    .success-panel ol {
+        margin: 0.75rem 0 1.5rem;
+        padding-left: 1.25rem;
+    }
+
+    @media (max-width: 600px) {
+        .form-nav {
+            flex-direction: column-reverse;
+        }
+    }
 </style>
 
 <script>
     const form = document.getElementById('contact-form') as HTMLFormElement | null;
-    const result = document.getElementById('form-result');
-    const submitBtn = form?.querySelector<HTMLButtonElement>('.submit-btn');
-    const MIN_FILL_MS = 3000;
-    const loadedAt = Date.now();
-    let hideTimer: number | undefined;
 
-    function show(message: string, color: string) {
-        if (!result) return;
-        window.clearTimeout(hideTimer);
-        result.textContent = message;
-        result.style.display = 'block';
-        result.style.color = color;
-    }
+    if (form) {
+        const DRAFT_KEY = 'sbk-contact-draft';
+        const MIN_FILL_MS = 3000;
+        const loadedAt = Date.now();
+        let hideTimer: number | undefined;
+        let saveTimer: number | undefined;
+        let step = 1;
 
-    if (form && result && submitBtn) {
+        type Field = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+
+        const $ = <T extends HTMLElement>(sel: string) => form.querySelector<T>(sel)!;
+        const result = $('#form-result');
+        const body = $('#form-body');
+        const success = $('#success');
+        const service = $<HTMLSelectElement>('#service');
+        const steps = Array.from(form.querySelectorAll<HTMLElement>('.step'));
+        const sets = Array.from(form.querySelectorAll<HTMLElement>('.question-set'));
+        const briefGroup = $('[data-mode="brief"]');
+        const commonSet = $('.common-set');
+        const progress = $('#progress');
+        const progressLabel = $('#progress-label');
+        const progressFill = $('#progress-fill');
+        const progressTrack = $('.progress-track');
+        const draftNote = $('#draft-note');
+        const btnBack = $<HTMLButtonElement>('#btn-back');
+        const btnNext = $<HTMLButtonElement>('#btn-next');
+        const btnSubmit = $<HTMLButtonElement>('#btn-submit');
+
+        const isDetailed = () =>
+            form.querySelector<HTMLInputElement>('input[name="enquiry_type"]:checked')?.value === 'Detailed project brief';
+        const totalSteps = () => (isDetailed() ? 3 : 1);
+
+        function show(message: string, color: string) {
+            window.clearTimeout(hideTimer);
+            result.textContent = message;
+            result.style.display = 'block';
+            result.style.color = color;
+        }
+
+        // Fields in hidden groups are also disabled, so they are neither validated nor sent.
+        function toggle(el: Element, on: boolean) {
+            (el as HTMLElement).hidden = !on;
+            el.querySelectorAll<Field>('input, select, textarea').forEach((f) => {
+                f.disabled = !on;
+                if (!on) clearError(f);
+            });
+        }
+
+        function update() {
+            const detailed = isDetailed();
+            const chosen = service.value;
+            form.classList.toggle('is-detailed', detailed);
+            toggle(briefGroup, !detailed);
+            sets.forEach((s) => toggle(s, detailed && s.dataset.service === chosen));
+            toggle(commonSet, detailed && chosen !== '');
+            draftNote.hidden = !detailed;
+            if (step > totalSteps()) step = 1;
+            showStep(step, false);
+        }
+
+        function showStep(n: number, moveFocus: boolean) {
+            step = n;
+            const total = totalSteps();
+            const detailed = isDetailed();
+            steps.forEach((s) => (s.hidden = Number(s.dataset.step) !== n));
+            progress.hidden = !detailed;
+            if (detailed) {
+                const title = steps[n - 1].dataset.title ?? '';
+                progressLabel.textContent = `Step ${n} of ${total}: ${title}`;
+                progressFill.style.width = `${(n / total) * 100}%`;
+                progressTrack.setAttribute('aria-valuenow', String(n));
+            }
+            btnBack.hidden = n === 1;
+            btnNext.hidden = n === total;
+            btnSubmit.hidden = n !== total;
+            if (moveFocus) {
+                form.closest('.form-container')?.scrollIntoView({ block: 'start' });
+                steps[n - 1].querySelector<HTMLElement>('.step-title')?.focus({ preventScroll: true });
+            }
+        }
+
+        // ---------- validation ----------
+        function clearError(f: Field) {
+            f.removeAttribute('aria-invalid');
+            const err = f.parentElement?.querySelector('.field-error');
+            if (err) {
+                f.setAttribute('aria-describedby', (f.getAttribute('aria-describedby') ?? '').split(' ').filter((id) => id && id !== err.id).join(' '));
+                if (!f.getAttribute('aria-describedby')) f.removeAttribute('aria-describedby');
+                err.remove();
+            }
+        }
+
+        function setError(f: Field, message: string) {
+            clearError(f);
+            f.setAttribute('aria-invalid', 'true');
+            const err = document.createElement('p');
+            err.className = 'field-error';
+            err.id = `err-${f.id}`;
+            err.setAttribute('role', 'alert');
+            err.textContent = message;
+            f.insertAdjacentElement('afterend', err);
+            f.setAttribute('aria-describedby', `${f.getAttribute('aria-describedby') ?? ''} ${err.id}`.trim());
+        }
+
+        function checkField(f: Field): boolean {
+            if (f.disabled || !f.required) return true;
+            const value = f.value.trim();
+            let message = '';
+            if (value === '') message = f.dataset.error || 'This field is required.';
+            else if (f.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) message = f.dataset.error || 'Please enter a valid email address.';
+            if (message) {
+                setError(f, message);
+                return false;
+            }
+            clearError(f);
+            return true;
+        }
+
+        function validateStep(n: number): boolean {
+            const fields = Array.from(steps[n - 1].querySelectorAll<Field>('input, select, textarea'));
+            let firstBad: Field | undefined;
+            for (const f of fields) {
+                if (!checkField(f) && !firstBad) firstBad = f;
+            }
+            firstBad?.focus();
+            return !firstBad;
+        }
+
+        form.addEventListener('focusout', (e) => {
+            const f = e.target as Field;
+            if (f.matches?.('input, select, textarea') && f.required && f.value.trim() !== '') checkField(f);
+        });
+
+        form.addEventListener('input', (e) => {
+            const f = e.target as Field;
+            if (f.getAttribute?.('aria-invalid') === 'true') clearError(f);
+            if (f instanceof HTMLTextAreaElement) {
+                f.style.height = 'auto';
+                f.style.height = `${f.scrollHeight}px`;
+            }
+            queueSave();
+        });
+
+        form.addEventListener('change', (e) => {
+            const t = e.target as HTMLElement;
+            if (t.matches('input[name="enquiry_type"]') || t.id === 'service') update();
+            queueSave();
+        });
+
+        // ---------- draft autosave (per device) ----------
+        function queueSave() {
+            window.clearTimeout(saveTimer);
+            saveTimer = window.setTimeout(saveDraft, 400);
+        }
+
+        function saveDraft() {
+            if (!success.hidden) return;
+            try {
+                const data: Record<string, string> = {};
+                form.querySelectorAll<Field>('input[name], select[name], textarea[name]').forEach((f) => {
+                    if (f.name === '_gotcha') return;
+                    if (f instanceof HTMLInputElement && f.type === 'radio') {
+                        if (f.checked) data[f.name] = f.value;
+                    } else if (f.value) {
+                        data[f.name] = f.value;
+                    }
+                });
+                localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+            } catch {}
+        }
+
+        function clearDraft() {
+            try {
+                localStorage.removeItem(DRAFT_KEY);
+            } catch {}
+        }
+
+        function restoreDraft() {
+            try {
+                const raw = localStorage.getItem(DRAFT_KEY);
+                if (!raw) return;
+                const data = JSON.parse(raw) as Record<string, string>;
+                for (const [name, value] of Object.entries(data)) {
+                    form.querySelectorAll<Field>(`[name="${name}"]`).forEach((f) => {
+                        if (f instanceof HTMLInputElement && f.type === 'radio') f.checked = f.value === value;
+                        else f.value = value;
+                    });
+                }
+                form.querySelectorAll('textarea').forEach((t) => {
+                    t.style.height = 'auto';
+                    if (t.value) t.style.height = `${t.scrollHeight}px`;
+                });
+            } catch {}
+        }
+
+        // ---------- navigation ----------
+        btnNext.addEventListener('click', () => {
+            if (validateStep(step)) showStep(step + 1, true);
+        });
+        btnBack.addEventListener('click', () => showStep(step - 1, true));
+
+        $('#btn-again').addEventListener('click', () => {
+            success.hidden = true;
+            body.hidden = false;
+            step = 1;
+            update();
+            form.closest('.form-container')?.scrollIntoView({ block: 'start' });
+        });
+
+        // ---------- submit ----------
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (submitBtn.disabled) return;
+            if (btnSubmit.disabled) return;
 
-            const data = Object.fromEntries(new FormData(form));
+            // Enter on an earlier step moves forward instead of submitting.
+            if (step < totalSteps()) {
+                if (validateStep(step)) showStep(step + 1, true);
+                return;
+            }
+            if (!validateStep(step)) return;
+
+            const entries = new FormData(form); // excludes disabled fields
+            const name = String(entries.get('name') ?? '').trim();
+            const firstName = name.split(/\s+/)[0] || 'there';
 
             // Bots fill the honeypot or submit instantly; pretend success and drop it.
-            if (data._gotcha || Date.now() - loadedAt < MIN_FILL_MS) {
-                show('Message sent successfully!', '#10b981');
-                form.reset();
+            if (entries.get('_gotcha') || Date.now() - loadedAt < MIN_FILL_MS) {
+                finish(firstName);
                 return;
             }
 
-            submitBtn.disabled = true;
-            show('Sending...', 'var(--color-text-muted)');
+            // Send human-readable labels so the notification email reads like a brief.
+            const payload: Record<string, string> = {};
+            for (const [key, value] of entries) {
+                if (key === '_gotcha' || typeof value !== 'string' || value.trim() === '') continue;
+                const field = form.querySelector<HTMLElement>(`[name="${key}"]`);
+                payload[field?.dataset.label || key] = value.trim();
+            }
+            payload['email'] = String(entries.get('email') ?? '').trim();
+            payload['_subject'] = `${isDetailed() ? 'Detailed brief' : 'Enquiry'}: ${service.value} (${name || 'unknown'})`;
+
+            btnSubmit.disabled = true;
+            const label = btnSubmit.textContent;
+            btnSubmit.textContent = 'Sending...';
+            show('', 'inherit');
 
             try {
                 const response = await fetch(form.action, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-                    body: JSON.stringify(data),
+                    body: JSON.stringify(payload),
                 });
-                const body = await response.json().catch(() => ({}));
+                const data = await response.json().catch(() => ({}));
 
                 if (response.ok) {
-                    show('Message sent successfully!', '#10b981');
-                    form.reset();
-                } else if (Array.isArray(body.errors)) {
-                    show(body.errors.map((err: { message: string }) => err.message).join(', '), '#ef4444');
+                    finish(firstName);
+                } else if (Array.isArray(data.errors)) {
+                    show(data.errors.map((err: { message: string }) => err.message).join(', '), '#ef4444');
                 } else {
-                    show('Oops! There was a problem submitting your form', '#ef4444');
+                    show('There was a problem submitting your enquiry. Please try again, or contact me on WhatsApp.', '#ef4444');
                 }
             } catch {
-                show('Something went wrong. Please try again or use WhatsApp.', '#ef4444');
+                show('Your enquiry could not be sent. Please check your connection and try again, or contact me on WhatsApp.', '#ef4444');
             } finally {
-                submitBtn.disabled = false;
+                btnSubmit.disabled = false;
+                btnSubmit.textContent = label;
                 hideTimer = window.setTimeout(() => {
                     result.style.display = 'none';
-                }, 5000);
+                }, 10000);
             }
         });
+
+        function finish(firstName: string) {
+            clearDraft();
+            form.reset();
+            form.querySelectorAll('textarea').forEach((t) => (t.style.height = ''));
+            step = 1;
+            update();
+            result.style.display = 'none';
+            $('#success-title').textContent = `Thank you, ${firstName}.`;
+            body.hidden = true;
+            success.hidden = false;
+            form.closest('.form-container')?.scrollIntoView({ block: 'start' });
+            success.focus({ preventScroll: true });
+        }
+
+        restoreDraft();
+        update();
     }
 </script>
