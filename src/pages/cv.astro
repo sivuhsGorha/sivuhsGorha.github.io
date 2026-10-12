@@ -1,9 +1,11 @@
-﻿---
+---
 import Base from '../layouts/Base.astro';
-import { site } from '../data/site';
+import { cv } from '../data/cv.mjs';
+
+const c = cv.contact;
 ---
 
-<Base title={`Curriculum Vitae — ${site.name}`} description={`Curriculum Vitae of ${site.name} — Junior Systems Developer.`}>
+<Base title={`Curriculum Vitae — ${cv.name}`} description={`Curriculum Vitae of ${cv.name} — ${cv.headline}.`} current="cv">
     <section class="cv-page reveal">
         <div class="wrap">
             <div class="cv-top-bar">
@@ -18,292 +20,108 @@ import { site } from '../data/site';
                 </a>
             </div>
 
-            <!-- CV Document Container -->
             <div class="cv-sheet">
-                <!-- Header -->
                 <div class="cv-sheet-header">
                     <div>
-                        <h1 class="cv-name">{site.name}</h1>
-                        <p class="cv-role">{site.role}</p>
+                        <h1 class="cv-name">{cv.name}</h1>
+                        <p class="cv-role">{cv.headline}</p>
                         <div class="cv-meta-links">
-                            <span>📍 {site.city}</span>
+                            <span>{c.location}</span>
                             <span>•</span>
-                            <a href={`mailto:${site.email}`}>✉️ {site.email}</a>
+                            <span>{c.phone}</span>
                             <span>•</span>
-                            <span>📞 {site.phone}</span>
+                            <a href={`mailto:${c.email}`}>{c.email}</a>
                             <span>•</span>
-                            <a href={site.origin} target="_blank">🌐 sibongakonke-simamane.dev</a>
+                            <a href={c.website.url} target="_blank" rel="noopener noreferrer">{c.website.label}</a>
                             <span>•</span>
-                            <a href={site.githubUrl} target="_blank">💻 {site.githubLabel}</a>
+                            <a href={c.github.url} target="_blank" rel="noopener noreferrer">{c.github.label}</a>
                             <span>•</span>
-                            <a href={site.linkedinUrl} target="_blank">🔗 LinkedIn</a>
+                            <a href={c.linkedin.url} target="_blank" rel="noopener noreferrer">LinkedIn</a>
                         </div>
                     </div>
                     <div class="cv-distinction-badge">
-                        <div class="dist-title">BOSTON DIPLOMA</div>
-                        <div class="dist-score">76% Distinction Pass</div>
-                        <div class="dist-code">HDIPSD2 • Confirmed 2026</div>
+                        <div class="dist-title">DIPLOMA</div>
+                        <div class="dist-score">76% Distinction</div>
+                        <div class="dist-code">HDIPSD2 • Boston City Campus</div>
                     </div>
                 </div>
 
-                <!-- Profile -->
                 <div class="cv-block">
-                    <h2 class="cv-sec-title"><span>//</span> Professional Profile</h2>
-                    <p class="cv-summary">
-                        Driven and technically versatile <strong>Systems Development graduate</strong> currently employed as a Junior Systems Developer at <strong>Future ProTechY (PTY) LTD</strong>. Holds a confirmed Diploma (HDIPSD2) from Boston City Campus with a <strong>76% Pass with Distinction</strong> average, alongside <strong>CompTIA A+</strong> and <strong>CompTIA Security+</strong> foundations. Experienced across full-stack engineering — <strong>Java, PHP, JavaScript, React, Node.js, Docker, and MySQL</strong> — with practical rigor in cybersecurity, database design, software testing, and business analysis. Currently gaining hands-on exposure to <strong>AWS cloud infrastructure</strong> in a professional environment and actively seeking to grow in this area with the support of experienced mentors.
-                    </p>
+                    <h2 class="cv-sec-title">Summary</h2>
+                    <p class="cv-summary" set:html={cv.summary} />
                 </div>
 
-                <!-- Technical Skills -->
                 <div class="cv-block">
-                    <h2 class="cv-sec-title"><span>//</span> Technical Competencies</h2>
+                    <h2 class="cv-sec-title">Skills</h2>
                     <div class="cv-skills-grid">
-                        <div class="cv-skill-card">
-                            <h3>Core Languages & Architecture</h3>
-                            <div class="cv-chips">
-                                <span class="chip-accent">Java</span>
-                                <span class="chip-accent">PHP</span>
-                                <span class="chip-accent">JavaScript (ES6+)</span>
-                                <span>C</span>
-                                <span>HTML5</span>
-                                <span>CSS3 / Tailwind</span>
+                        {cv.skills.map((s) => (
+                            <div class="cv-skill-card">
+                                <h3>{s.label}</h3>
+                                <p class="cv-skill-items">{s.items}</p>
                             </div>
-                        </div>
-                        <div class="cv-skill-card">
-                            <h3>Frontend & Frameworks</h3>
-                            <div class="cv-chips">
-                                <span class="chip-accent">React.js</span>
-                                <span>Vue.js</span>
-                                <span class="chip-accent">Astro</span>
-                                <span>Responsive UI</span>
-                                <span>SPA Architecture</span>
-                            </div>
-                        </div>
-                        <div class="cv-skill-card">
-                            <h3>Backend, Cloud & DevOps</h3>
-                            <div class="cv-chips">
-                                <span class="chip-accent">Node.js</span>
-                                <span>Express</span>
-                                <span class="chip-accent">Docker</span>
-                                <span>Kubernetes</span>
-                                <span>AWS (Learning � VPC, EC2, CI/CD)</span>
-                                <span>Nginx</span>
-                            </div>
-                        </div>
-                        <div class="cv-skill-card">
-                            <h3>Databases & Data Modeling</h3>
-                            <div class="cv-chips">
-                                <span class="chip-accent">MySQL</span>
-                                <span>MS SQL Server</span>
-                                <span>Relational Schema</span>
-                                <span>Query Optimization</span>
-                            </div>
-                        </div>
-                        <div class="cv-skill-card">
-                            <h3>Cybersecurity & Networking</h3>
-                            <div class="cv-chips">
-                                <span class="chip-accent">CompTIA A+ (2024)</span>
-                                <span class="chip-accent">CompTIA Security+</span>
-                                <span>Ethical Hacking</span>
-                                <span>LAN & Cabling</span>
-                            </div>
-                        </div>
-                        <div class="cv-skill-card">
-                            <h3>Methodologies & Emerging Tech</h3>
-                            <div class="cv-chips">
-                                <span>Agile / Scrum</span>
-                                <span>Software Testing</span>
-                                <span>BPM & Analysis</span>
-                                <span class="chip-accent">Prompt Engineering / AI</span>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
 
-                <!-- Experience -->
                 <div class="cv-block">
-                    <h2 class="cv-sec-title"><span>//</span> Work Experience</h2>
-                    <div class="cv-exp-item">
-                        <div class="cv-exp-header">
-                            <div>
-                                <h3 class="cv-job-title">Junior Systems Developer & Cloud Engineer</h3>
-                                <div class="cv-company">Future ProTechY (PTY) LTD</div>
+                    <h2 class="cv-sec-title">Experience</h2>
+                    {cv.experience.map((j) => (
+                        <div class="cv-exp-item">
+                            <div class="cv-exp-header">
+                                <div>
+                                    <h3 class="cv-job-title">{j.title}</h3>
+                                    <div class="cv-company">{j.company}</div>
+                                </div>
+                                <span class="cv-date">{j.dates}</span>
                             </div>
-                            <span class="cv-date">May 2026 – Present</span>
+                            <div class="cv-location">{j.location}</div>
+                            <ul class="cv-bullets">
+                                {j.bullets.map((b) => <li set:html={b} />)}
+                            </ul>
                         </div>
-                        <div class="cv-location">Durban, KwaZulu-Natal • Full-time</div>
-                        <ul class="cv-bullets">
-                            <li>Gaining hands-on exposure to <strong>Amazon Web Services (AWS)</strong> cloud infrastructure in a professional environment — working with <strong>VPCs</strong>, subnets, security groups, and <strong>EC2 compute instances</strong>. Actively building cloud skills and open to mentorship and further professional development in this area.</li>
-                            <li>Designing, automating, and maintaining <strong>CI/CD pipelines</strong> and automated zero-downtime deployments for production software.</li>
-                            <li>Developing robust full-stack applications and backend services using <strong>Java, PHP, JavaScript, and MySQL</strong> supporting high-volume financial services systems.</li>
-                            <li>Managing application performance, server monitoring, reverse proxies, and infrastructure security under strict operational standards.</li>
-                        </ul>
-                    </div>
-
-                    <div class="cv-exp-item">
-                        <div class="cv-exp-header">
-                            <div>
-                                <h3 class="cv-job-title">Fiber Installation Technician & Administrator</h3>
-                                <div class="cv-company">Babicon (PTY) LTD</div>
-                            </div>
-                            <span class="cv-date">Mar 2026 – May 2026</span>
-                        </div>
-                        <div class="cv-location">Durban, KwaZulu-Natal • Contract / Field & Technical Operations</div>
-                        <ul class="cv-bullets">
-                            <li>Performed fiber optic network installations, termination, and routing configurations at client sites across the Durban metropolitan region.</li>
-                            <li>Handled administrative functions including project documentation, client handovers, reporting, and operational coordination.</li>
-                            <li>Worked across both technical field deployment roles and office-based administrative responsibilities.</li>
-                            <li>Gained hands-on mastery in physical network infrastructure, structured cabling, optical testing, and ISP deployment processes.</li>
-                        </ul>
-                    </div>
-
-                    <div class="cv-exp-item">
-                        <div class="cv-exp-header">
-                            <div>
-                                <h3 class="cv-job-title">Part-Time Systems Technician</h3>
-                                <div class="cv-company">Inguni Shield</div>
-                            </div>
-                            <span class="cv-date">Feb 2025 – Jan 2026</span>
-                        </div>
-                        <div class="cv-location">Durban, KwaZulu-Natal • Part-time</div>
-                        <ul class="cv-bullets">
-                            <li>Performed system configurations, programming, and hardware/software installations across client environments.</li>
-                            <li>Worked across multiple programming languages including <strong>C and Java</strong> in a live technical support and systems implementation context.</li>
-                            <li>Gained exposure to static website development and responsive architectures using modern JavaScript-based tooling and frameworks (Astro).</li>
-                            <li>Supported commercial clients with proactive technical troubleshooting, diagnostic analysis, and continuous maintenance.</li>
-                        </ul>
-                    </div>
-
-                    <div class="cv-exp-item">
-                        <div class="cv-exp-header">
-                            <div>
-                                <h3 class="cv-job-title">EA Group Leader — BEEI Phase V</h3>
-                                <div class="cv-company">Zubane Primary School</div>
-                            </div>
-                            <span class="cv-date">June 2025 – Nov 2025</span>
-                        </div>
-                        <div class="cv-location">Ndwedwe, KwaZulu-Natal • Leadership & Programme Management</div>
-                        <ul class="cv-bullets">
-                            <li>Led a team of Education Assistants across daily attendance, task delivery, curriculum support, and compliance reporting.</li>
-                            <li>Acted as primary liaison between government programme coordinators, school executive management, and team members.</li>
-                            <li>Spearheaded onboarding, technical guidance, workflow optimization, and performance monitoring of newly appointed assistants.</li>
-                        </ul>
-                    </div>
-
-                    <div class="cv-exp-item">
-                        <div class="cv-exp-header">
-                            <div>
-                                <h3 class="cv-job-title">Education Assistant</h3>
-                                <div class="cv-company">KZN Department of Basic Education</div>
-                            </div>
-                            <span class="cv-date">June 2025 – Nov 2025</span>
-                        </div>
-                        <div class="cv-location">Ndwedwe, KwaZulu-Natal • Government Programme</div>
-                        <ul class="cv-bullets">
-                            <li>Managed data capturing, electronic records management, and statutory reporting with zero discrepancy rate.</li>
-                            <li>Handled confidential administrative information with full compliance and strict adherence to data protection standards.</li>
-                            <li>Coordinated daily communication workflows between educational staff, administrative leadership, and external stakeholders.</li>
-                            <li>Provided comprehensive technical and administrative support to guarantee smooth daily operational delivery.</li>
-                        </ul>
-                    </div>
+                    ))}
                 </div>
 
-                <!-- Featured Projects -->
                 <div class="cv-block">
-                    <h2 class="cv-sec-title"><span>//</span> Featured Production Projects</h2>
-                    <div class="cv-exp-item">
-                        <div class="cv-exp-header">
-                            <div>
-                                <h3 class="cv-job-title">Full Business Platform & Web Application</h3>
-                                <div class="cv-company">Asante Financial Services (<a href="https://asantefs.co.za" target="_blank" style="color: var(--amber);">asantefs.co.za</a>)</div>
+                    <h2 class="cv-sec-title">{cv.projectsTitle}</h2>
+                    {cv.projects.map((p) => (
+                        <div class="cv-exp-item">
+                            <div class="cv-exp-header">
+                                <div>
+                                    <h3 class="cv-job-title">{p.name}</h3>
+                                    {p.link && (
+                                        <div class="cv-company">
+                                            <a href={p.link.url} target="_blank" rel="noopener noreferrer" style="color: var(--amber);">{p.link.label}</a>
+                                        </div>
+                                    )}
+                                </div>
+                                <span class="cv-date">{p.dates}</span>
                             </div>
-                            <span class="cv-date">2026</span>
+                            <div class="cv-location">{p.stack}</div>
+                            <ul class="cv-bullets">
+                                {p.bullets.map((b) => <li set:html={b} />)}
+                            </ul>
                         </div>
-                        <div class="cv-location">Production Financial Platform • Stack: PHP, MySQL, JavaScript, HTML5, CSS3, Apache</div>
-                        <ul class="cv-bullets">
-                            <li>Architected and delivered the full online customer portal and business website for Asante Financial Services, a regulated personal finance provider.</li>
-                            <li>Engineered a dynamic, database-driven loan application engine featuring multi-step form validation, document submission, and automated backend record processing.</li>
-                            <li>Implemented secure data handling, input sanitization, and security-conscious storage routines complying with South African financial sector standards.</li>
-                            <li>Managed the entire project lifecycle independently from requirements discovery and database schema modeling to production deployment.</li>
-                        </ul>
-                    </div>
-
-                    <div class="cv-exp-item">
-                        <div class="cv-exp-header">
-                            <div>
-                                <h3 class="cv-job-title">Production AWS Cloud Infrastructure & Automated CI/CD Pipeline</h3>
-                                <div class="cv-company">Future ProTechY / Enterprise Deployment</div>
-                            </div>
-                            <span class="cv-date">2026</span>
-                        </div>
-                        <div class="cv-location">Cloud Architecture & DevOps • Stack: AWS (VPC, EC2, ALB, Route 53), Docker, GitHub Actions, Linux, Nginx</div>
-                        <ul class="cv-bullets">
-                            <li>Architected and implemented production cloud infrastructure on AWS engineered for high availability, network isolation, and automated delivery.</li>
-                            <li>Designed isolated VPC topologies with segregated public and private subnets, internet gateways, NAT gateways, and custom security groups.</li>
-                            <li>Provisioned EC2 compute instances behind an Application Load Balancer (ALB) with SSL/TLS termination and automated health checks.</li>
-                            <li>Configured automated GitHub Actions CI/CD pipelines enabling streamlined, zero-downtime containerized deployments.</li>
-                        </ul>
-                    </div>
-
-                    <div class="cv-exp-item">
-                        <div class="cv-exp-header">
-                            <div>
-                                <h3 class="cv-job-title">Secure Financial Transaction & Processing Backend</h3>
-                                <div class="cv-company">FinTech Systems Architecture</div>
-                            </div>
-                            <span class="cv-date">2026</span>
-                        </div>
-                        <div class="cv-location">Backend Architecture • Stack: Java, PHP, MySQL, RESTful APIs, CompTIA Security+ Standards</div>
-                        <ul class="cv-bullets">
-                            <li>Engineered a transactional backend engine processing high-integrity customer records, loan submissions, and verification workflows.</li>
-                            <li>Structured a 3NF normalized relational schema in MySQL with strict referential constraints and sub-second query indexing.</li>
-                            <li>Implemented idempotent RESTful API endpoints and defense-in-depth sanitization adhering to CompTIA Security+ guidelines.</li>
-                        </ul>
-                    </div>
+                    ))}
                 </div>
 
-                <!-- Education -->
                 <div class="cv-block">
-                    <h2 class="cv-sec-title"><span>//</span> Education & Academic Credentials</h2>
-                    <div class="cv-edu-card">
-                        <div class="cv-exp-header">
-                            <div>
-                                <h3 class="cv-job-title">Diploma in Systems Development (HDIPSD2)</h3>
-                                <div class="cv-company">Boston City Campus</div>
+                    <h2 class="cv-sec-title">Education &amp; Certifications</h2>
+                    {cv.education.map((e) => (
+                        <div class="cv-edu-card">
+                            <div class="cv-exp-header">
+                                <div>
+                                    <h3 class="cv-job-title">{e.title}</h3>
+                                    <div class="cv-company">{e.school}</div>
+                                </div>
+                                <span class="cv-date">{e.dates}</span>
                             </div>
-                            <span class="cv-date">2023 – 2026</span>
+                            {e.note && <p class="cv-edu-line">{e.note}</p>}
+                            {e.detail && <p class="cv-edu-line">{e.detail}</p>}
                         </div>
-                        <div style="color: var(--amber); font-weight: 500; font-size: 14px; margin: 4px 0 8px;">
-                            Graduated with Distinction • 76% Overall Average • Diploma Confirmed by Office of the Registrar (April 2026)
-                        </div>
-                        <div class="cv-scores-grid">
-                            <div>Systems Analysis & Design: <strong>90%</strong></div>
-                            <div>Praxis / Applied Systems: <strong>92%</strong></div>
-                            <div>Security+ Fundamentals: <strong>88%</strong></div>
-                            <div>Software Testing: <strong>86%</strong></div>
-                            <div>Java & Database Systems: <strong>86%</strong></div>
-                            <div>Computer Literacy: <strong>Distinction</strong></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Languages & Interests -->
-                <div class="cv-two-col">
-                    <div class="cv-block">
-                        <h2 class="cv-sec-title"><span>//</span> Languages</h2>
-                        <ul class="cv-bullets">
-                            <li><strong>isiZulu:</strong> Home Language (Native / Fluent)</li>
-                            <li><strong>English:</strong> Professional Working Proficiency (Fluent)</li>
-                        </ul>
-                    </div>
-                    <div class="cv-block">
-                        <h2 class="cv-sec-title"><span>//</span> Focus & Interests</h2>
-                        <ul class="cv-bullets">
-                            <li>Full-Stack & Cloud Architecture (AWS / Docker)</li>
-                            <li>Cybersecurity Research & Penetration Testing</li>
-                            <li>AI Workflow Engineering & Developer Tooling</li>
-                        </ul>
-                    </div>
+                    ))}
+                    <p class="cv-edu-line"><strong>Certifications:</strong> {cv.certifications.map((x) => x.name + (x.note ? ` (${x.note})` : '')).join(', ')}</p>
+                    <p class="cv-edu-line"><strong>Languages:</strong> {cv.languages}</p>
                 </div>
             </div>
         </div>
@@ -311,6 +129,17 @@ import { site } from '../data/site';
 </Base>
 
 <style>
+    .cv-skill-items {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .cv-edu-line {
+        margin: 6px 0 0;
+        font-size: 14px;
+    }
+
     .cv-page {
         padding: 56px 0 96px;
     }
