@@ -233,13 +233,6 @@ const services: { id: string; name: string; questions: Question[] }[] = [
                     <button type="button" class="submit-btn" id="btn-next" hidden>Continue →</button>
                     <button type="submit" class="submit-btn" id="btn-submit">Submit Enquiry →</button>
                 </div>
-                <div class="form-assurances">
-                    <span>Response within 24 hours</span>
-                    <span class="assurance-dot">•</span>
-                    <span>Confidential & Direct</span>
-                    <span class="assurance-dot">•</span>
-                    <span>Free Discovery Call</span>
-                </div>
                 <p id="form-result" class="form-result" aria-live="polite"></p>
 
                 </div>
@@ -382,33 +375,6 @@ const services: { id: string; name: string; questions: Question[] }[] = [
         transform: translateY(-2px);
         background: #eab86c;
         box-shadow: 0 6px 16px rgba(227, 168, 87, 0.35);
-    }
-
-    .form-assurances {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 12px;
-        margin-top: 1.25rem;
-        padding: 9px 18px;
-        background: rgba(255, 255, 255, 0.07);
-        border: 1px solid rgba(227, 168, 87, 0.28);
-        border-radius: 0;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 14px;
-        color: var(--steel, #f4f6fc);
-        flex-wrap: wrap;
-    }
-
-    .form-assurances span {
-        color: var(--steel, #f4f6fc);
-    }
-
-    .form-assurances .assurance-dot {
-        color: var(--amber, #e3a857);
-        font-weight: 700;
-        font-size: 15px;
-        line-height: 1;
     }
 
     .form-result {
