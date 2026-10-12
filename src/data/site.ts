@@ -16,7 +16,6 @@ export const site = {
     currently: 'Junior Systems Developer at Future ProTechY',
     stack: 'Java · PHP · JavaScript / TS · React · Astro · Node.js · AWS (VPC, EC2, CI/CD) · Docker · MySQL',
     availability: 'Available for freelance & contract projects',
-    responseTime: '< 24 hours',
     locationPill: 'Durban, South Africa · Remote Worldwide',
     email: 'simangalisoblessed@gmail.com',
     phone: '074 357 2309',
