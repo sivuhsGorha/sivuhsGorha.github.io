@@ -14,12 +14,5 @@ const posts = await getPublishedPosts();
     description="Notes on backend work, APIs, debugging and learning cloud infrastructure, by Sibongakonke Simamane."
 >
     <WritingList posts={posts} heading="All notes" />
-    <div class="wrap writing-feed">
-        <p class="feed-note">
-            Prefer a feed reader? Add <code>{new URL('/rss.xml', site.origin).href}</code> to Feedly, Inoreader or NetNewsWire.
-            The link opens the raw feed, which is meant for readers rather than people:
-            <a class="writing-more" href="/rss.xml">open feed →</a>
-        </p>
-    </div>
     <Footer />
 </Base>

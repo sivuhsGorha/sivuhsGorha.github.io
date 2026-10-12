@@ -816,28 +816,6 @@ section.in-view h2::after,
     padding: 2px 8px;
 }
 
-.writing-feed {
-    padding-bottom: 48px;
-}
-
-.feed-note {
-    max-width: 62ch;
-    margin: 0;
-    font-size: 14.5px;
-    color: var(--steel);
-}
-
-.feed-note code {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.9em;
-    color: var(--paper);
-    word-break: break-all;
-}
-
-.feed-note .writing-more {
-    margin-top: 0;
-}
-
 @media (max-width: 600px) {
     .post {
         flex-direction: column;
