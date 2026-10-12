@@ -36,6 +36,12 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
 
             <form action={FORMSPREE_URL} method="POST" id="contact-form" style="position: relative; z-index: 1; width: 100%;">
                 
+                <!-- Honeypot: hidden from people, bots fill it in. Formspree also discards _gotcha submissions. -->
+                <div class="hp-field" aria-hidden="true">
+                    <label for="website">Leave this field empty</label>
+                    <input type="text" name="_gotcha" id="website" tabindex="-1" autocomplete="off" />
+                </div>
+
                 <div class="input-grid">
                     <div class="input-group">
                         <label for="name">Your Name</label>
@@ -129,6 +135,20 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
         padding: 2.5rem;
         backdrop-filter: blur(14px);
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .hp-field {
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+
+    .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
     }
 
     .input-grid {
@@ -288,56 +308,62 @@ const FORMSPREE_URL = "https://formspree.io/f/xeaqrzqk";
 </style>
 
 <script>
-    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
     const result = document.getElementById('form-result');
+    const submitBtn = form?.querySelector<HTMLButtonElement>('.submit-btn');
+    const MIN_FILL_MS = 3000;
+    const loadedAt = Date.now();
+    let hideTimer: number | undefined;
 
-    if (form && result) {
-        form.addEventListener('submit', function(e) {
+    function show(message: string, color: string) {
+        if (!result) return;
+        window.clearTimeout(hideTimer);
+        result.textContent = message;
+        result.style.display = 'block';
+        result.style.color = color;
+    }
+
+    if (form && result && submitBtn) {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const formData = new FormData(form);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
+            if (submitBtn.disabled) return;
 
-            result.innerHTML = "Sending...";
-            result.style.display = "block";
-            result.style.color = "var(--color-text-muted)";
+            const data = Object.fromEntries(new FormData(form));
 
-            fetch(form.action, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: json
-            })
-            .then(async (response) => {
-                let json = await response.json();
-                if (response.status === 200 || response.ok) {
-                    result.innerHTML = "Message sent successfully!";
-                    result.style.color = "#10b981"; // success green
+            // Bots fill the honeypot or submit instantly; pretend success and drop it.
+            if (data._gotcha || Date.now() - loadedAt < MIN_FILL_MS) {
+                show('Message sent successfully!', '#10b981');
+                form.reset();
+                return;
+            }
+
+            submitBtn.disabled = true;
+            show('Sending...', 'var(--color-text-muted)');
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                    body: JSON.stringify(data),
+                });
+                const body = await response.json().catch(() => ({}));
+
+                if (response.ok) {
+                    show('Message sent successfully!', '#10b981');
                     form.reset();
+                } else if (Array.isArray(body.errors)) {
+                    show(body.errors.map((err: { message: string }) => err.message).join(', '), '#ef4444');
                 } else {
-                    console.log(response);
-                    // Formspree returns errors in an array sometimes
-                    if (Object.hasOwn(json, 'errors')) {
-                        result.innerHTML = json["errors"].map((error: { message: string }) => error["message"]).join(", ");
-                    } else {
-                        result.innerHTML = "Oops! There was a problem submitting your form";
-                    }
-                    result.style.color = "#ef4444"; // error red
+                    show('Oops! There was a problem submitting your form', '#ef4444');
                 }
-            })
-            .catch(error => {
-                console.log(error);
-                result.innerHTML = "Something went wrong!";
-                result.style.color = "#ef4444";
-            })
-            .finally(() => {
-                setTimeout(() => {
-                    result.style.display = "none";
+            } catch {
+                show('Something went wrong. Please try again or use WhatsApp.', '#ef4444');
+            } finally {
+                submitBtn.disabled = false;
+                hideTimer = window.setTimeout(() => {
+                    result.style.display = 'none';
                 }, 5000);
-            });
+            }
         });
     }
 </script>
-

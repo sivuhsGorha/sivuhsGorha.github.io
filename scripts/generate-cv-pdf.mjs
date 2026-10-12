@@ -526,7 +526,6 @@ const cvHtml = `<!DOCTYPE html>
 
 const tempHtmlPath = join(root, 'temp_cv_render.html');
 const targetPdfPublic = join(root, 'public', 'Sibongakonke_Simamane_CV.pdf');
-const targetPdfRoot = join(root, 'Sibongakonke_Simamane_CV.pdf');
 
 writeFileSync(tempHtmlPath, cvHtml, 'utf8');
 
@@ -537,10 +536,6 @@ try {
     const cmd = `"${edgeExe}" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf="${targetPdfPublic}" "${tempHtmlPath}"`;
     execSync(cmd, { stdio: 'inherit' });
     console.log(`Generated PDF at ${targetPdfPublic}`);
-    
-    // Copy to root as well
-    copyFileSync(targetPdfPublic, targetPdfRoot);
-    console.log(`Copied PDF to ${targetPdfRoot}`);
 } catch (err) {
     console.error('Error generating PDF:', err);
 } finally {

@@ -9,10 +9,10 @@ Based in Durban, South Africa · Diploma HDIPSD2 (Distinction) · CompTIA Securi
 
 ---
 
-![Astro](https://img.shields.io/badge/Astro-5.0-FF5D01?style=for-the-badge&logo=astro&logoColor=white)
-![React](https://img.shields.io/badge/React-19.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Astro](https://img.shields.io/badge/Astro-7.x-FF5D01?style=for-the-badge&logo=astro&logoColor=white)
+![React](https://img.shields.io/badge/React-19.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.x-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS_Cloud-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP_8-777BB4?style=for-the-badge&logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL_3NF-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
@@ -25,7 +25,7 @@ Based in Durban, South Africa · Diploma HDIPSD2 (Distinction) · CompTIA Securi
 
 This repository powers **[sbk.dev](https://sibongakonke-simamane.dev)** — the personal web portfolio and technical showcase for **Sibongakonke Simamane**. 
 
-Engineered with **Astro 5** and **React 19**, the site features high-performance static rendering, dark-theme aesthetics, interactive system architecture flowcharts, responsive skill matrices, and structured technical case studies.
+Engineered with **Astro 7** and **React 19**, the site features high-performance static rendering, dark-theme aesthetics, interactive system architecture flowcharts, responsive skill matrices, and structured technical case studies.
 
 ### Core Technical Pillars:
 - **Full-Stack Systems Development**: Backend engineering in PHP 8, Java, C, and Node.js with 3NF normalized MySQL database architectures.
@@ -62,7 +62,7 @@ Engineered with **Astro 5** and **React 19**, the site features high-performance
 
 ## 🚀 Technical Features of the Website
 
-- ⚡ **Ultra-Fast Static Site Generation**: Built using Astro 5 with sub-second page loads and automated XML sitemap generation.
+- ⚡ **Ultra-Fast Static Site Generation**: Built using Astro 7 with sub-second page loads and automated XML sitemap generation.
 - 🎨 **Deep Purple & Amber Theme System**: Dynamic dark-mode palette with interactive ambient background elements.
 - 📐 **Visual System Flowcharts**: Responsive architecture diagram canvas displaying pipeline data movement across microservice layers.
 - 🔍 **Technical Deep-Dive Accordions**: Collapsible technical specs detailing schema design, security focus, and operational deliverables.

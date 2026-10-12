@@ -11,7 +11,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) =>
-        !/\/(4\d\d|5\d\d|react-bits-demo)\/?$/.test(page),
+        !/\/(4\d\d|5\d\d)\/?$/.test(page),
     }),
     react(),
   ],
