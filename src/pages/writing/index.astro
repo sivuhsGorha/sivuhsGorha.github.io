@@ -15,7 +15,11 @@ const posts = await getPublishedPosts();
 >
     <WritingList posts={posts} heading="All notes" />
     <div class="wrap writing-feed">
-        <a class="writing-more" href="/rss.xml">Subscribe via RSS →</a>
+        <p class="feed-note">
+            Prefer a feed reader? Add <code>{new URL('/rss.xml', site.origin).href}</code> to Feedly, Inoreader or NetNewsWire.
+            The link opens the raw feed, which is meant for readers rather than people:
+            <a class="writing-more" href="/rss.xml">open feed →</a>
+        </p>
     </div>
     <Footer />
 </Base>
