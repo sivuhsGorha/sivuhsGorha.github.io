@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { forwardRef, useRef, useMemo, useLayoutEffect, useEffect, useState } from 'react';
+import { forwardRef, useRef, useMemo, useLayoutEffect, useEffect } from 'react';
 import { Color } from 'three';
 
 const hexToNormalizedRGB = hex => {
@@ -82,7 +82,12 @@ if (uLightMode > 0.5) {
 }
 `;
 
-const SilkPlane = forwardRef(function SilkPlane({ uniforms }, ref) {
+// The page theme is read straight from <html data-theme> so the shader can never
+// drift out of sync with the rest of the page (it used to after toggling/refreshing).
+const isBrightTheme = () =>
+  typeof document !== 'undefined' && document.documentElement.getAttribute('data-theme') === 'bright';
+
+const SilkPlane = forwardRef(function SilkPlane({ uniforms, darkRGB, lightRGB }, ref) {
   const { viewport } = useThree();
 
   useLayoutEffect(() => {
@@ -92,7 +97,13 @@ const SilkPlane = forwardRef(function SilkPlane({ uniforms }, ref) {
   }, [ref, viewport]);
 
   useFrame((_, delta) => {
-    ref.current.material.uniforms.uTime.value += 0.1 * delta;
+    const u = ref.current.material.uniforms;
+    u.uTime.value += 0.1 * delta;
+    const light = isBrightTheme() ? 1 : 0;
+    if (u.uLightMode.value !== light) {
+      u.uLightMode.value = light;
+      u.uColor.value.setRGB(...(light ? lightRGB : darkRGB));
+    }
   });
 
   return (
@@ -104,30 +115,24 @@ const SilkPlane = forwardRef(function SilkPlane({ uniforms }, ref) {
 });
 SilkPlane.displayName = 'SilkPlane';
 
-const Silk = ({ speed = 5, scale = 1, color = '#7B7481', lightColor = '#fdfdfd', noiseIntensity = 1.5, rotation = 0, lightMode = false }) => {
+const Silk = ({ speed = 5, scale = 1, color = '#7B7481', lightColor = '#fdfdfd', noiseIntensity = 1.5, rotation = 0 }) => {
   const meshRef = useRef();
-  const [isLight, setIsLight] = useState(lightMode);
-
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsLight(document.documentElement.getAttribute('data-theme') === 'bright');
-    };
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-    return () => observer.disconnect();
-  }, []);
+  const darkRGB = useMemo(() => hexToNormalizedRGB(color), [color]);
+  const lightRGB = useMemo(() => hexToNormalizedRGB(lightColor), [lightColor]);
 
   const uniforms = useMemo(
-    () => ({
-      uSpeed: { value: speed },
-      uScale: { value: scale },
-      uNoiseIntensity: { value: noiseIntensity },
-      uColor: { value: new Color(...hexToNormalizedRGB(isLight ? lightColor : color)) },
-      uRotation: { value: rotation },
-      uLightMode: { value: isLight ? 1 : 0 },
-      uTime: { value: 0 }
-    }),
+    () => {
+      const light = isBrightTheme();
+      return {
+        uSpeed: { value: speed },
+        uScale: { value: scale },
+        uNoiseIntensity: { value: noiseIntensity },
+        uColor: { value: new Color(...(light ? lightRGB : darkRGB)) },
+        uRotation: { value: rotation },
+        uLightMode: { value: light ? 1 : 0 },
+        uTime: { value: 0 }
+      };
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
@@ -136,14 +141,12 @@ const Silk = ({ speed = 5, scale = 1, color = '#7B7481', lightColor = '#fdfdfd',
     uniforms.uSpeed.value = speed;
     uniforms.uScale.value = scale;
     uniforms.uNoiseIntensity.value = noiseIntensity;
-    uniforms.uColor.value.setRGB(...hexToNormalizedRGB(isLight ? lightColor : color));
     uniforms.uRotation.value = rotation;
-    uniforms.uLightMode.value = isLight ? 1 : 0;
-  }, [speed, scale, noiseIntensity, color, lightColor, rotation, isLight, uniforms]);
+  }, [speed, scale, noiseIntensity, rotation, uniforms]);
 
   return (
     <Canvas dpr={[1, 2]} frameloop="always">
-      <SilkPlane ref={meshRef} uniforms={uniforms} />
+      <SilkPlane ref={meshRef} uniforms={uniforms} darkRGB={darkRGB} lightRGB={lightRGB} />
     </Canvas>
   );
 };
