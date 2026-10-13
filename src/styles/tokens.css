@@ -1269,3 +1269,27 @@ section.in-view h2::after,
     color: var(--amber-dim);
     text-shadow: none;
 }
+
+/* Light mode: the logo is white, so it sits on a dim panel running from the left edge to just past the wordmark. */
+[data-theme="bright"] .nav-mark {
+    position: relative;
+    isolation: isolate;
+    color: #e3a857;
+}
+
+[data-theme="bright"] .nav-mark::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -14px;
+    bottom: -14px;
+    left: -100vw;
+    right: -20px;
+    background: #120721;
+    border-radius: 0 0 14px 0;
+}
+
+[data-theme="bright"] .nav-mark:hover,
+[data-theme="bright"] .nav-mark:focus-visible {
+    color: #ffffff;
+}
