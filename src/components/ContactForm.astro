@@ -533,11 +533,18 @@ const services: { id: string; name: string; questions: Question[] }[] = [
     }
 
     #form-body,
-    .success-panel {
+    .success-panel,
+    .whatsapp-direct-box {
         background: rgba(14, 8, 28, 0.66);
         backdrop-filter: blur(8px);
         border-radius: 12px;
         padding: 1.25rem;
+    }
+
+    .whatsapp-direct-box {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-top: none;
     }
 
     .step[hidden],

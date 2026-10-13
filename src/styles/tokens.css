@@ -10,6 +10,8 @@
     --amber: #e3a857;
     --amber-dim: #b98640;
     --ok: #7fa88c;
+    --success: #34d399;
+    --whatsapp: #25d366;
     --font-heading: 'Fraunces', serif;
 }
 
@@ -21,9 +23,45 @@
     --paper-dim: #1e293b;
     --steel: #0f172a;
     --line: #cbd5e1;
-    --amber: #f59e0b;
-    --amber-dim: #92400e;
-    --ok: #10b981;
+    /* Darker amber and green so accent text stays readable (WCAG AA) on the light background. */
+    --amber: #9a4a07;
+    --amber-dim: #78350f;
+    --ok: #047857;
+    --success: #047857;
+    --whatsapp: #15803d;
+}
+
+/* Surfaces that stay dark in bright mode keep the dim palette, so text, accents
+   and borders inside them resolve to light-on-dark values. */
+[data-theme="bright"] .service-card,
+[data-theme="bright"] .project-card,
+[data-theme="bright"] .cert-card,
+[data-theme="bright"] .tech-category-card,
+[data-theme="bright"] .glow-card,
+[data-theme="bright"] .project-cta-banner,
+[data-theme="bright"] .perks-strip,
+[data-theme="bright"] .form-container,
+[data-theme="bright"] .ag-panel,
+[data-theme="bright"] .cv-sheet,
+[data-theme="bright"] .error-content {
+    --ink: #120721;
+    --ink-soft: #1b0c33;
+    --paper: #ffffff;
+    --paper-dim: #f0f0f0;
+    --steel: #f4f6fc;
+    --line: #33465c;
+    --amber: #e3a857;
+    --amber-dim: #b98640;
+    --ok: #7fa88c;
+    --success: #34d399;
+    --whatsapp: #25d366;
+    color: #f4f6fc;
+}
+
+[data-theme="bright"] .ag-panel,
+[data-theme="bright"] .ag-panel:hover,
+[data-theme="bright"] .ag-panel--active {
+    background: linear-gradient(135deg, rgba(26, 10, 46, 0.97) 0%, rgba(14, 10, 24, 0.98) 100%) !important;
 }
 
 /* ── Bright mode: cards retain rich deep purple glass containers with clear, high-contrast readable text ── */
@@ -1175,4 +1213,59 @@ section.in-view h2::after,
 
 .exp-text {
     flex: 1;
+}
+
+/* ── Bright mode: readability fixes for accents that were tuned for the dark theme ── */
+[data-theme="bright"] .hero .btn-outline {
+    color: var(--amber-dim);
+    border-color: rgba(146, 64, 14, 0.55);
+}
+
+[data-theme="bright"] .hero .btn-outline:hover,
+[data-theme="bright"] .hero .btn-outline:focus-visible {
+    background: rgba(180, 83, 9, 0.1);
+    border-color: var(--amber-dim);
+    color: var(--amber-dim);
+}
+
+.experience-sep {
+    color: var(--steel) !important;
+    opacity: 0.5;
+}
+
+/* CV sheet and error cards stay dark in bright mode, but opaque enough to read. */
+[data-theme="bright"] .cv-sheet {
+    background: rgba(14, 10, 24, 0.97) !important;
+    border-color: rgba(227, 168, 87, 0.35) !important;
+}
+
+[data-theme="bright"] .error-content {
+    background: rgba(14, 8, 28, 0.95) !important;
+}
+
+/* A light veil over the animated background keeps body text and amber accents readable. */
+[data-theme="bright"] .bg-canvas-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(253, 253, 253, 0.78);
+}
+
+/* Hero text on the light shader: drop the dark halo, use a light one. */
+[data-theme="bright"] .hero h1,
+[data-theme="bright"] .hero p.desc,
+[data-theme="bright"] .hero p.role {
+    text-shadow: 0 0 16px rgba(255, 255, 255, 0.9), 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="bright"] .hero h1 {
+    -webkit-text-stroke: 0;
+}
+
+[data-theme="bright"] .hero p.role {
+    display: inline-block;
+    padding: 3px 10px;
+    background: rgba(253, 253, 253, 0.82);
+    color: var(--amber-dim);
+    text-shadow: none;
 }
