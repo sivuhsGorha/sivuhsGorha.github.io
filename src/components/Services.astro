@@ -1,96 +1,75 @@
 ---
-// Services.astro — Freelance & Consulting Offerings
+// Services.astro: what I take on as freelance or contract work
 const services = [
     {
         num: '01',
-        category: 'Frontend & Full-Stack',
-        title: 'Bespoke Web Applications & Client Portals',
+        category: 'Backend',
+        title: 'APIs and database design',
         description:
-            'From dynamic customer portals to interactive dashboards, I build responsive, high-performance web applications tailored to your business goals. Clean architecture, lightning-fast loading speeds, and intuitive user experiences.',
+            'REST APIs and normalised MySQL or SQL Server schemas. I have built one for a lender: encrypted customer data, role-based access, audit logs and multi-factor login.',
         deliverables: [
-            'Component-driven architectures in React & Astro',
-            'Mobile-first responsive UX and bespoke branding',
-            'Dynamic customer portals & admin interfaces',
-            'SEO optimization & web performance tuning'
-        ],
-        tech: ['React', 'Astro', 'PHP', 'JavaScript / TypeScript', 'HTML5/CSS3']
-    },
-    {
-        num: '02',
-        category: 'Backend & Data Engineering',
-        title: 'Scalable APIs & Database Architecture',
-        description:
-            'Rock-solid backend services, secure RESTful APIs, and normalized database schemas designed for maximum uptime, high transactional throughput, and bulletproof data integrity.',
-        deliverables: [
-            'Secure REST API design & integration',
-            'Relational schema design (MySQL & Microsoft SQL Server)',
-            'Input sanitization, authentication & authorization',
-            'Business logic processing & data export workflows'
+            'REST API design and integration',
+            'Relational schema design (MySQL, SQL Server)',
+            'Authentication, authorisation and input validation',
+            'Business logic and data export workflows'
         ],
         tech: ['Java', 'PHP', 'Node.js', 'MySQL', 'Microsoft SQL Server']
     },
     {
-        num: '03',
-        category: 'Cloud Infrastructure (Learning Stage)',
-        featured: true,
-        title: 'AWS Cloud Support — VPCs, EC2 & CI/CD Pipelines',
+        num: '02',
+        category: 'Web',
+        title: 'Web applications and client portals',
         description:
-            'Hands-on AWS exposure gained in a real professional environment. I can assist with VPC configuration, EC2 instance setup, and CI/CD pipeline implementation — while being transparent that I am actively growing in this space and open to working alongside more experienced cloud engineers or mentors.',
+            'Customer portals, admin dashboards and business websites, built in React or Astro on a PHP or Node backend. Responsive, quick to load, and designed around what the business needs to do.',
         deliverables: [
-            'VPC network setup, subnets & security group configuration',
-            'EC2 compute instance provisioning & Linux administration',
-            'CI/CD pipeline setup using GitHub Actions & Docker',
-            'Collaborative cloud deployments alongside your team or mentor'
+            'React and Astro front ends',
+            'Customer portals and admin interfaces',
+            'Layouts that work on phone and desktop',
+            'Performance and SEO basics done properly'
+        ],
+        tech: ['React', 'Astro', 'PHP', 'JavaScript / TypeScript', 'HTML5/CSS3']
+    },
+    {
+        num: '03',
+        category: 'Cloud (learning)',
+        title: 'AWS setup: VPCs, EC2 and CI/CD',
+        description:
+            'I work with AWS at Future ProTechY and am still learning it. I can set up a VPC, EC2 instances and a GitHub Actions deployment, and I am clear about where I would want a more experienced engineer to review the result.',
+        deliverables: [
+            'VPC, subnets and security groups',
+            'EC2 provisioning and Linux administration',
+            'GitHub Actions and Docker deployments',
+            'Working alongside your team or a senior reviewer'
         ],
         tech: ['AWS (VPC, EC2, ALB)', 'GitHub Actions', 'Docker', 'Nginx', 'Linux']
     },
     {
         num: '04',
-        category: 'Security & Systems Maintenance',
-        title: 'Security Hardening, Code Audits & Retainers',
+        category: 'Security and maintenance',
+        title: 'Security review and ongoing support',
         description:
-            'Grounded in CompTIA Security+ standards and enterprise systems practice, I evaluate existing applications for security vulnerabilities, resolve critical production bugs, tune performance, and provide dependable contract support.',
+            'A review of an existing application for common security problems, fixes for production bugs, performance work, and ongoing support if you want someone to call.',
         deliverables: [
-            'CompTIA Security+ aligned vulnerability assessments',
-            'Legacy code refactoring & performance bottleneck fixes',
-            'Server hardening, reverse proxy & firewall configurations',
-            'Ongoing monthly technical retainer & maintenance support'
+            'Review against common vulnerability classes',
+            'Bug fixes and performance work on existing code',
+            'Server hardening, reverse proxy and firewall setup',
+            'Ongoing support by arrangement'
         ],
-        tech: ['CompTIA Security+', 'CompTIA A+', 'System Diagnostics', 'Git']
-    }
-];
-
-const perks = [
-    {
-        title: 'Direct Engineer Communication',
-        desc: 'Work directly with the developer building your software. No account managers, misunderstandings, or unnecessary agency markup.'
-    },
-    {
-        title: 'Hands-On AWS Exposure',
-        desc: 'Real-world cloud experience gained in a professional setting — working with VPCs, EC2, and CI/CD pipelines, with genuine openness to guidance and mentorship.'
-    },
-    {
-        title: 'Security-First Rigor',
-        desc: 'Certified CompTIA foundations ensuring your applications, databases, and network configurations are hardened from day one.'
-    },
-    {
-        title: 'Transparent Milestones',
-        desc: 'Clear scopes, predictable deliverables, and consistent communication throughout your project lifecycle.'
+        tech: ['PHP', 'Java', 'Linux', 'Nginx', 'Git']
     }
 ];
 ---
 
 <section id="services" class="reveal services-section">
     <div class="wrap">
-        <p class="eyebrow-num">03 / freelance & consulting services</p>
+        <p class="eyebrow-num">03 / services</p>
         <div class="services-header">
             <div>
                 <h2>Services & Solutions</h2>
                 <p class="services-sub">
-                    Whether you need an end-to-end web application, a custom database backend, or support with AWS cloud configuration, I deliver secure, reliable software with honest communication throughout.
+                    Web applications, backends and databases, and help with AWS. Here is what I take on.
                 </p>
             </div>
-            <a href="#contact" class="btn btn-primary header-cta">Discuss Your Project →</a>
         </div>
 
         <!-- Services Cards Grid -->
@@ -100,7 +79,6 @@ const perks = [
                     <div class="card-top">
                         <span class="card-num">{svc.num}</span>
                         <span class="card-badge">{svc.category}</span>
-                        {svc.featured && <span class="featured-pill">★ IN ACTIVE PRODUCTION</span>}
                     </div>
 
                     <h3 class="card-title">{svc.title}</h3>
@@ -124,32 +102,11 @@ const perks = [
                                 <span class="tech-chip">{t}</span>
                             ))}
                         </div>
-                        <a href="#contact" class="card-link">
-                            Inquire about this service <span>→</span>
-                        </a>
                     </div>
                 </div>
             ))}
         </div>
 
-        <!-- Why Work With Me Strip -->
-        <div class="perks-strip">
-            <div class="perks-header">
-                <p class="eyebrow-num" style="margin-bottom: 4px;">client collaboration standards</p>
-                <h3 class="perks-title">Why Partner With SBK.dev</h3>
-            </div>
-            <div class="perks-grid">
-                {perks.map((perk) => (
-                    <div class="perk-item">
-                        <div class="perk-icon">✓</div>
-                        <div>
-                            <h4>{perk.title}</h4>
-                            <p>{perk.desc}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
     </div>
 </section>
 

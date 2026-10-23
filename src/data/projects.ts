@@ -27,7 +27,7 @@ export const projects: Project[] = [
         badge: 'Commercial Financial Platform · Freelance Delivery',
         client: 'Asante Financial Services (PTY) LTD',
         summary:
-            'Engineered the complete commercial web platform and multi-step customer loan application engine for Asante Financial Services — a South African short-term personal loans provider. Built a 3NF normalized MySQL database schema featuring field-level AES-256-GCM encryption for customer PII (ID numbers, bank details, salary), blind index searching (_hash), custom RBAC back-office management, TOTP/SMS Multi-Factor Authentication, POPIA/DSAR compliance tools, WhatsApp/WinSMS notification integrations, and security middleware (CSP nonces, CSRF protection, rate limiting). Delivered the complete platform independently end-to-end: from architectural design through to production server hardening and backup automation scripts.',
+            'The website and loan application platform for Asante Financial Services, a South African short-term lender. I built it on my own: a multi-step loan application, a customer portal and a back office for staff. Customer PII (ID numbers, bank details, salary) is encrypted field by field with AES-256-GCM and searched through blind indexes; staff access is role-based with a TOTP or SMS second factor; there are POPIA data-subject export and deletion tools, WhatsApp and SMS notifications, and CSP, CSRF and rate-limiting middleware. I also wrote the backup and log-rotation scripts for the server.',
         stack: ['PHP 8.x', 'MySQL (3NF)', 'AES-256-GCM Encryption', 'JavaScript (ES6+)', 'Apache / Nginx', 'TailwindCSS', 'WhatsApp & WinSMS API', 'POPIA / DSAR'],
         metrics: [
             'AES-256-GCM PII Encryption',
@@ -53,7 +53,7 @@ export const projects: Project[] = [
             flow: 'Borrower Payload → Security Middleware (CSRF + CSP) → PiiEncryptor (AES-256-GCM) → 3NF MySQL Database'
         },
         architectureDeepDive: {
-            overview: 'Designed with an enterprise-grade security posture including defensive middleware (SecurityHeaders.php, RateLimiter.php), session event logging (AuditLogger.php), and role-based permissions (RbacMiddleware.php).',
+            overview: 'Security middleware (SecurityHeaders.php, RateLimiter.php), session event logging (AuditLogger.php) and role-based permissions (RbacMiddleware.php).',
             schemaHighlights: '3NF normalized relational schema protecting sensitive PII (id_number, bank_account_number, salary_details, residential_address) with field-level AES-256-GCM encryption and blind index searching (_hash) to enable sub-15ms queries without storing unencrypted PII.',
             securityFocus: 'Fully compliant with South African POPIA legislation featuring Data Subject Access Request (DSAR) export utilities, automated account deletion/anonymization workflows, TOTP/SMS Multi-Factor Authentication (MfaManager.php), and automated database backup/restore scripts (backup-db.sh, restore-db.sh).'
         },
@@ -65,7 +65,7 @@ export const projects: Project[] = [
         badge: 'Cloud Architecture · Systems & DevOps',
         client: 'Future ProTechY / Enterprise Deployment',
         summary:
-            'Hands-on practical AWS cloud infrastructure setup for high-availability application hosting. Designed isolated Virtual Private Cloud (VPC) subnets, security group rules, EC2 compute instances with Nginx reverse proxies, and automated GitHub Actions CI/CD workflows for seamless code deployment.',
+            'AWS work at Future ProTechY: a VPC with public and private subnets, security group rules, EC2 instances behind a load balancer with Nginx in front, and a GitHub Actions pipeline that builds and deploys on push.',
         stack: ['AWS VPC', 'AWS EC2', 'Application Load Balancer', 'Route 53', 'Docker', 'GitHub Actions', 'Linux', 'Nginx'],
         metrics: [
             'Multi-Subnet VPC Zoning',

@@ -40,9 +40,6 @@ export default function TechStackGrid() {
                         <div className="tech-card-header">
                             <div className="tech-card-title-row">
                                 <h3 className="tech-category-title">{cat.title}</h3>
-                                <span className="tech-badge-count">
-                                    {cat.badges.length > 0 ? `${cat.badges.length} tools` : 'overview'}
-                                </span>
                             </div>
                             {cat.description && (
                                 <p className="tech-category-desc">{cat.description}</p>
@@ -58,14 +55,7 @@ export default function TechStackGrid() {
                                         className="tech-badge-item"
                                         title={`${badge.name}: ${badge.note || ''}`}
                                     >
-                                        <div className="badge-shield-wrap">
-                                            <img
-                                                src={badge.badgeUrl}
-                                                alt={`${badge.name} badge`}
-                                                loading="lazy"
-                                                className="badge-shield-img"
-                                            />
-                                        </div>
+                                        <span className="tech-name">{badge.name}</span>
                                         {badge.note && (
                                             <span className="badge-item-note">{badge.note}</span>
                                         )}
@@ -131,6 +121,18 @@ export default function TechStackGrid() {
                     color: var(--ink, #0f1b2d);
                     border-color: var(--amber, #e3a857);
                     font-weight: 600;
+                }
+
+                .tech-name {
+                    display: inline-block;
+                    font-family: 'JetBrains Mono', monospace;
+                    font-size: 13.5px;
+                    font-weight: 600;
+                    color: var(--paper, #ffffff);
+                    border: 1px solid rgba(227, 168, 87, 0.35);
+                    padding: 3px 9px;
+                    border-radius: 3px;
+                    margin-bottom: 4px;
                 }
 
                 .tech-stack-grid {

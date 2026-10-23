@@ -26,7 +26,7 @@ export const cv = {
 
     skills: [
         { label: 'Languages', items: 'Java, PHP, JavaScript (ES6+), TypeScript, C, SQL, HTML5, CSS3' },
-        { label: 'Frameworks', items: 'React, Astro, Node.js, Vue.js, Tailwind CSS' },
+        { label: 'Frameworks', items: 'React, Astro, Node.js, Tailwind CSS' },
         { label: 'Databases', items: 'MySQL (3NF schema design, indexing), MS SQL Server' },
         { label: 'Cloud & DevOps', items: 'AWS (VPC, EC2, ALB, Route 53), Docker, GitHub Actions CI/CD, Linux, Nginx' },
         { label: 'Security', items: 'AES-256-GCM, RBAC, TOTP/SMS MFA, CSRF/CSP, POPIA compliance, CompTIA Security+' },

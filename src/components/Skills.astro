@@ -3,62 +3,14 @@ import AccordionGallery from './reactbits/AccordionGallery.jsx';
 import TechStackGrid from './TechStackGrid.jsx';
 
 const skillItems = [
-  {
-    label: 'Languages',
-    shardColor: '#e3a857',
-    accentColor: '#fbbf24',
-    flow: 'stream' as const,
-    skills: ['Java', 'PHP', 'JavaScript', 'C', 'HTML5', 'CSS3']
-  },
-  {
-    label: 'Frontend',
-    shardColor: '#a855f7',
-    accentColor: '#e3a857',
-    flow: 'ribbon' as const,
-    skills: ['React', 'Vue.js', 'Astro', 'Responsive UI']
-  },
-  {
-    label: 'Backend & Cloud',
-    shardColor: '#d97706',
-    accentColor: '#f59e0b',
-    flow: 'vortex' as const,
-    skills: ['AWS (VPC, EC2, CI/CD)', 'Docker', 'Kubernetes', 'Node.js', 'Nginx']
-  },
-  {
-    label: 'Databases',
-    shardColor: '#c084fc',
-    accentColor: '#e3a857',
-    flow: 'stream' as const,
-    skills: ['MySQL', 'Microsoft SQL Server', 'Data Modeling']
-  },
-  {
-    label: 'Mobile',
-    shardColor: '#10b981',
-    accentColor: '#e3a857',
-    flow: 'vortex' as const,
-    skills: ['Android app development', 'Native architecture']
-  },
-  {
-    label: 'Cybersecurity',
-    shardColor: '#e11d48',
-    accentColor: '#fbbf24',
-    flow: 'ribbon' as const,
-    skills: ['CompTIA A+ (2024)', 'CompTIA Security+', 'Ethical Hacking']
-  },
-  {
-    label: 'Networking',
-    shardColor: '#9333ea',
-    accentColor: '#f59e0b',
-    flow: 'stream' as const,
-    skills: ['Fiber installation', 'Network configuration', 'LAN & cabling']
-  },
-  {
-    label: 'Process & AI',
-    shardColor: '#896ABD',
-    accentColor: '#e3a857',
-    flow: 'vortex' as const,
-    skills: ['Agile / Scrum', 'Software testing', 'Prompt engineering', 'AI workflows']
-  }
+  { label: 'Languages', skills: ['Java', 'PHP', 'JavaScript', 'TypeScript', 'C', 'HTML5', 'CSS3'] },
+  { label: 'Frontend', skills: ['React', 'Astro', 'Responsive UI'] },
+  { label: 'Backend & Cloud', skills: ['Node.js', 'Docker', 'Nginx', 'AWS (VPC, EC2, CI/CD)'] },
+  { label: 'Databases', skills: ['MySQL', 'Microsoft SQL Server', 'Data modelling'] },
+  { label: 'Mobile', skills: ['Android app development'] },
+  { label: 'Security', skills: ['CompTIA A+ (2024)', 'CompTIA Security+', 'Secure coding'] },
+  { label: 'Networking', skills: ['Fibre installation', 'Network configuration', 'LAN & cabling'] },
+  { label: 'Process', skills: ['Agile / Scrum', 'Software testing', 'Requirements analysis'] }
 ];
 ---
 
@@ -67,10 +19,10 @@ const skillItems = [
         <p class="eyebrow-num">04 / skills & tech stack</p>
         <h2>What I work with</h2>
         <p class="skills-intro">
-            A comprehensive overview of languages, frameworks, cloud infrastructure, security credentials, and engineering methodologies. Badges use official brand colors and verified industry standards.
+            What I use day to day, grouped by area.
         </p>
 
-        <!-- Visual Accordion Gallery with AeroShards in each Card -->
+        <!-- Skills accordion -->
         <div class="gallery-wrapper">
             <AccordionGallery
                 client:only="react"
@@ -78,7 +30,7 @@ const skillItems = [
                 defaultIndex={0}
                 expandRatio={0.46}
                 trigger="hover"
-                height={420}
+                height={260}
                 gap={6}
                 radius={4}
                 accentColor="#e3a857"
@@ -95,11 +47,11 @@ const skillItems = [
         <div class="tech-stack-section">
             <div class="tech-stack-header">
                 <div>
-                    <p class="eyebrow-num" style="margin-bottom: 4px;">tech stack matrix</p>
-                    <h3 class="tech-stack-heading">Interactive Stack & Verified Badges</h3>
+                    <p class="eyebrow-num" style="margin-bottom: 4px;">tools</p>
+                    <h3 class="tech-stack-heading">Tools</h3>
                 </div>
                 <p class="tech-stack-sub">
-                    Filter by domain to explore tools, certifications, and architectural capabilities.
+                    Filter by area.
                 </p>
             </div>
 

@@ -1,6 +1,5 @@
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
-import AeroShards from './AeroShards.jsx';
 
 import './AccordionGallery.css';
 
@@ -222,38 +221,6 @@ const AccordionGallery = ({
             aria-label={item.label}
           >
             <span className="ag-panel__frame">
-              <div className="ag-panel__shards">
-                <AeroShards
-                  backgroundColor={item.backgroundColor || 'transparent'}
-                  shardColor={item.shardColor || '#896ABD'}
-                  accentColor={item.accentColor || '#e3a857'}
-                  placement="full"
-                  flow={item.flow || 'stream'}
-                  material={item.material || 'satin'}
-                  detail="balanced"
-                  effect="none"
-                  scale={1}
-                  spread={0.9}
-                  depth={1}
-                  speed={0.8}
-                  spin={0.8}
-                  interaction="repel"
-                  density={1.2}
-                  shardSize={1.0}
-                  stretch={1}
-                  turbulence={0.8}
-                  glow={0.7}
-                  edgeSoftness={2}
-                  bloom={0.25}
-                  grain={0.03}
-                  chromaticAberration={0.005}
-                  transitionDuration={1}
-                  interactionRadius={1.5}
-                  interactionStrength={0.5}
-                  rippleIntensity={1}
-                  holdToGather={true}
-                />
-              </div>
               <span className="ag-panel__overlay" aria-hidden="true" />
             </span>
             {showLabels && (

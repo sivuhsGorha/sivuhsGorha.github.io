@@ -23,7 +23,7 @@ export const techCategories: TechCategory[] = [
         id: 'languages',
         title: 'Languages',
         filterGroup: 'languages',
-        description: 'Core programming and scripting languages powering backend architecture and client interfaces.',
+        description: 'What I write code in.',
         image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=900&auto=format&fit=crop&q=80',
         alt: 'Dark code editor with syntax highlighting',
         badges: [
@@ -33,7 +33,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#ED8B00',
                 textColor: 'white',
                 logo: 'openjdk',
-                note: 'Enterprise OOP & backend logic'
+                note: 'Backend services'
             },
             {
                 name: 'PHP',
@@ -41,7 +41,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#777BB4',
                 textColor: 'white',
                 logo: 'php',
-                note: 'Server-side systems & database integration'
+                note: 'Web backends; the Asante platform'
             },
             {
                 name: 'JavaScript',
@@ -49,7 +49,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#F7DF1E',
                 textColor: 'black',
                 logo: 'javascript',
-                note: 'Modern ES6+ client/server scripting'
+                note: 'Browser and Node'
             },
             {
                 name: 'C',
@@ -57,7 +57,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#A8B9CC',
                 textColor: 'black',
                 logo: 'c',
-                note: 'Low-level systems programming'
+                note: 'Systems programming basics'
             },
             {
                 name: 'HTML5',
@@ -65,7 +65,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#E34F26',
                 textColor: 'white',
                 logo: 'html5',
-                note: 'Semantic structure & accessibility'
+                note: 'Semantic markup'
             },
             {
                 name: 'CSS3',
@@ -73,7 +73,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#1572B6',
                 textColor: 'white',
                 logo: 'css3',
-                note: 'Responsive layouts & animations'
+                note: 'Responsive layouts'
             }
         ]
     },
@@ -81,7 +81,7 @@ export const techCategories: TechCategory[] = [
         id: 'frontend-frameworks',
         title: 'Frontend Frameworks & Static Sites',
         filterGroup: 'frontend_backend',
-        description: 'Modern component-driven UI libraries and high-performance site generators.',
+        description: 'Component UI and static sites.',
         image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=900&auto=format&fit=crop&q=80',
         alt: 'Dark minimal UI design layout',
         badges: [
@@ -91,15 +91,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#61DAFB',
                 textColor: 'black',
                 logo: 'react',
-                note: 'Declarative component architecture'
-            },
-            {
-                name: 'Vue.js',
-                badgeUrl: 'https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white',
-                brandColor: '#4FC08D',
-                textColor: 'white',
-                logo: 'vuedotjs',
-                note: 'Reactive frontend views'
+                note: 'Component UIs'
             },
             {
                 name: 'Astro',
@@ -107,7 +99,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#BC52EE',
                 textColor: 'white',
                 logo: 'astro',
-                note: 'Content-driven island architecture'
+                note: 'Static sites; this one'
             }
         ]
     },
@@ -115,7 +107,7 @@ export const techCategories: TechCategory[] = [
         id: 'backend-runtime',
         title: 'Backend Runtime',
         filterGroup: 'frontend_backend',
-        description: 'Asynchronous event-driven server runtime for scalable microservices and APIs.',
+        description: 'Server-side JavaScript for APIs and tooling.',
         image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&auto=format&fit=crop&q=80',
         alt: 'Dark server infrastructure and backend runtime',
         badges: [
@@ -125,7 +117,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#339933',
                 textColor: 'white',
                 logo: 'nodedotjs',
-                note: 'RESTful APIs & asynchronous services'
+                note: 'APIs and tooling'
             }
         ]
     },
@@ -133,7 +125,7 @@ export const techCategories: TechCategory[] = [
         id: 'databases',
         title: 'Databases & Storage',
         filterGroup: 'databases',
-        description: 'Relational database management, schema design, ACID transactions, and query optimization.',
+        description: 'Schema design and query work.',
         image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=900&auto=format&fit=crop&q=80',
         alt: 'Dark server matrix and database storage',
         badges: [
@@ -143,7 +135,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#4479A1',
                 textColor: 'white',
                 logo: 'mysql',
-                note: 'Relational data modeling & indexing'
+                note: 'Schema design and indexing'
             },
             {
                 name: 'Microsoft SQL Server',
@@ -151,7 +143,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#CC2927',
                 textColor: 'white',
                 logo: 'microsoftsqlserver',
-                note: 'Enterprise T-SQL & stored procedures'
+                note: 'T-SQL and stored procedures'
             }
         ]
     },
@@ -159,7 +151,7 @@ export const techCategories: TechCategory[] = [
         id: 'devops-cloud',
         title: 'Infrastructure & DevOps',
         filterGroup: 'devops_cloud',
-        description: 'Containerization, orchestration, reverse proxying, and cloud hosting infrastructure.',
+        description: 'Containers, reverse proxies and AWS hosting.',
         image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&auto=format&fit=crop&q=80',
         alt: 'Dark server infrastructure and container network',
         badges: [
@@ -169,15 +161,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#2496ED',
                 textColor: 'white',
                 logo: 'docker',
-                note: 'Containerization & multi-stage builds'
-            },
-            {
-                name: 'Kubernetes',
-                badgeUrl: 'https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white',
-                brandColor: '#326CE5',
-                textColor: 'white',
-                logo: 'kubernetes',
-                note: 'Container orchestration & scaling'
+                note: 'Multi-stage builds'
             },
             {
                 name: 'Nginx',
@@ -185,7 +169,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#009639',
                 textColor: 'white',
                 logo: 'nginx',
-                note: 'Reverse proxy, SSL termination & load balancing'
+                note: 'Reverse proxy and TLS'
             },
             {
                 name: 'AWS',
@@ -193,21 +177,21 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#FF9900',
                 textColor: 'white',
                 logo: 'amazonaws',
-                note: 'Hands-on exposure — VPC, EC2, CI/CD (actively learning)'
+                note: 'VPC, EC2, CI/CD at work; still learning'
             }
         ],
         bullets: [
-            'AWS VPC (Virtual Private Clouds, subnets, route tables & security groups — hands-on learning)',
+            'AWS VPC: subnets, route tables and security groups',
             'AWS EC2 (Compute instance setup & Linux administration in a professional setting)',
             'CI/CD Pipelines using GitHub Actions & Docker (actively building proficiency)',
-            'AWS ALB & Route 53 (exposure-level experience — open to mentorship & growth)'
+            'AWS ALB and Route 53 (used at work, not yet set up alone)'
         ]
     },
     {
         id: 'mobile',
         title: 'Mobile Development',
         filterGroup: 'frontend_backend',
-        description: 'Native mobile application development and Android subsystem architecture.',
+        description: 'Android.',
         image: 'https://images.unsplash.com/photo-1526406915894-7bcd65f60845?w=900&auto=format&fit=crop&q=80',
         alt: 'Dark minimal mobile tech interface',
         badges: [
@@ -217,7 +201,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#3DDC84',
                 textColor: 'white',
                 logo: 'android',
-                note: 'Native mobile app development'
+                note: 'Native apps'
             }
         ]
     },
@@ -225,7 +209,7 @@ export const techCategories: TechCategory[] = [
         id: 'security-certifications',
         title: 'Security & Certifications',
         filterGroup: 'security_network',
-        description: 'Industry-standard cybersecurity credentials and security-first engineering practices.',
+        description: 'The certifications and what they cover.',
         image: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=900&auto=format&fit=crop&q=80',
         alt: 'Dark cybersecurity matrix and encryption mesh',
         badges: [
@@ -235,7 +219,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#C8102E',
                 textColor: 'white',
                 logo: 'comptia',
-                note: 'Hardware, OS & operational procedures (2024)'
+                note: 'Certified 2024'
             },
             {
                 name: 'CompTIA Security+',
@@ -243,7 +227,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#C8102E',
                 textColor: 'white',
                 logo: 'comptia',
-                note: 'Threat analysis, cryptography & risk management'
+                note: 'Threats, cryptography, risk'
             }
         ],
         bullets: [
@@ -255,7 +239,7 @@ export const techCategories: TechCategory[] = [
         id: 'networking',
         title: 'Networking & Infrastructure',
         filterGroup: 'security_network',
-        description: 'Physical network architecture, high-speed fiber optics, and enterprise cabling.',
+        description: 'From the fibre installation work.',
         image: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=900&auto=format&fit=crop&q=80',
         alt: 'Dark fiber optic strands and network wave',
         badges: [
@@ -265,7 +249,7 @@ export const techCategories: TechCategory[] = [
                 brandColor: '#38bdf8',
                 textColor: 'white',
                 logo: 'cisco',
-                note: 'High-speed physical infrastructure'
+                note: 'Installation and cabling'
             }
         ],
         bullets: [
@@ -277,7 +261,7 @@ export const techCategories: TechCategory[] = [
         id: 'business-process',
         title: 'Business & Process',
         filterGroup: 'process_ai',
-        description: 'Structured methodologies aligning technical systems with business objectives.',
+        description: 'How I work with clients.',
         image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&auto=format&fit=crop&q=80',
         alt: 'Business analytics and agile workflow chart',
         badges: [],
@@ -285,31 +269,18 @@ export const techCategories: TechCategory[] = [
             'Requirements gathering and process mapping',
             'Business process management (BPM)',
             'Agile / Scrum methodology',
-            'Comprehensive software testing & QA',
-            'End-to-end project management'
-        ]
-    },
-    {
-        id: 'emerging-tech',
-        title: 'Emerging Tech & AI',
-        filterGroup: 'process_ai',
-        description: 'Leveraging next-generation AI workflows and prompt engineering to accelerate development.',
-        image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&auto=format&fit=crop&q=80',
-        alt: 'Dark neural network geometry and AI engineering',
-        badges: [],
-        bullets: [
-            'Advanced prompt engineering for autonomous agents',
-            'AI workflow implementation & developer productivity tooling'
+            'Software testing and QA',
+            'Project management'
         ]
     }
 ];
 
 export const filterTabs = [
-    { id: 'all', label: 'All Stack' },
+    { id: 'all', label: 'All' },
     { id: 'languages', label: 'Languages' },
     { id: 'frontend_backend', label: 'Frontend & Backend' },
     { id: 'devops_cloud', label: 'DevOps & Cloud' },
     { id: 'databases', label: 'Databases' },
     { id: 'security_network', label: 'Security & Network' },
-    { id: 'process_ai', label: 'Process & AI' }
+    { id: 'process_ai', label: 'Process' }
 ] as const;

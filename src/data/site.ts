@@ -3,7 +3,7 @@ export const site = {
     mark: 'SBK.dev',
     title: 'Sibongakonke Simamane — Full-Stack Systems Developer & Cloud Learner',
     metaDescription:
-        'Full-Stack Systems Developer in Durban, South Africa. Available for select freelance projects & contracts. Specializing in high-performance web applications, secure backend architectures, and actively building cloud infrastructure skills on AWS.',
+        'Full-stack developer in Durban, South Africa. Java, PHP, JavaScript and MySQL, with AWS at work. Available for freelance and contract projects.',
     role: 'FULL-STACK SYSTEMS DEVELOPER • CLOUD LEARNER & FREELANCE ENGINEER',
     roleId: 'systems_dev_cloud_consultant',
     language: 'java / js / php / typescript',

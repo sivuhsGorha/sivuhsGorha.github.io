@@ -1,6 +1,5 @@
 ---
 // Certifications.astro — Verified Credentials & Academic Accreditations
-import ColorBends from './reactbits/ColorBends.jsx';
 ---
 
 <section id="certifications" class="certifications reveal">
@@ -8,30 +7,12 @@ import ColorBends from './reactbits/ColorBends.jsx';
         <div class="section-header">
             <p class="eyebrow-num" style="margin-bottom: 8px;">04 / credentials & education</p>
             <h2><span class="highlight">Cert</span>ifications</h2>
-            <p>Verified industry credentials & academic distinction.</p>
+            <p>Two CompTIA certifications and the diploma.</p>
         </div>
 
         <div class="cert-grid">
             <!-- CompTIA Security+ -->
             <div class="cert-card">
-                <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 1; border-radius: 8px; overflow: hidden;">
-                    <ColorBends 
-                        client:only="react"
-                        colors={["#e3a857", "#896ABD", "#1a0a2e"]}
-                        rotation={90}
-                        speed={0.15}
-                        scale={1.5}
-                        frequency={1}
-                        warpStrength={1}
-                        mouseInfluence={0.5}
-                        noise={0.1}
-                        parallax={0.5}
-                        iterations={1}
-                        intensity={0.8}
-                        bandWidth={6}
-                        transparent={true}
-                    />
-                </div>
                 <div class="card-glow-bg sec-glow" aria-hidden="true"></div>
                 <div class="cert-inner" style="position: relative; z-index: 1;">
                     <div class="cert-icon sec-plus">
@@ -51,24 +32,6 @@ import ColorBends from './reactbits/ColorBends.jsx';
 
             <!-- CompTIA A+ -->
             <div class="cert-card">
-                <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 1; border-radius: 8px; overflow: hidden;">
-                    <ColorBends 
-                        client:only="react"
-                        colors={["#e3a857", "#896ABD", "#1a0a2e"]}
-                        rotation={90}
-                        speed={0.15}
-                        scale={1.5}
-                        frequency={1}
-                        warpStrength={1}
-                        mouseInfluence={0.5}
-                        noise={0.1}
-                        parallax={0.5}
-                        iterations={1}
-                        intensity={0.8}
-                        bandWidth={6}
-                        transparent={true}
-                    />
-                </div>
                 <div class="card-glow-bg a-glow" aria-hidden="true"></div>
                 <div class="cert-inner" style="position: relative; z-index: 1;">
                     <div class="cert-icon a-plus">
@@ -90,24 +53,6 @@ import ColorBends from './reactbits/ColorBends.jsx';
 
             <!-- Boston City Campus -->
             <div class="cert-card featured">
-                <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 1; border-radius: 8px; overflow: hidden;">
-                    <ColorBends 
-                        client:only="react"
-                        colors={["#e3a857", "#896ABD", "#1a0a2e"]}
-                        rotation={90}
-                        speed={0.15}
-                        scale={1.5}
-                        frequency={1}
-                        warpStrength={1}
-                        mouseInfluence={0.5}
-                        noise={0.1}
-                        parallax={0.5}
-                        iterations={1}
-                        intensity={0.8}
-                        bandWidth={6}
-                        transparent={true}
-                    />
-                </div>
                 <div class="card-glow-bg diploma-glow" aria-hidden="true"></div>
                 <div class="cert-inner" style="position: relative; z-index: 1;">
                     <div class="cert-icon diploma">
@@ -190,10 +135,6 @@ import ColorBends from './reactbits/ColorBends.jsx';
     }
 
     .cert-inner {
-        background: rgba(14, 8, 28, 0.72);
-        border-radius: 8px;
-        padding: 0.6rem 0.75rem;
-        backdrop-filter: blur(4px);
         position: relative;
         z-index: 1;
         display: flex;
