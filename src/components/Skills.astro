@@ -1,62 +1,32 @@
 ---
-import AccordionGallery from './reactbits/AccordionGallery.jsx';
-import TechStackGrid from './TechStackGrid.jsx';
-
-const skillItems = [
-  { label: 'Languages', skills: ['Java', 'PHP', 'JavaScript', 'TypeScript', 'C', 'HTML5', 'CSS3'] },
-  { label: 'Frontend', skills: ['React', 'Astro', 'Responsive UI'] },
-  { label: 'Backend & Cloud', skills: ['Node.js', 'Docker', 'Nginx', 'AWS (VPC, EC2, CI/CD)'] },
-  { label: 'Databases', skills: ['MySQL', 'Microsoft SQL Server', 'Data modelling'] },
-  { label: 'Mobile', skills: ['Android app development'] },
-  { label: 'Security', skills: ['CompTIA A+ (2024)', 'CompTIA Security+', 'Secure coding'] },
-  { label: 'Networking', skills: ['Fibre installation', 'Network configuration', 'LAN & cabling'] },
-  { label: 'Process', skills: ['Agile / Scrum', 'Software testing', 'Requirements analysis'] }
-];
+import { skillGroups } from '../data/skills';
 ---
 
 <section id="skills" class="reveal">
     <div class="wrap">
         <p class="eyebrow-num">04 / skills & tech stack</p>
         <h2>What I work with</h2>
-        <p class="skills-intro">
-            What I use day to day, grouped by area.
-        </p>
+        <p class="skills-intro">What I use day to day, grouped by area.</p>
 
-        <!-- Skills accordion -->
-        <div class="gallery-wrapper">
-            <AccordionGallery
-                client:only="react"
-                items={skillItems}
-                defaultIndex={0}
-                expandRatio={0.46}
-                trigger="hover"
-                height={260}
-                gap={6}
-                radius={4}
-                accentColor="#e3a857"
-                overlayColor="transparent"
-                textColor="#ffffff"
-                showLabels={true}
-                duration={0.45}
-                tilt={4}
-                parallax={0.3}
-            />
-        </div>
-
-        <!-- Interactive Tech Stack Matrix with Official Badges & Filtering -->
-        <div class="tech-stack-section">
-            <div class="tech-stack-header">
-                <div>
-                    <p class="eyebrow-num" style="margin-bottom: 4px;">tools</p>
-                    <h3 class="tech-stack-heading">Tools</h3>
+        <dl class="skills-list">
+            {skillGroups.map((group) => (
+                <div class="skills-row">
+                    <dt>{group.label}</dt>
+                    <dd>
+                        <ul>
+                            {group.items.map((skill) => (
+                                <li title={skill.note}>
+                                    {skill.logo && (
+                                        <img src={`/icons/${skill.logo}.svg`} alt="" width="16" height="16" loading="lazy" />
+                                    )}
+                                    {skill.name}
+                                </li>
+                            ))}
+                        </ul>
+                    </dd>
                 </div>
-                <p class="tech-stack-sub">
-                    Filter by area.
-                </p>
-            </div>
-
-            <TechStackGrid client:load />
-        </div>
+            ))}
+        </dl>
     </div>
 </section>
 
@@ -70,33 +40,107 @@ const skillItems = [
         line-height: 1.6;
     }
 
-    .gallery-wrapper {
-        margin-bottom: 56px;
-    }
-
-    .tech-stack-section {
-        border-top: 1px solid var(--line, #33465c);
-        padding-top: 48px;
-    }
-
-    .tech-stack-header {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        margin-bottom: 24px;
-    }
-
-    .tech-stack-heading {
-        font-family: 'Fraunces', serif;
-        font-size: 32px;
-        font-weight: 500;
-        color: var(--paper, #ffffff);
-    }
-
-    .tech-stack-sub {
-        color: var(--steel, #f4f6fc);
-        font-size: 16.5px;
+    .skills-list {
         margin: 0;
-        max-width: 60ch;
+    }
+
+    .skills-row {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 24px;
+        align-items: baseline;
+        padding: 20px 0;
+        border-top: 1px solid var(--line);
+    }
+
+    .skills-row:first-of-type {
+        border-top: none;
+    }
+
+    dt {
+        font-family: 'Fraunces', serif;
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--paper);
+    }
+
+    dd {
+        margin: 0;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 28px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Hover: a soft amber highlight behind the item, like a marker pen. Not a link. */
+    li {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 17px;
+        color: var(--steel);
+        cursor: default;
+        padding: 3px 8px;
+        margin: -3px -8px;
+        border-radius: 4px;
+        transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    li:hover {
+        background-color: color-mix(in srgb, var(--amber) 18%, transparent);
+        color: var(--paper);
+    }
+
+    /* Logos are drawn monochrome in the text colour; they take the amber on hover */
+    li img {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+        filter: grayscale(1) brightness(0) invert(1);
+        opacity: 0.6;
+        transition: opacity 0.15s ease, filter 0.15s ease;
+    }
+
+    :global([data-theme="bright"]) li img {
+        filter: grayscale(1) brightness(0);
+    }
+
+    li:hover img {
+        opacity: 1;
+        /* amber: sepia + hue/saturation on a white base */
+        filter: grayscale(1) brightness(0) invert(1) sepia(1) saturate(4) hue-rotate(-10deg) brightness(0.95);
+    }
+
+    :global([data-theme="bright"]) li:hover img {
+        filter: grayscale(1) brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(-12deg) brightness(0.55);
+    }
+
+    /* The row's group name warms up too when any tool in it is hovered */
+    .skills-row:hover dt {
+        color: var(--amber);
+    }
+
+    dt {
+        transition: color 0.15s ease;
+    }
+
+    @media (max-width: 640px) {
+        .skills-row {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        ul {
+            gap: 8px 20px;
+        }
+
+        li {
+            font-size: 16px;
+        }
     }
 </style>

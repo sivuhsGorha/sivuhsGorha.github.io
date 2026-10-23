@@ -17,32 +17,21 @@
 
 :root[data-theme="bright"] {
     /* Bright Mode */
-    --ink: #fdfdfd;
-    --ink-soft: #e2e8f0;
+    --ink: #efece7;
+    --ink-soft: #e2ddd5;
     --paper: #020408;
     --paper-dim: #1e293b;
     --steel: #0f172a;
     --line: #cbd5e1;
     /* Darker amber and green so accent text stays readable (WCAG AA) on the light background. */
-    --amber: #9a4a07;
+    --amber: #8a4106;
     --amber-dim: #78350f;
     --ok: #047857;
     --success: #047857;
-    --whatsapp: #15803d;
+    --whatsapp: #166534;
 }
 
-/* Surfaces that stay dark in bright mode keep the dim palette, so text, accents
-   and borders inside them resolve to light-on-dark values. */
-[data-theme="bright"] .service-card,
-[data-theme="bright"] .project-card,
-[data-theme="bright"] .cert-card,
-[data-theme="bright"] .tech-category-card,
-[data-theme="bright"] .glow-card,
-[data-theme="bright"] .project-cta-banner,
-[data-theme="bright"] .perks-strip,
-[data-theme="bright"] .form-container,
-[data-theme="bright"] .ag-panel,
-[data-theme="bright"] .cv-sheet,
+/* The error pages keep their dark card in bright mode; everything else gets a light card below. */
 [data-theme="bright"] .error-content {
     --ink: #120721;
     --ink-soft: #1b0c33;
@@ -58,177 +47,225 @@
     color: #f4f6fc;
 }
 
-[data-theme="bright"] .ag-panel,
-[data-theme="bright"] .ag-panel:hover,
-[data-theme="bright"] .ag-panel--active {
-    background: linear-gradient(135deg, rgba(26, 10, 46, 0.97) 0%, rgba(14, 10, 24, 0.98) 100%) !important;
-}
-
-/* ── Bright mode: cards retain rich deep purple glass containers with clear, high-contrast readable text ── */
-[data-theme="bright"] .service-card,
-[data-theme="bright"] .project-card,
-[data-theme="bright"] .cert-card,
-[data-theme="bright"] .tech-category-card,
-[data-theme="bright"] .glow-card,
-[data-theme="bright"] .project-cta-banner,
-[data-theme="bright"] .perks-strip,
-[data-theme="bright"] .form-container {
-    background: linear-gradient(135deg, rgba(26, 10, 46, 0.95) 0%, rgba(14, 10, 24, 0.97) 100%) !important;
+/* ── Bright mode: light cards with the same violet / amber corner glow as dark mode ── */
+:root[data-theme="bright"] .service-card,
+:root[data-theme="bright"] .project-card,
+:root[data-theme="bright"] .cert-card,
+:root[data-theme="bright"] .glow-card,
+:root[data-theme="bright"] .form-container,
+:root[data-theme="bright"] .cv-sheet,
+:root[data-theme="bright"] .cv-skill-card,
+:root[data-theme="bright"] .cv-exp-item,
+:root[data-theme="bright"] .cv-edu-card,
+:root[data-theme="bright"] .mode-card {
+    background-color: rgba(255, 255, 255, 0.82);
+    background-image: none;
+    border-color: rgba(154, 74, 7, 0.28);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
     backdrop-filter: blur(14px);
-    border-color: rgba(227, 168, 87, 0.35) !important;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    -webkit-backdrop-filter: blur(14px);
+    color: #0f172a;
+}:root[data-theme="bright"] .service-card:hover,
+:root[data-theme="bright"] .project-card:hover,
+:root[data-theme="bright"] .cert-card:hover {
+    border-color: rgba(154, 74, 7, 0.55);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12);
 }
 
-/* Headings inside cards: crisp pure white with subtle dark gold outline */
-[data-theme="bright"] .project-card h3,
-[data-theme="bright"] .project-title-row h3,
-[data-theme="bright"] .service-card h3,
-[data-theme="bright"] .card-title,
-[data-theme="bright"] .cert-card h3,
-[data-theme="bright"] .cert-details h3,
-[data-theme="bright"] .tech-category-title,
-[data-theme="bright"] .project-cta-banner h3,
-[data-theme="bright"] .banner-content h3,
-[data-theme="bright"] .perks-title,
-[data-theme="bright"] .perk-item h4 {
-    color: #ffffff !important;
-    text-shadow: none !important;
-    -webkit-text-stroke: 0.5px rgba(185, 134, 64, 0.55);
-    paint-order: stroke fill;
+/* Text inside light cards */
+:root[data-theme="bright"] .service-card h3,
+:root[data-theme="bright"] .project-card h3,
+:root[data-theme="bright"] .cert-card h3,
+:root[data-theme="bright"] .mode-title,
+:root[data-theme="bright"] .success-panel h3,
+:root[data-theme="bright"] .step-title,
+:root[data-theme="bright"] .cv-sheet h1,
+:root[data-theme="bright"] .cv-sheet h3 {
+    color: #0f172a;
+    text-shadow: none;
+    -webkit-text-stroke: 0;
+}:root[data-theme="bright"] .project-summary,
+:root[data-theme="bright"] .card-desc,
+:root[data-theme="bright"] .cert-details p,
+:root[data-theme="bright"] .card-deliverables li,
+:root[data-theme="bright"] .project-deliverables li,
+:root[data-theme="bright"] .deep-dive-body,
+:root[data-theme="bright"] .deep-dive-body p,
+:root[data-theme="bright"] .deep-dive-trigger,
+:root[data-theme="bright"] .arch-title,
+:root[data-theme="bright"] .arch-flow-summary,
+:root[data-theme="bright"] .node-label-text,
+:root[data-theme="bright"] .form-container label,
+:root[data-theme="bright"] .mode-desc,
+:root[data-theme="bright"] .hint,
+:root[data-theme="bright"] .draft-note,
+:root[data-theme="bright"] .success-panel p,
+:root[data-theme="bright"] .success-panel li,
+:root[data-theme="bright"] .whatsapp-direct-box span,
+:root[data-theme="bright"] .cv-sheet p,
+:root[data-theme="bright"] .cv-sheet li,
+:root[data-theme="bright"] .cv-sheet span,
+:root[data-theme="bright"] .cv-sheet div {
+    color: #1e293b;
 }
 
-/* Descriptions & body text under headings inside cards (high-contrast platinum silver) */
-[data-theme="bright"] .project-summary,
-[data-theme="bright"] .card-desc,
-[data-theme="bright"] .tech-category-desc,
-[data-theme="bright"] .badge-item-note,
-[data-theme="bright"] .tech-details-list li,
-[data-theme="bright"] .bullet-text,
-[data-theme="bright"] .banner-content p,
-[data-theme="bright"] .perk-item p,
-[data-theme="bright"] .cert-details p,
-[data-theme="bright"] .card-deliverables li,
-[data-theme="bright"] .project-deliverables li,
-[data-theme="bright"] .form-assurances,
-[data-theme="bright"] .form-assurances span,
-[data-theme="bright"] .whatsapp-direct-box span,
-[data-theme="bright"] .form-container label {
-    color: #f4f6fc !important;
+:root[data-theme="bright"] .client-name,
+:root[data-theme="bright"] .deliv-label,
+:root[data-theme="bright"] .deliv-heading,
+:root[data-theme="bright"] .card-num,
+:root[data-theme="bright"] .pid,
+:root[data-theme="bright"] .bullet,
+:root[data-theme="bright"] .bullet-dash,
+:root[data-theme="bright"] .arch-tag,
+:root[data-theme="bright"] .flow-label,
+:root[data-theme="bright"] .node-step-badge,
+:root[data-theme="bright"] .cv-role,
+:root[data-theme="bright"] .cv-sec-title,
+:root[data-theme="bright"] .cv-company,
+:root[data-theme="bright"] .cv-sheet a,
+:root[data-theme="bright"] .dist-score,
+:root[data-theme="bright"] .cv-skill-card h3 {
+    color: var(--amber);
 }
 
-[data-theme="bright"] .form-assurances {
-    background: rgba(255, 255, 255, 0.08) !important;
-    border-color: rgba(227, 168, 87, 0.35) !important;
+/* Chips and small boxes inside cards */
+:root[data-theme="bright"] .stack span,
+:root[data-theme="bright"] .metric-badge,
+:root[data-theme="bright"] .client-badge,
+:root[data-theme="bright"] .card-badge,
+:root[data-theme="bright"] .cert-date,
+:root[data-theme="bright"] .cert-date.distinction,
+:root[data-theme="bright"] .dist-code,
+:root[data-theme="bright"] .dist-title {
+    color: #3b2a14;
+    background: rgba(255, 255, 255, 0.78);
+    border-color: rgba(154, 74, 7, 0.35);
+    box-shadow: none;
+    text-shadow: none;
+}:root[data-theme="bright"] .arch-deep-dive,
+:root[data-theme="bright"] .deep-dive-trigger,
+:root[data-theme="bright"] .project-deliverables,
+:root[data-theme="bright"] .cv-distinction-badge,
+:root[data-theme="bright"] .cv-scores-grid {
+    background: rgba(15, 23, 42, 0.04);
+    border-color: rgba(15, 23, 42, 0.12);
 }
 
-[data-theme="bright"] .form-assurances .assurance-dot {
-    color: var(--amber) !important;
+:root[data-theme="bright"] .cert-icon {
+    background: rgba(15, 23, 42, 0.06);
+    border-color: rgba(15, 23, 42, 0.1);
 }
 
-/* Retain amber accents inside cards in bright mode */
-[data-theme="bright"] .client-name,
-[data-theme="bright"] .deliv-label,
-[data-theme="bright"] .deliv-heading,
-[data-theme="bright"] .card-num,
-[data-theme="bright"] .pid,
-[data-theme="bright"] .bullet,
-[data-theme="bright"] .bullet-dash,
-[data-theme="bright"] .perk-icon {
-    color: var(--amber) !important;
+:root[data-theme="bright"] .arch-diagram-box {
+    background: rgba(248, 250, 252, 0.9);
+    border-color: rgba(124, 58, 237, 0.3);
+    box-shadow: none;
 }
 
-/* Badges & Chips inside cards */
-[data-theme="bright"] .client-badge,
-[data-theme="bright"] .card-badge,
-[data-theme="bright"] .tech-badge-count {
-    color: var(--amber) !important;
-    background: rgba(227, 168, 87, 0.15) !important;
-    border-color: rgba(227, 168, 87, 0.35) !important;
+:root[data-theme="bright"] .arch-node-box,
+:root[data-theme="bright"] .arch-flowchart-canvas {
+    background: #ffffff;
 }
 
-[data-theme="bright"] .tech-chip,
-[data-theme="bright"] .stack span {
-    color: #f1f5f9 !important;
-    background: rgba(227, 168, 87, 0.12) !important;
-    border-color: rgba(227, 168, 87, 0.3) !important;
+:root[data-theme="bright"] .btn-live {
+    background: var(--amber);
+    color: #ffffff;
 }
 
-[data-theme="bright"] .tech-badge-item {
-    background: rgba(26, 12, 44, 0.75) !important;
-    border-color: rgba(227, 168, 87, 0.25) !important;
+:root[data-theme="bright"] .btn-repo {
+    color: #1e293b;
 }
 
-[data-theme="bright"] .tech-label {
-    color: #cbd5e1 !important;
+:root[data-theme="bright"] .btn-repo:hover {
+    color: var(--amber);
 }
 
-/* Action buttons & links inside cards */
-[data-theme="bright"] .btn-live {
-    background: var(--amber) !important;
-    color: #1a0a2e !important;
-    font-weight: 600 !important;
+/* The featured (diploma) card has its own dark background in the component; match the other cards */
+:root[data-theme="bright"] .cert-card.featured {
+    background: rgba(255, 255, 255, 0.82) !important;
 }
 
-[data-theme="bright"] .btn-live:hover {
-    background: #eab86c !important;
+/* Astro-scoped component rules outrank plain selectors; the certification heading needs !important */
+:root[data-theme="bright"] .cert-card .cert-details h3 {
+    color: #0f172a !important;
 }
 
-[data-theme="bright"] .btn-repo {
-    color: #cbd5e1 !important;
+/* The decorative corner glows were tuned for dark cards; soften them on light ones */
+:root[data-theme="bright"] .card-glow-bg {
+    display: none;
 }
 
-[data-theme="bright"] .btn-repo:hover {
-    color: #ffffff !important;
+:root[data-theme="bright"] .article-back {
+    color: #78350f;
+    font-weight: 600;
 }
 
-[data-theme="bright"] .card-link {
-    color: var(--amber) !important;
+/* Contact form controls on a light card */
+:root[data-theme="bright"] .form-container input,
+:root[data-theme="bright"] .form-container select,
+:root[data-theme="bright"] .form-container textarea {
+    color: #0f172a;
+    background: #ffffff;
+    border-color: #cbd5e1;
 }
 
-[data-theme="bright"] .card-link:hover {
-    color: #ffffff !important;
+:root[data-theme="bright"] .form-container select option {
+    background: #ffffff;
+    color: #0f172a;
 }
 
-/* Date tags inside certification cards */
-[data-theme="bright"] .cert-date {
-    color: #f4f6fc !important;
-    background: rgba(255, 255, 255, 0.12) !important;
-    border-color: rgba(255, 255, 255, 0.22) !important;
+:root[data-theme="bright"] .form-container input:focus,
+:root[data-theme="bright"] .form-container select:focus,
+:root[data-theme="bright"] .form-container textarea:focus {
+    background: #ffffff;
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px rgba(154, 74, 7, 0.15);
 }
 
-[data-theme="bright"] .cert-date.distinction {
-    color: var(--amber) !important;
-    background: rgba(227, 168, 87, 0.18) !important;
-    border-color: rgba(227, 168, 87, 0.4) !important;
+:root[data-theme="bright"] .form-container ::placeholder {
+    color: #64748b;
 }
 
-/* Contact form container in bright mode */
-[data-theme="bright"] .form-container {
-    background: linear-gradient(135deg, rgba(26, 10, 46, 0.95) 0%, rgba(14, 10, 24, 0.97) 100%) !important;
-    border-color: rgba(227, 168, 87, 0.35) !important;
+:root[data-theme="bright"] .form-container .submit-btn {
+    background: var(--amber);
+    color: #ffffff;
 }
 
-[data-theme="bright"] .form-container label {
-    color: #f4f6fc !important;
+:root[data-theme="bright"] .form-container .submit-btn:hover {
+    background: #7c3a05;
 }
 
-[data-theme="bright"] .form-container input,
-[data-theme="bright"] .form-container select,
-[data-theme="bright"] .form-container textarea {
-    color: #ffffff !important;
-    background: rgba(15, 23, 42, 0.85) !important;
-    border-color: rgba(255, 255, 255, 0.2) !important;
+:root[data-theme="bright"] .back-btn {
+    color: #0f172a;
+    border-color: rgba(15, 23, 42, 0.3);
 }
 
-[data-theme="bright"] .form-container .submit-btn {
-    background: var(--amber) !important;
-    color: #1a0a2e !important;
+:root[data-theme="bright"] .mode-card:has(input:checked) {
+    background-color: rgba(154, 74, 7, 0.1);
+    border-color: var(--amber);
 }
 
-[data-theme="bright"] .whatsapp-direct-box span {
-    color: #f4f6fc !important;
+:root[data-theme="bright"] .progress-track {
+    background: rgba(15, 23, 42, 0.1);
 }
 
+:root[data-theme="bright"] .progress-label {
+    color: var(--amber);
+}
+
+:root[data-theme="bright"] .field-error {
+    color: #b91c1c;
+}
+
+:root[data-theme="bright"] .whatsapp-direct-box {
+    border-top-color: rgba(15, 23, 42, 0.12);
+}
+
+:root[data-theme="bright"] .whatsapp-link-btn {
+    color: var(--amber);
+    border-color: rgba(154, 74, 7, 0.4);
+    background: rgba(154, 74, 7, 0.06);
+}
 
 * {
     box-sizing: border-box;
@@ -260,21 +297,16 @@ body {
     mix-blend-mode: normal;
 }
 
-
-
 ::selection {
     background: var(--amber);
     color: var(--ink);
-}
-
-h1,
+}h1,
 h2,
 h3,
 h4,
 h5,
 h6,
 .card-title,
-.tech-category-title,
 .cv-sec-title,
 .cv-job-title,
 .perks-title,
@@ -287,8 +319,6 @@ h6,
     paint-order: stroke fill;
     text-shadow: 0 0 1px rgba(185, 134, 64, 0.3);
 }
-
-
 
 a {
     color: inherit;
@@ -341,13 +371,11 @@ nav {
 }
 
 [data-theme="bright"] nav {
-    background: rgba(255, 255, 255, 0.88);
+    background: rgba(243, 240, 235, 0.9);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(203, 213, 225, 0.6);
 }
-
-
 
 nav .wrap {
     display: flex;
@@ -548,7 +576,6 @@ header.hero {
 .btn-ghost:focus-visible {
     border-color: var(--paper);
 }
-
 
 /* ---------- SECTION SHARED ---------- */
 section {
@@ -804,15 +831,21 @@ section.in-view h2::after,
     border-top: none;
 }
 
+/* Note titles: a permanent amber underline marks them as links; it goes solid on hover */
 .post a {
-    text-decoration: none;
     color: var(--paper);
     font-size: 17.5px;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--amber) 45%, transparent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 5px;
+    transition: text-decoration-color 0.15s ease, color 0.15s ease;
 }
 
 .post a:hover,
 .post a:focus-visible {
     color: var(--amber);
+    text-decoration-color: var(--amber);
 }
 
 .post-main {
@@ -820,10 +853,11 @@ section.in-view h2::after,
 }
 
 .post-desc {
-    margin: 6px 0 0;
+    margin: 8px 0 0;
     max-width: 62ch;
     font-size: 15px;
     color: var(--steel);
+    opacity: 0.8;
 }
 
 .post-meta {
@@ -990,8 +1024,16 @@ section.in-view h2::after,
     display: block;
     max-width: 46%;
     color: var(--paper);
-    text-decoration: none;
     line-height: 1.35;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--amber) 45%, transparent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 5px;
+    transition: text-decoration-color 0.15s ease, color 0.15s ease;
+}
+
+.article-nav a span {
+    text-decoration: none;
 }
 
 .article-nav a span {
@@ -1010,6 +1052,7 @@ section.in-view h2::after,
 .article-nav a:hover,
 .article-nav a:focus-visible {
     color: var(--amber);
+    text-decoration-color: var(--amber);
 }
 
 @media (max-width: 600px) {
@@ -1233,12 +1276,7 @@ section.in-view h2::after,
     opacity: 0.5;
 }
 
-/* CV sheet and error cards stay dark in bright mode, but opaque enough to read. */
-[data-theme="bright"] .cv-sheet {
-    background: rgba(14, 10, 24, 0.97) !important;
-    border-color: rgba(227, 168, 87, 0.35) !important;
-}
-
+/* The error card stays dark in bright mode, opaque enough to read. */
 [data-theme="bright"] .error-content {
     background: rgba(14, 8, 28, 0.95) !important;
 }
@@ -1248,7 +1286,7 @@ section.in-view h2::after,
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(253, 253, 253, 0.78);
+    background: rgba(239, 236, 231, 0.74);
 }
 
 /* Hero text on the light shader: drop the dark halo, use a light one. */
@@ -1265,7 +1303,7 @@ section.in-view h2::after,
 [data-theme="bright"] .hero p.role {
     display: inline-block;
     padding: 3px 10px;
-    background: rgba(253, 253, 253, 0.82);
+    background: rgba(239, 236, 231, 0.85);
     color: var(--amber-dim);
     text-shadow: none;
 }
@@ -1292,4 +1330,22 @@ section.in-view h2::after,
 [data-theme="bright"] .nav-mark:hover,
 [data-theme="bright"] .nav-mark:focus-visible {
     color: #ffffff;
+}
+
+/* ── Dark mode colour: soft violet and amber haze over the silk (CSS only, no shader) ── */
+:root:not([data-theme="bright"]) .bg-canvas-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(55% 45% at 85% 8%, rgba(124, 58, 237, 0.34) 0%, transparent 70%),
+        radial-gradient(45% 40% at 8% 88%, rgba(227, 168, 87, 0.16) 0%, transparent 70%),
+        radial-gradient(40% 35% at 50% 55%, rgba(137, 106, 189, 0.18) 0%, transparent 70%);
+    mix-blend-mode: screen;
+}
+
+/* ── Dark mode: cards keep their glass; the gradient corner glows are gone ── */
+:root:not([data-theme="bright"]) .card-glow-bg {
+    display: none;
 }

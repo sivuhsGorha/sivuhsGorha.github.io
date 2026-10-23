@@ -23,8 +23,8 @@ export default function ThemeAwareSilk(props) {
       {...props}
       lightMode={theme === 'bright'}
       /* dim mode → dark purple silk; bright mode → much lighter silk */
-      color="#120721"
-      lightColor="#ffffff"
+      color="#1d0c47"
+      lightColor="#e6e2db"
     />
   );
 }
