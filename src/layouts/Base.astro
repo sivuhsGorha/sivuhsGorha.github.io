@@ -3,7 +3,6 @@ import '../styles/tokens.css';
 import Nav from '../components/Nav.astro';
 import { site } from '../data/site';
 import ThemeAwareSilk from '../components/reactbits/ThemeAwareSilk.jsx';
-import TerminalModal from '../components/reactbits/TerminalModal.jsx';
 
 interface Props {
     title?: string;
@@ -157,7 +156,6 @@ const ogImage = new URL('/og.png', canonical);
                 rotation={0}
             />
         </div>
-        <TerminalModal client:only="react" />
         <a class="skip-link" href="#main">Skip to content</a>
         <Nav current={current} />
         <main id="main">
