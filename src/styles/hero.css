@@ -1,0 +1,104 @@
+/* Hero section. */
+
+/* ---------- HERO ---------- */
+header.hero {
+    padding: 96px 0 72px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+.hero-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+}
+
+/* Animated gradient layer behind the hero copy, faded out at the bottom edge.
+   `.hero > .hero-bg` outranks the generic `.hero > *` rule in motion.css. */
+.hero > .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+.hero h1 {
+    font-size: clamp(58px, 8.5vw, 88px);
+    line-height: 1.05;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+    -webkit-text-stroke: 0.85px rgba(185, 134, 64, 0.65);
+    paint-order: stroke fill;
+    text-shadow:
+        0 0 2px rgba(185, 134, 64, 0.45),
+        0 2px 22px rgba(10, 6, 20, 0.92);
+}
+
+.hero p.role {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--amber);
+    font-size: 16px;
+    margin-bottom: 24px;
+    text-shadow: 0 0 2px rgba(227, 168, 87, 0.4), 0 1px 12px rgba(10, 6, 20, 0.88);
+}
+
+.hero p.eyebrow-num {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--amber);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.hero p.desc {
+    font-family: 'Playfair Display', serif;
+    color: var(--paper);
+    font-size: 23px;
+    font-weight: 500;
+    max-width: 48ch;
+    margin-bottom: 32px;
+    line-height: 1.65;
+    text-shadow: 0 2px 12px rgba(15, 27, 45, 0.95), 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 24px;
+    border-radius: 3px;
+    font-size: 15px;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease;
+}
+
+.btn-primary {
+    background: var(--amber);
+    color: var(--ink);
+    border-color: var(--amber);
+    font-weight: 600;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+    background: #eab86c;
+}
+
+.btn-ghost {
+    color: var(--paper);
+}
+
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+    border-color: var(--paper);
+}

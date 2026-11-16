@@ -2,7 +2,7 @@
 import { site } from '../data/site';
 
 interface Props {
-    current?: 'home' | 'writing';
+    current?: 'home' | 'writing' | 'error' | 'cv';
 }
 
 const { current = 'home' } = Astro.props;
@@ -10,7 +10,7 @@ const homePrefix = current === 'home' ? '' : '/';
 ---
 
 <nav>
-    <div class="wrap" style="position: relative; z-index: 1;">
+    <div class="wrap nav-wrap">
         <a class="nav-mark" href="/">
             <img src="/logo.png" alt="SBK Logo" class="nav-logo" width="38" height="38" />
             <span>{site.mark}</span>
@@ -18,7 +18,7 @@ const homePrefix = current === 'home' ? '' : '/';
         <div class="nav-header-actions">
             <button type="button" class="nav-theme-btn" id="nav-theme-btn" title="Toggle Bright/Dim Mode" aria-label="Toggle Bright/Dim Mode">
                 <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </button>
             <button
                 class="nav-toggle"
@@ -43,7 +43,7 @@ const homePrefix = current === 'home' ? '' : '/';
             <li class="nav-theme-item">
                 <button type="button" class="nav-theme-btn" id="nav-theme-btn-desktop" title="Toggle Bright/Dim Mode" aria-label="Toggle Bright/Dim Mode">
                     <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                 </button>
             </li>
             <li class="nav-cta-item">
@@ -56,6 +56,16 @@ const homePrefix = current === 'home' ? '' : '/';
 </nav>
 
 <style>
+    .nav-wrap {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Moon icon starts hidden; the theme toggle script switches it with the sun. */
+    .moon-icon {
+        display: none;
+    }
+
     /* ── Mobile header action row (theme toggle + menu button) ── */
     .nav-header-actions {
         display: none;          /* hidden on desktop — shown via media query */
@@ -89,22 +99,22 @@ const homePrefix = current === 'home' ? '' : '/';
         display: flex;
         align-items: center;
     }
-    .nav-cta-btn {
-        display: inline-flex !important;
+    .nav-links .nav-cta-btn {
+        display: inline-flex;
         align-items: center;
         gap: 8px;
         background: rgba(227, 168, 87, 0.12);
         border: 1px solid rgba(227, 168, 87, 0.4);
         padding: 5px 14px;
         border-radius: 6px;
-        color: var(--amber) !important;
+        color: var(--amber);
         font-family: 'JetBrains Mono', monospace;
         font-size: 16px;
         font-weight: 500;
         text-decoration: none;
         transition: all 0.2s ease;
     }
-    .nav-cta-btn:hover {
+    .nav-links .nav-cta-btn:hover {
         background: rgba(227, 168, 87, 0.25);
         border-color: var(--amber);
         transform: translateY(-1px);

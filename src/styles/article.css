@@ -1,0 +1,219 @@
+/* Blog article pages and markdown content. */
+
+/* ---------- ARTICLE ---------- */
+.article {
+    padding: 76px 0 96px;
+}
+
+.article-back {
+    display: inline-block;
+    font-size: 13.5px;
+    color: var(--amber);
+    text-decoration: none;
+    margin-bottom: 28px;
+    border-bottom: 1px solid transparent;
+}
+
+.article-back:hover,
+.article-back:focus-visible {
+    border-bottom-color: var(--amber);
+}
+
+.article header {
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+}
+
+.article h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.15;
+    margin-bottom: 12px;
+    max-width: 22ch;
+}
+
+.article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--steel);
+}
+
+.article-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+}
+
+.article-nav a {
+    display: block;
+    max-width: 46%;
+    color: var(--paper);
+    line-height: 1.35;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--amber) 45%, transparent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 5px;
+    transition: text-decoration-color 0.15s ease, color 0.15s ease;
+}
+
+.article-nav a span {
+    text-decoration: none;
+}
+
+.article-nav a span {
+    display: block;
+    margin-bottom: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--amber);
+}
+
+.article-nav .newer {
+    margin-left: auto;
+    text-align: right;
+}
+
+.article-nav a:hover,
+.article-nav a:focus-visible {
+    color: var(--amber);
+    text-decoration-color: var(--amber);
+}
+
+@media (max-width: 600px) {
+    .article-nav {
+        flex-direction: column;
+    }
+
+    .article-nav a {
+        max-width: none;
+    }
+}
+
+.prose {
+    max-width: 62ch;
+    color: var(--steel);
+}
+
+.prose p {
+    margin: 0 0 1.1em;
+}
+
+.prose h2,
+.prose h3 {
+    margin: 1.6em 0 0.6em;
+    color: var(--paper);
+    line-height: 1.25;
+}
+
+.prose h2 {
+    font-size: 1.35em;
+}
+
+.prose h3 {
+    font-size: 1.15em;
+}
+
+.prose li {
+    margin-bottom: 0.4em;
+}
+
+.prose blockquote {
+    margin: 0 0 1.1em;
+    padding-left: 1em;
+    border-left: 3px solid var(--amber-dim);
+    color: var(--steel);
+}
+
+.prose img {
+    max-width: 100%;
+    height: auto;
+}
+
+.prose hr {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 2em 0;
+}
+
+.prose a {
+    color: var(--amber);
+}
+
+.prose code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    color: var(--paper);
+}
+
+.prose pre {
+    background: var(--ink-soft);
+    border: 1px solid var(--line);
+    padding: 16px;
+    overflow-x: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+}
+
+/* Prism token colours (class-based, so the CSP needs no inline styles). Theme variables keep them readable in dim and bright. */
+.prose pre code {
+    background: none;
+    padding: 0;
+}
+
+.prose .token.comment,
+.prose .token.prolog,
+.prose .token.doctype {
+    color: var(--steel);
+    opacity: 0.7;
+    font-style: italic;
+}
+
+.prose .token.punctuation,
+.prose .token.operator {
+    color: var(--steel);
+}
+
+.prose .token.keyword,
+.prose .token.function,
+.prose .token.builtin,
+.prose .token.atrule,
+.prose .token.important {
+    color: var(--amber);
+}
+
+.prose .token.string,
+.prose .token.attr-value,
+.prose .token.url {
+    color: var(--success);
+}
+
+.prose .token.number,
+.prose .token.boolean,
+.prose .token.constant,
+.prose .token.variable,
+.prose .token.property,
+.prose .token.key,
+.prose .token.atrule .token.rule {
+    color: var(--amber-dim);
+}
+
+.prose ul,
+.prose ol {
+    padding-left: 1.2em;
+    margin: 0 0 1.1em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}

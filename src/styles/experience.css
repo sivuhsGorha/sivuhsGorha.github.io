@@ -1,0 +1,34 @@
+/* Experience list and arrow spacing. */
+
+/* ---------- EXPERIENCE LIST & ARROW SPACING ---------- */
+.experience-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.experience-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    color: var(--steel);
+    font-size: 15.5px;
+    line-height: 1.65;
+}
+
+.exp-arrow {
+    color: var(--amber);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.exp-text {
+    flex: 1;
+}

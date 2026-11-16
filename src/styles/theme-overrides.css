@@ -1,0 +1,88 @@
+/* Late bright/dim readability and glow adjustments (must load last). */
+
+/* ── Bright mode: readability fixes for accents that were tuned for the dark theme ── */
+[data-theme="bright"] .hero .btn-outline {
+    color: var(--amber-dim);
+    border-color: rgba(146, 64, 14, 0.55);
+}
+
+[data-theme="bright"] .hero .btn-outline:hover,
+[data-theme="bright"] .hero .btn-outline:focus-visible {
+    background: rgba(180, 83, 9, 0.1);
+    border-color: var(--amber-dim);
+    color: var(--amber-dim);
+}
+
+/* The error card stays dark in bright mode, opaque enough to read. */
+:root[data-theme="bright"] .error-content {
+    background: rgba(14, 8, 28, 0.95);
+}
+
+/* A light veil over the animated background keeps body text and amber accents readable. */
+[data-theme="bright"] .bg-canvas-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(239, 236, 231, 0.74);
+}
+
+/* Hero text on the light shader: drop the dark halo, use a light one. */
+[data-theme="bright"] .hero h1,
+[data-theme="bright"] .hero p.desc,
+[data-theme="bright"] .hero p.role {
+    text-shadow: 0 0 16px rgba(255, 255, 255, 0.9), 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="bright"] .hero h1 {
+    -webkit-text-stroke: 0;
+}
+
+[data-theme="bright"] .hero p.role {
+    display: inline-block;
+    padding: 3px 10px;
+    background: rgba(239, 236, 231, 0.85);
+    color: var(--amber-dim);
+    text-shadow: none;
+}
+
+/* Light mode: the logo is white, so it sits on a dim panel running from the left edge to just past the wordmark. */
+[data-theme="bright"] .nav-mark {
+    position: relative;
+    isolation: isolate;
+    color: #e3a857;
+}
+
+[data-theme="bright"] .nav-mark::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -14px;
+    bottom: -14px;
+    left: -100vw;
+    right: -20px;
+    background: #120721;
+    border-radius: 0 0 14px 0;
+}
+
+[data-theme="bright"] .nav-mark:hover,
+[data-theme="bright"] .nav-mark:focus-visible {
+    color: #ffffff;
+}
+
+/* ── Dark mode colour: soft violet and amber haze over the silk (CSS only, no shader) ── */
+:root:not([data-theme="bright"]) .bg-canvas-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(55% 45% at 85% 8%, rgba(124, 58, 237, 0.34) 0%, transparent 70%),
+        radial-gradient(45% 40% at 8% 88%, rgba(227, 168, 87, 0.16) 0%, transparent 70%),
+        radial-gradient(40% 35% at 50% 55%, rgba(137, 106, 189, 0.18) 0%, transparent 70%);
+    mix-blend-mode: screen;
+}
+
+/* ── Dark mode: cards keep their glass; the gradient corner glows are gone ── */
+:root:not([data-theme="bright"]) .card-glow-bg {
+    display: none;
+}

@@ -1,0 +1,234 @@
+/* Bright-theme overrides for cards, text, chips and the contact form. */
+
+/* The error pages keep their dark card in bright mode; everything else gets a light card below. */
+[data-theme="bright"] .error-content {
+    --ink: #120721;
+    --ink-soft: #1b0c33;
+    --paper: #ffffff;
+    --paper-dim: #f0f0f0;
+    --steel: #f4f6fc;
+    --line: #33465c;
+    --amber: #e3a857;
+    --amber-dim: #b98640;
+    --ok: #7fa88c;
+    --success: #34d399;
+    --whatsapp: #25d366;
+    color: #f4f6fc;
+}
+
+/* ── Bright mode: light cards with the same violet / amber corner glow as dark mode ── */
+:root[data-theme="bright"] .service-card,
+:root[data-theme="bright"] .project-card,
+:root[data-theme="bright"] .cert-card,
+:root[data-theme="bright"] .form-container,
+:root[data-theme="bright"] .cv-sheet,
+:root[data-theme="bright"] .cv-skill-card,
+:root[data-theme="bright"] .cv-exp-item,
+:root[data-theme="bright"] .cv-edu-card,
+:root[data-theme="bright"] .mode-card {
+    background-color: rgba(255, 255, 255, 0.82);
+    background-image: none;
+    border-color: rgba(154, 74, 7, 0.28);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: #0f172a;
+}:root[data-theme="bright"] .service-card:hover,
+:root[data-theme="bright"] .project-card:hover,
+:root[data-theme="bright"] .cert-card:hover {
+    border-color: rgba(154, 74, 7, 0.55);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12);
+}
+
+/* Text inside light cards */
+:root[data-theme="bright"] .service-card h3,
+:root[data-theme="bright"] .project-card h3,
+:root[data-theme="bright"] .cert-card h3,
+:root[data-theme="bright"] .mode-title,
+:root[data-theme="bright"] .success-panel h3,
+:root[data-theme="bright"] .step-title,
+:root[data-theme="bright"] .cv-sheet h1,
+:root[data-theme="bright"] .cv-sheet h3 {
+    color: #0f172a;
+    text-shadow: none;
+    -webkit-text-stroke: 0;
+}:root[data-theme="bright"] .project-summary,
+:root[data-theme="bright"] .card-desc,
+:root[data-theme="bright"] .cert-details p,
+:root[data-theme="bright"] .card-deliverables li,
+:root[data-theme="bright"] .project-deliverables li,
+:root[data-theme="bright"] .deep-dive-body,
+:root[data-theme="bright"] .deep-dive-body p,
+:root[data-theme="bright"] .deep-dive-trigger,
+:root[data-theme="bright"] .arch-title,
+:root[data-theme="bright"] .arch-flow-summary,
+:root[data-theme="bright"] .node-label-text,
+:root[data-theme="bright"] .form-container label,
+:root[data-theme="bright"] .mode-desc,
+:root[data-theme="bright"] .hint,
+:root[data-theme="bright"] .draft-note,
+:root[data-theme="bright"] .success-panel p,
+:root[data-theme="bright"] .success-panel li,
+:root[data-theme="bright"] .whatsapp-direct-box span,
+:root[data-theme="bright"] .cv-sheet p,
+:root[data-theme="bright"] .cv-sheet li,
+:root[data-theme="bright"] .cv-sheet span,
+:root[data-theme="bright"] .cv-sheet div {
+    color: #1e293b;
+}
+
+:root[data-theme="bright"] .client-name,
+:root[data-theme="bright"] .deliv-label,
+:root[data-theme="bright"] .deliv-heading,
+:root[data-theme="bright"] .card-num,
+:root[data-theme="bright"] .pid,
+:root[data-theme="bright"] .bullet,
+:root[data-theme="bright"] .arch-tag,
+:root[data-theme="bright"] .flow-label,
+:root[data-theme="bright"] .node-step-badge,
+:root[data-theme="bright"] .cv-role,
+:root[data-theme="bright"] .cv-sec-title,
+:root[data-theme="bright"] .cv-company,
+:root[data-theme="bright"] .cv-sheet a,
+:root[data-theme="bright"] .dist-score,
+:root[data-theme="bright"] .cv-skill-card h3 {
+    color: var(--amber);
+}
+
+/* Chips and small boxes inside cards */
+:root[data-theme="bright"] .stack span,
+:root[data-theme="bright"] .metric-badge,
+:root[data-theme="bright"] .client-badge,
+:root[data-theme="bright"] .card-badge,
+:root[data-theme="bright"] .cert-date,
+:root[data-theme="bright"] .cert-date.distinction,
+:root[data-theme="bright"] .dist-code,
+:root[data-theme="bright"] .dist-title {
+    color: #3b2a14;
+    background: rgba(255, 255, 255, 0.78);
+    border-color: rgba(154, 74, 7, 0.35);
+    box-shadow: none;
+    text-shadow: none;
+}:root[data-theme="bright"] .arch-deep-dive,
+:root[data-theme="bright"] .deep-dive-trigger,
+:root[data-theme="bright"] .project-deliverables,
+:root[data-theme="bright"] .cv-distinction-badge {
+    background: rgba(15, 23, 42, 0.04);
+    border-color: rgba(15, 23, 42, 0.12);
+}
+
+:root[data-theme="bright"] .cert-icon {
+    background: rgba(15, 23, 42, 0.06);
+    border-color: rgba(15, 23, 42, 0.1);
+}
+
+:root[data-theme="bright"] .arch-diagram-box {
+    background: rgba(248, 250, 252, 0.9);
+    border-color: rgba(124, 58, 237, 0.3);
+    box-shadow: none;
+}
+
+:root[data-theme="bright"] .arch-node-box,
+:root[data-theme="bright"] .arch-flowchart-canvas {
+    background: #ffffff;
+}
+
+:root[data-theme="bright"] .btn-live {
+    background: var(--amber);
+    color: #ffffff;
+}
+
+:root[data-theme="bright"] .btn-repo {
+    color: #1e293b;
+}
+
+:root[data-theme="bright"] .btn-repo:hover {
+    color: var(--amber);
+}
+
+/* The featured (diploma) card has its own dark background in the component; match the other cards */
+:root[data-theme="bright"] .cert-card.featured {
+    background: rgba(255, 255, 255, 0.82);
+}
+
+/* Four-part selector outranks the component's scoped `.cert-details h3` rule */
+:root[data-theme="bright"] .cert-card .cert-details h3 {
+    color: #0f172a;
+}
+
+/* The decorative corner glows were tuned for dark cards; soften them on light ones */
+:root[data-theme="bright"] .card-glow-bg {
+    display: none;
+}
+
+:root[data-theme="bright"] .article-back {
+    color: #78350f;
+    font-weight: 600;
+}
+
+/* Contact form controls on a light card */
+:root[data-theme="bright"] .form-container input,
+:root[data-theme="bright"] .form-container select,
+:root[data-theme="bright"] .form-container textarea {
+    color: #0f172a;
+    background: #ffffff;
+    border-color: #cbd5e1;
+}
+
+:root[data-theme="bright"] .form-container select option {
+    background: #ffffff;
+    color: #0f172a;
+}
+
+:root[data-theme="bright"] .form-container input:focus,
+:root[data-theme="bright"] .form-container select:focus,
+:root[data-theme="bright"] .form-container textarea:focus {
+    background: #ffffff;
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px rgba(154, 74, 7, 0.15);
+}
+
+:root[data-theme="bright"] .form-container ::placeholder {
+    color: #64748b;
+}
+
+:root[data-theme="bright"] .form-container .submit-btn {
+    background: var(--amber);
+    color: #ffffff;
+}
+
+:root[data-theme="bright"] .form-container .submit-btn:hover {
+    background: #7c3a05;
+}
+
+:root[data-theme="bright"] .back-btn {
+    color: #0f172a;
+    border-color: rgba(15, 23, 42, 0.3);
+}
+
+:root[data-theme="bright"] .mode-card:has(input:checked) {
+    background-color: rgba(154, 74, 7, 0.1);
+    border-color: var(--amber);
+}
+
+:root[data-theme="bright"] .progress-track {
+    background: rgba(15, 23, 42, 0.1);
+}
+
+:root[data-theme="bright"] .progress-label {
+    color: var(--amber);
+}
+
+:root[data-theme="bright"] .field-error {
+    color: #b91c1c;
+}
+
+:root[data-theme="bright"] .whatsapp-direct-box {
+    border-top-color: rgba(15, 23, 42, 0.12);
+}
+
+:root[data-theme="bright"] .whatsapp-link-btn {
+    color: var(--amber);
+    border-color: rgba(154, 74, 7, 0.4);
+    background: rgba(154, 74, 7, 0.06);
+}

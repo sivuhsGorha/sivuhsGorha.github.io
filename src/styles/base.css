@@ -1,0 +1,84 @@
+/* Reset, page background and body typography. */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--ink);
+    transition: background-color 0.2s ease;
+}
+
+body {
+    margin: 0;
+    background: transparent;
+    color: var(--paper);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.65;
+    font-size: 20px;
+    transition: color 0.2s ease;
+}
+
+.bg-canvas-wrapper {
+    transition: opacity 0.6s ease;
+    opacity: 0.88;
+}
+
+[data-theme="bright"] .bg-canvas-wrapper {
+    opacity: 1;
+    mix-blend-mode: normal;
+}
+
+::selection {
+    background: var(--amber);
+    color: var(--ink);
+}h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.card-title,
+.cv-sec-title,
+.cv-job-title {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    margin: 0;
+    color: var(--paper);
+    -webkit-text-stroke: 0.5px rgba(185, 134, 64, 0.55);
+    paint-order: stroke fill;
+    text-shadow: 0 0 1px rgba(185, 134, 64, 0.3);
+}
+
+a {
+    color: inherit;
+}
+
+.wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.skip-link {
+    position: absolute;
+    left: 16px;
+    top: -40px;
+    z-index: 40;
+    background: var(--amber);
+    color: var(--ink);
+    padding: 8px 14px;
+    font-size: 14.5px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.skip-link:focus-visible {
+    top: 12px;
+}
+
+:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+}

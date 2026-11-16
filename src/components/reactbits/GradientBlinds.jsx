@@ -24,7 +24,7 @@ const DEFAULT_METALLIC_LIGHT = ['#ffffff', '#f1f5f9', '#cbd5e1', '#94a3b8', '#e2
 
 const GradientBlinds = ({
   className = '',
-  dpr,
+  dpr = undefined,
   paused = false,
   gradientColors,
   lightGradientColors = DEFAULT_METALLIC_LIGHT,
@@ -41,7 +41,7 @@ const GradientBlinds = ({
   shineDirection = 'left',
   mixBlendMode = 'lighten',
   mixBlendModeLight = 'normal',
-  lightMode
+  lightMode = undefined
 }) => {
   const containerRef = useRef(null);
   const rafRef = useRef(null);

@@ -1,0 +1,20 @@
+/* Small single-purpose classes that replace inline style="" attributes (keeps the CSP free of style-src 'unsafe-inline'). */
+
+/* These replace inline colours, which used to beat every stylesheet rule (including :hover).
+   Context selectors give them enough specificity to outrank `.facts .v` and `.contact-links a`;
+   utilities.css loads last, so on a tie it wins. */
+.status-ok,
+.facts .v.status-ok { color: var(--success); }
+.link-whatsapp,
+.contact-links a.link-whatsapp { color: var(--whatsapp); }
+.link-amber { color: var(--amber); }
+.eyebrow-num--tight { margin-bottom: 8px; }
+.icon-gap-right { margin-right: 6px; }
+
+/* Full-viewport animated background layer (see Base.astro). */
+.bg-canvas-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}

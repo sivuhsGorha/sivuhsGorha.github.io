@@ -11,7 +11,7 @@ const c = cv.contact;
             <div class="cv-top-bar">
                 <a class="article-back" href="/">← Back to portfolio</a>
                 <a class="btn btn-primary cv-download-btn" href="/Sibongakonke_Simamane_CV.pdf" download="Sibongakonke_Simamane_CV.pdf">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-gap-right">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -91,7 +91,7 @@ const c = cv.contact;
                                     <h3 class="cv-job-title">{p.name}</h3>
                                     {p.link && (
                                         <div class="cv-company">
-                                            <a href={p.link.url} target="_blank" rel="noopener noreferrer" style="color: var(--amber);">{p.link.label}</a>
+                                            <a href={p.link.url} target="_blank" rel="noopener noreferrer" class="link-amber">{p.link.label}</a>
                                         </div>
                                     )}
                                 </div>
@@ -294,29 +294,6 @@ const c = cv.contact;
         margin-bottom: 8px;
     }
 
-    .cv-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-    }
-
-    .cv-chips span {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 11.5px;
-        padding: 2px 8px;
-        border-radius: 3px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: var(--steel, #f4f6fc);
-    }
-
-    .cv-chips span.chip-accent {
-        background: rgba(227, 168, 87, 0.15);
-        border-color: rgba(227, 168, 87, 0.4);
-        color: var(--amber);
-        font-weight: 500;
-    }
-
     .cv-exp-item {
         margin-bottom: 22px;
     }
@@ -390,33 +367,9 @@ const c = cv.contact;
         padding: 16px 20px;
     }
 
-    .cv-scores-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 8px 16px;
-        padding-top: 10px;
-        border-top: 1px solid rgba(227, 168, 87, 0.15);
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 12.5px;
-        color: var(--steel, #f4f6fc);
-    }
-
-    .cv-scores-grid strong {
-        color: var(--amber);
-    }
-
-    .cv-two-col {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 28px;
-    }
-
     @media (max-width: 760px) {
         .cv-sheet {
             padding: 24px 20px;
-        }
-        .cv-two-col {
-            grid-template-columns: 1fr;
         }
     }
 
@@ -508,19 +461,6 @@ const c = cv.contact;
             color: #0f172a !important;
         }
 
-        .cv-chips span {
-            background: #e2e8f0 !important;
-            border-color: #cbd5e1 !important;
-            color: #334155 !important;
-        }
-
-        .cv-chips span.chip-accent {
-            background: #fef3c7 !important;
-            border-color: #fde68a !important;
-            color: #92400e !important;
-            font-weight: 600;
-        }
-
         .cv-job-title {
             color: #0f172a !important;
         }
@@ -552,15 +492,6 @@ const c = cv.contact;
             border-left: 3px solid #d97706 !important;
             page-break-inside: avoid;
             break-inside: avoid;
-        }
-
-        .cv-scores-grid {
-            border-top: 1px solid #e2e8f0 !important;
-            color: #475569 !important;
-        }
-
-        .cv-scores-grid strong {
-            color: #b45309 !important;
         }
 
         .cv-exp-item {

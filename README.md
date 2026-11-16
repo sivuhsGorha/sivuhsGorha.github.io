@@ -11,8 +11,7 @@ Based in Durban, South Africa · Diploma HDIPSD2 (Distinction) · CompTIA Securi
 
 ![Astro](https://img.shields.io/badge/Astro-7.x-FF5D01?style=for-the-badge&logo=astro&logoColor=white)
 ![React](https://img.shields.io/badge/React-19.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.x-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-6.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS_Cloud-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP_8-777BB4?style=for-the-badge&logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL_3NF-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
@@ -73,16 +72,21 @@ Engineered with **Astro 7** and **React 19**, the site features high-performance
 ## 🛠️ Project Structure
 
 ```
-sbk-dev/
+sivuhsGorha.github.io/
 ├── src/
-│   ├── components/       # Astro & React UI components (Hero, Nav, Projects, Skills)
+│   ├── components/       # Astro UI components (Hero, Nav, Projects, Skills, ContactForm…)
+│   │   └── reactbits/    # React/WebGL background effects (Silk, GradientBlinds, Dither)
 │   ├── content/blog/     # Technical markdown writing & engineering articles
-│   ├── data/             # Site configuration, project metadata & tech stack definitions
+│   ├── data/             # Site config, project metadata, skills & contact-form questions
 │   ├── layouts/          # Base HTML layout, SEO meta tags & JSON-LD structured data
-│   ├── pages/            # Astro static routes (Index, Writing, CV, Error pages)
-│   └── styles/           # Design system tokens & CSS styling rules
-├── public/               # Static assets (Favicons, OpenGraph card, CV PDF)
-└── astro.config.mjs      # Astro framework setup & sitemap integration
+│   ├── lib/              # Blog helpers (published posts, reading time, adjacent posts)
+│   ├── pages/            # Astro static routes (Index, Writing, CV, RSS, Error pages)
+│   ├── scripts/          # Browser behaviour (contact form validation, steps, submit)
+│   └── styles/           # Design tokens, theme overrides and per-area CSS (see global.css)
+├── public/               # Static assets (Favicons, OpenGraph card, CV PDF, _headers)
+├── scripts/              # Offline helpers for generating the CV PDF and OG image
+├── .github/workflows/    # CI: type check, build and security assertions
+└── astro.config.mjs      # Astro setup: sitemap, React, hash-based CSP, Prism highlighting
 ```
 
 ---
@@ -112,10 +116,20 @@ sbk-dev/
    ```
    Open [http://localhost:4321](http://localhost:4321) in your browser.
 
-4. **Verify production build:**
+4. **Type check and verify the production build:**
    ```bash
-   npx astro build
+   npm run check
+   npm run build
    ```
+
+---
+
+## 🔒 Security & Quality Gates (this website)
+
+- **Hash-based Content Security Policy**: Astro emits a CSP `<meta>` tag with SHA-256 hashes for every inline script and style, so neither `script-src` nor `style-src` allows `'unsafe-inline'`. `frame-ancestors` and other headers live in `public/_headers`.
+- **No inline `style=""` attributes**, and class-based Prism syntax highlighting (Shiki writes inline styles, which a strict CSP blocks).
+- **Server-side spam handling**: the contact form posts to Formspree, and its honeypot field is discarded server-side. Nothing is silently dropped in the browser.
+- **CI** (`.github/workflows/ci.yml`) runs `astro check`, builds the site, and fails if the CSP gains `'unsafe-inline'` or any built page contains an inline `style=""`.
 
 ---
 

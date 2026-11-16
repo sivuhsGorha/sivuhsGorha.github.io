@@ -56,13 +56,13 @@ import { projects } from '../data/projects';
                                         <p class="arch-title">System Architecture Topology</p>
                                     </div>
                                     <div class="arch-flowchart-canvas">
-                                        {project.architectureDiagram.nodes.map((node, i) => (
+                                        {project.architectureDiagram.nodes.map((node, i, nodes) => (
                                             <div class="arch-step-wrap">
                                                 <div class={`arch-node-box node-type-${node.type}`}>
                                                     <div class="node-step-badge">STEP 0{i + 1}</div>
                                                     <div class="node-label-text">{node.label}</div>
                                                 </div>
-                                                {i < project.architectureDiagram.nodes.length - 1 && (
+                                                {i < nodes.length - 1 && (
                                                     <div class="arch-connector">
                                                         <span class="connector-line-h"></span>
                                                         <span class="connector-arrow-h">►</span>
@@ -476,32 +476,6 @@ import { projects } from '../data/projects';
     .btn-repo:hover {
         color: #fff;
     }
-    .project-cta-banner {
-        background: linear-gradient(135deg, rgba(26, 12, 44, 0.8) 0%, rgba(14, 10, 24, 0.8) 100%);
-        border: 1px solid rgba(227, 168, 87, 0.3);
-        border-radius: 8px;
-        padding: 32px 36px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 32px;
-        flex-wrap: wrap;
-    }
-    .banner-content h3 {
-        font-size: 22px;
-        color: var(--paper, #fff);
-        margin-bottom: 8px;
-    }
-    .banner-content p {
-        color: var(--steel, #f4f6fc);
-        font-size: 15.5px;
-        margin: 0;
-        max-width: 60ch;
-        line-height: 1.55;
-    }
-    .banner-btn {
-        white-space: nowrap;
-    }
 
     @media (max-width: 800px) {
         .project-card {
@@ -510,10 +484,6 @@ import { projects } from '../data/projects';
         }
         .project-deliverables ul {
             grid-template-columns: 1fr;
-        }
-        .project-cta-banner {
-            flex-direction: column;
-            align-items: flex-start;
         }
     }
 </style>

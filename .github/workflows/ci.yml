@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - run: npm ci
+
+      - name: Type check
+        run: npm run check
+
+      - name: Build
+        run: npm run build
+
+      - name: Assert CSP has no unsafe-inline
+        run: |
+          csp=$(grep -o '<meta http-equiv="content-security-policy"[^>]*>' dist/index.html)
+          test -n "$csp" || { echo "CSP meta tag missing"; exit 1; }
+          if echo "$csp" | grep -q "unsafe-inline"; then
+            echo "CSP must not contain 'unsafe-inline'"; exit 1
+          fi
+
+      - name: Assert no inline style attributes in built HTML
+        run: |
+          if grep -rlE ' style="' dist --include='*.html'; then
+            echo "Inline style=\"\" attributes found; use a class instead"; exit 1
+          fi
